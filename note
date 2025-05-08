@@ -1,0 +1,40 @@
+What i need to take note
+--------------------------------------------------------------------------------------------------
+page restrictions
+
+
+------------------------------------------------------------------------------------------------
+pages i need to work on
+--------------------------------------------------------------------------------------------------
+home page design
+team page 
+contact us page
+
+------------------------------------------------------------------------------------------------------
+I am working on an agricultural consulting and service providing website. It has some ecommerce functionality. I am using HTML, CSS, Bootstrap JavaScript, PHP. 
+I need to create a beautiful and responsive team page. the header and footer file should be separated
+
+
+<div class="product-card text-center">
+    <img src="<?= $p['image'] ?>" class="img-fluid mb-2" style="height:150px; object-fit:cover;">
+    <h6><?= htmlspecialchars($p['name']) ?></h6>
+    <p>₦<?= number_format($p['price'], 2) ?></p>
+    <?php if ($p['discount_percent']): ?>
+        <span class="badge bg-success"><?= $p['discount_percent'] ?>% Off</span>
+    <?php endif; ?>
+    <?php if ($p['impressions'] > 50): ?>
+        <span class="product-label">Trending</span>
+    <?php endif; ?>
+    <div class="mt-2">
+        <button class="btn btn-outline-primary btn-sm view-btn" data-id="<?= $p['id'] ?>">👁 Quick View</button>
+        <button class="btn btn-outline-success btn-sm add-cart" data-id="<?= $p['id'] ?>">🛒 Add to Cart</button>
+        <button class="btn btn-outline-danger btn-sm" onclick="wishlist(<?= $p['id'] ?>)">💖</button>
+    </div>
+</div>
+
+<!-- Social Meta Tags -->
+<meta property="og:title" content="<?= $page_title ?? 'F and V Agro Services' ?>">
+<meta property="og:description" content="<?= $page_description ?? 'Explore top-quality agricultural products and services.' ?>">
+<meta property="og:image" content="<?= $og_image ?? '/assets/images/social-preview.jpg' ?>">
+<meta property="og:url" content="<?= $current_url ?? 'https://yourwebsite.com' ?>">
+<meta name="twitter:card" content="summary_large_image">
