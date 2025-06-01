@@ -1,5 +1,5 @@
 <?php
-include '../config/db.php';
+include '../../config/db.php';
 
 $name = trim($_POST['name']);
 $desc = trim($_POST['description']);
@@ -7,7 +7,7 @@ $imagePath = null;
 
 // === 1. Handle Image Upload ===
 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-    $uploadDir = "../uploads/category_images/";
+    $uploadDir = "../../uploads/category_images/";
     $imageName = time() . "_" . basename($_FILES["image"]["name"]);
     $imagePath = $uploadDir . $imageName;
 

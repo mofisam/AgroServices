@@ -91,7 +91,7 @@ include 'includes/header.php';
             <div class="timeline">
               <div class="timeline-item">
                 <div class="timeline-badge bg-success"></div>
-                <div class="timeline-content">
+                <div class="timeline-content ">
                   <h6>Year 1-2: Establishment</h6>
                   <p>Infrastructure development, crop cycles, operational systems</p>
                 </div>
@@ -207,7 +207,7 @@ include 'includes/header.php';
                 <p class="text-muted small">Poultry & Fish Farm, Ogun</p>
               </div>
             </div>
-            <p>"Working with AgriLink transformed our 5-acre farm into a profitable enterprise. Their management system increased our egg production by 40% in one year."</p>
+            <p>"Working with F and V Agro Services transformed our 5-acre farm into a profitable enterprise. Their management system increased our egg production by 40% in one year."</p>
             <div class="rating">
               <i class="bi bi-star-fill text-warning"></i>
               <i class="bi bi-star-fill text-warning"></i>
@@ -249,11 +249,48 @@ include 'includes/header.php';
   </div>
 </section>
 
+<!-- Investment CTA Section -->
+<section class="py-5 bg-success text-white position-relative overflow-hidden">
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h2 class="display-5 fw-bold mb-3">Invest in Nigeria's Agricultural Future</h2>
+        <p class="lead mb-4">Get  annual returns through our managed farm investment programs with complete transparency.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="https://wa.me/2347037997601" class="btn btn-light btn-lg px-4">
+            🌱 Start Investing Today
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="card border-0 bg-success-light text-center py-4">
+          <div class="card-body">
+            <i class="bi bi-graph-up-arrow display-4 text-warning mb-3"></i>
+            <h5>Proven Track Record</h5>
+            <p class="mb-0">Average % annual returns since 2018</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Background elements -->
+  <div class="position-absolute top-0 end-0 opacity-10">
+    <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFFFFF" d="M45,-45C58.1,-29.6,68.6,-14.8,68.5,0.1C68.4,15,57.7,30.1,44.6,43.8C31.4,57.5,15.7,69.9,0.7,69.2C-14.3,68.5,-28.6,54.7,-42.3,41C-56,27.3,-69.2,13.6,-70.4,-1.2C-71.6,-16.1,-60.8,-32.1,-47.1,-47.5C-33.5,-62.8,-16.7,-77.4,-0.3,-77.1C16.2,-76.8,32.3,-61.5,45,-45Z" transform="translate(100 100)" />
+    </svg>
+  </div>
+</section>
+
+<style>
+  
+</style>
+
 <!-- ✅ Dual Registration Section -->
 <section class="py-5 bg-light">
   <div class="container">
     <div class="text-center mb-5">
-      <h2>Join AgriLink Hub Today</h2>
+      <h2>Join F and V Agro Services Hub Today</h2>
       <p class="lead">Choose your registration path to get started</p>
     </div>
     
@@ -313,10 +350,6 @@ include 'includes/header.php';
     </div>
   </div>
 </section>
-
-<style>
-
-</style>
 
 <?php 
 include 'includes/footer.php'; 
@@ -405,6 +438,10 @@ include 'includes/footer.php';
     left: 0;
     z-index: 1;
     content: "";
+  }
+  .bg-success-light {
+    background-color: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
   }
 </style>
 

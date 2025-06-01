@@ -1,4 +1,3 @@
-
 <?php
 $page_title = "About Us - F and V Agro Services";
 $page_description = "Learn more about F and V Agro Services – our mission, values, and team.";
@@ -28,7 +27,7 @@ include 'includes/header.php';
             "id" => "member1",
             "name" => "Falade Yinka O.",
             "title" => "Founder & Lead Consultant",
-            "img" => "assets/images/img1.jpg",
+            "img" => "assets/images/yinka_falade.jpg",
             "bio" => "Falade Yinka is the visionary founder and lead consultant at F and V Agro Services. He holds a Bachelor’s degree in Agriculture from the Federal University of Agriculture, Abeokuta (FUNAAB), Ogun State. As a World Bank Scholar, he furthered his education with a Master’s degree in Livestock Science and Sustainable Environment from the World Bank Africa Centre of Excellence, FUNAAB.
             <br/>
             Yinka is a dedicated advocate of sustainable agriculture and a hands-on farmer. With years of field experience, he has consulted for numerous farms across Nigeria, particularly in the South West and South East regions, helping to develop profitable, environmentally-conscious agricultural systems.",
@@ -58,7 +57,7 @@ include 'includes/header.php';
             "name" => "Samuel Alao",
             "title" => "Tech Lead",
             "img" => "assets/images/img1.jpg",
-            "bio" => "Samuels  helps Companies scale through modern technologies and techniques. He also trains farm workers and entrepreneurs in sustainable practices.",
+            "bio" => "Samuel Alao is a Full-Stack Developer with a strong foundation in both frontend and backend technologies, passionate about building dynamic, user-friendly websites and applications. With a B.Tech in Urban and Regional Planning from Ladoke Akintola University of Technology and professional training in Software Engineering from ALX, he bring a unique blend of analytical thinking and technical expertise to every project. <br/> He specialize in helping businesses grow through innovative, scalable tech solutions, ensuring high standards of quality, efficiency, and client satisfaction in all my work. His mission is to transform ideas into powerful digital products that drive real-world impact.",
             "linkedin" => "#",
             "twitter" => "#"
         ]

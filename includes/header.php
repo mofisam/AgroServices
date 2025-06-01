@@ -2,15 +2,13 @@
 if (session_status() === PHP_SESSION_NONE) session_start();
 include_once __DIR__ . '/../config/db.php';
 
-// 🛒 Cart Count Logic
+// 🛒 Cart Count Logic (moved to separate endpoint)
 $cart_count = 0;
-if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
-    foreach ($_SESSION['cart'] as $item) {
-        $cart_count += $item['quantity'] ?? 1;
-    }
+if (!empty($_SESSION['cart'])) {
+    $cart_count = count($_SESSION['cart']);
 }
 
-// ✉️ Message Count Logic
+// ✉️ Message Count Logic (unchanged)
 $msg_count = 0;
 if (isset($_SESSION['user_id'], $_SESSION['role'])) {
     $user_id = $_SESSION['user_id'];
@@ -45,10 +43,13 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   <!-- Custom Styles -->
   <link rel="stylesheet" href="http://localhost/web/agroservices/includes/style.css">
 
-  <!-- Inline Beautified Header Styles -->
+  <!-- Inline Styles with Cart Auto-Update -->
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -127,6 +128,41 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
       }
     }
   </style>
+
+  <!-- Cart Auto-Update Script -->
+  <script>
+  $(document).ready(function() {
+      // Function to update cart count
+      function updateCartCount() {
+          $.ajax({
+              url: 'http://localhost/web/agroservices/includes/get_cart_count.php',
+              method: 'GET',
+              success: function(response) {
+                  const cartCount = parseInt(response.count) || 0;
+                  const $badge = $('#cart-badge');
+                  
+                  if (cartCount > 0) {
+                      $badge.text(cartCount).show();
+                  } else {
+                      $badge.hide();
+                  }
+              },
+              error: function(xhr, status, error) {
+                  console.error('Error fetching cart count:', error);
+              }
+          });
+      }
+
+      // Update immediately on page load
+      updateCartCount();
+
+      // Set up periodic updates (every 5 seconds)
+      setInterval(updateCartCount, 5000);
+
+      // Also update when visibility changes (if user switches tabs)
+      $(window).on('focus', updateCartCount);
+  });
+  </script>
 </head>
 
 <body>
@@ -156,16 +192,16 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
       <ul class="navbar-nav mb-2 mb-lg-0">
         <!--  User Links -->
         <?php if (isset($_SESSION['user_id'])): ?>
-          <li class="nav-item"><a class="nav-link" href="dashboard.php"><i class="bi bi-person-circle nav-icon"></i> Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link text-warning" href="/logout.php"><i class="bi bi-box-arrow-right nav-icon"></i> Logout</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/dashboard.php"><i class="bi bi-person-circle nav-icon"></i> Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-warning" href="logout.php"><i class="bi bi-box-arrow-right nav-icon"></i> Logout</a></li>
         <?php else: ?>
-          <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-box-arrow-in-right nav-icon"></i> Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="register.php"><i class="bi bi-person-plus-fill nav-icon"></i> Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/login.php"><i class="bi bi-box-arrow-in-right nav-icon"></i> Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservicesregister.php"><i class="bi bi-person-plus-fill nav-icon"></i> Register</a></li>
         <?php endif; ?>
 
         <!-- ✉️ Messages -->
         <li class="nav-item position-relative me-3">
-          <a href="<?= ($_SESSION['role'] ?? '') === 'buyer' ? 'http://localhost/web/agroservices/messages/' : '/products/seller_messages.php' ?>" class="nav-link">
+          <a href="<?= ($_SESSION['role'] ?? '') === 'buyer' ? 'http://localhost/web/agroservices/messages/' : 'http://localhost/web/agroservices/seller/messages/index.php' ?>" class="nav-link">
             <i class="bi bi-envelope-fill nav-icon"></i>
             <?php if ($msg_count > 0): ?>
               <span class="cart-badge"><?= $msg_count ?></span>
@@ -173,16 +209,15 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
           </a>
         </li>
 
-        <!-- 🛒 Cart -->
+        <!-- 🛒 Cart (updated with dynamic badge) -->
         <li class="nav-item position-relative">
           <a href="http://localhost/web/agroservices/cart" class="nav-link">
             <i class="bi bi-cart-fill nav-icon"></i>
-            <?php if ($cart_count > 0): ?>
-              <span class="cart-badge"><?= $cart_count ?></span>
-            <?php endif; ?>
+            <span id="cart-badge" class="cart-badge" <?= $cart_count > 0 ? '' : 'style="display: none;"' ?>>
+              <?= $cart_count > 0 ? $cart_count : '' ?>
+            </span>
           </a>
         </li>
-
       </ul>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../config/db.php';
+include '../../config/db.php';
 
 if ($_SESSION["role"] !== "admin") {
     die("Unauthorized access!");

@@ -34,7 +34,7 @@ $users = $conn->query("
 $biz = $conn->query("SELECT ba.business_name FROM business_accounts ba WHERE ba.user_id = $seller_id")->fetch_assoc();
 $business_name = $biz['business_name'] ?? "My Business";
 ?>
-
+<?php include '../../includes/header.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +65,8 @@ $business_name = $biz['business_name'] ?? "My Business";
     textarea.form-control { resize: none; }
   </style>
 </head>
-<body class="container py-4">
+<body >
+  <div class="container py-4">
   <h3 class="mb-4">💬 <?= $business_name ?> Inbox</h3>
   <div class="row g-3">
 
@@ -126,6 +127,8 @@ $business_name = $biz['business_name'] ?? "My Business";
     </div>
 
   </div>
+  </div>
+  <?php include '../../includes/footer.php'?>
 
   <?php if ($selected_user_id): ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

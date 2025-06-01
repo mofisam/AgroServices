@@ -1,28 +1,31 @@
 <?php
 session_start();
 include '../../config/db.php';
-include '../../includes/header.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
     header("Location: ../../login.php");
     exit();
 }
+include '../../includes/header.php';
 
 $seller_id = $_SESSION['user_id'];
 
-// Fetch wallet stats
+// 🔄 Fetch Wallet Balances
 $wallet_stmt = $conn->prepare("
-    SELECT current_balance, total_earned FROM seller_wallets WHERE seller_id = ?
+    SELECT current_balance, total_earned, withdrawable_balance 
+    FROM seller_wallets 
+    WHERE seller_id = ?
 ");
 $wallet_stmt->bind_param("i", $seller_id);
 $wallet_stmt->execute();
-$wallet_stmt->bind_result($balance, $total_earned);
+$wallet_stmt->bind_result($balance, $total_earned, $withdrawable_balance);
 $wallet_stmt->fetch();
 $wallet_stmt->close();
 
 // Fallbacks
 $balance = $balance ?? 0;
 $total_earned = $total_earned ?? 0;
+$withdrawable_balance = $withdrawable_balance ?? 0;
 
 // 📜 Fetch transaction history
 $transactions_stmt = $conn->prepare("
@@ -46,15 +49,25 @@ $transactions_result = $transactions_stmt->get_result();
                 <div class="card-body">
                     <h5>Current Balance</h5>
                     <p class="display-6">₦<?= number_format($balance, 2) ?></p>
-                    <a href="withdraw_request.php" class="btn btn-light btn-sm">Request Withdrawal</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mb-3">
+        <!-- Total Earned. (I will decide omn what to do on it later)
+        <div class="col-md-4 mb-3">
             <div class="card bg-primary text-white shadow h-100">
                 <div class="card-body">
                     <h5>Total Earned</h5>
                     <p class="display-6">₦<?= number_format($total_earned, 2) ?></p>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="col-md-6 mb-3">
+            <div class="card bg-primary text-white shadow h-100">
+                <div class="card-body">
+                    <h5>Withdrawable Balance</h5>
+                    <p class="display-6">₦<?= number_format($withdrawable_balance, 2) ?></p>
+                    <a href="withdraw_request.php" class="btn btn-light btn-sm">Request Withdrawal</a>
                 </div>
             </div>
         </div>
@@ -85,7 +98,7 @@ $transactions_result = $transactions_stmt->get_result();
                                         </span>
                                     </td>
                                     <td><?= htmlspecialchars($tx['description']) ?></td>
-                                    <td class="text-end"><?= number_format($tx['amount'], 2) ?></td>
+                                    <td class="text-end">₦<?= number_format($tx['amount'], 2) ?></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>

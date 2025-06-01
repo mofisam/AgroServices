@@ -1,5 +1,5 @@
 <?php
-include '../config/db.php';
+include '../../config/db.php';
 
 $user_id = $_GET["id"];
 $stmt = $conn->prepare("UPDATE users SET status = 'suspended' WHERE id = ?");
@@ -7,11 +7,11 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $stmt->close();
 
-header("Location: admin_users.php?message=User+Suspended");
+header("Location: manage_users.php?message=User+Suspended");
 exit();
 ?>
 <?php
-include 'config/db.php';
+
 session_start();
 
 if (!isset($_SESSION["admin_id"])) {
@@ -43,6 +43,6 @@ $stmt->bind_param("isi", $admin_id, $action, $user_id);
 $stmt->execute();
 $stmt->close();
 
-header("Location: admin_users.php?message=User+Updated");
+header("Location: manage_users.php?message=User+Updated");
 exit();
 ?>

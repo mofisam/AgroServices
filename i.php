@@ -1,125 +1,118 @@
-<?php 
-include 'includes/header.php'; 
-?>
+<?php
+session_start();
+include 'config/db.php';
 
-<!-- ✅ Hero Section -->
-<section class="bg-success text-white text-center py-5" style="background: url('assets/images/contact_us.jpg') center/cover no-repeat;">
-  <div class="container">
-    <h1 class="display-4 fw-bold">Empowering Agriculture. Feeding the Future.</h1>
-    <p class="lead mt-3">Integrated Agribusiness & E-commerce platform for farmers, buyers, and innovators.</p>
-    <a href="/products/index.php" class="btn btn-light btn-lg mt-4">🌱 Explore Marketplace</a>
-  </div>
-</section>
+// 🔐 **Authorization Check**
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
+    http_response_code(403);
+    echo "Unauthorized access.";
+    exit;
+}
 
-<!-- ✅ About Section -->
-<section class="py-5 bg-white">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <img src="assets/images/product.jpg" class="img-fluid rounded shadow" alt="Agribusiness">
-      </div>
-      <div class="col-md-6">
-        <h2 class="mb-3">About AgriLink Hub</h2>
-        <p>AgriLink Hub is a next-generation agribusiness platform focused on solving food security challenges. 
-           We support farm setup, offer advisory services, manage farms with data-driven solutions, and enable 
-           seamless buying and selling of agricultural products and equipment.</p>
-        <p>We serve farmers, buyers, food processors, and agricultural entrepreneurs across Nigeria and Africa, making agriculture accessible and profitable for everyone.</p>
-        <a href="/about.php" class="btn btn-success mt-3">Learn More</a>
-      </div>
-    </div>
-  </div>
-</section>
+$seller_id = $_SESSION['user_id'];
 
-<!-- ✅ Services Section -->
-<section class="py-5 bg-light text-center">
-  <div class="container">
-    <h2 class="mb-5">Our Core Services</h2>
-    <div class="row g-4">
-      
-      <div class="col-md-3">
-        <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/Farm Setup.png" class="card-img-top rounded" alt="Farm Setup">
-          <div class="card-body">
-            <h5 class="card-title mt-3">Farm Setup</h5>
-            <p class="card-text">Comprehensive farm establishment services for sustainable agriculture.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-3">
-        <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/Advisory Services.png" class="card-img-top rounded" alt="Advisory Services">
-          <div class="card-body">
-            <h5 class="card-title mt-3">Advisory Services</h5>
-            <p class="card-text">Professional consulting for farmers, agro-dealers, and agri-entrepreneurs.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-3">
-        <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/Farm Management.png" class="card-img-top rounded" alt="Farm Management">
-          <div class="card-body">
-            <h5 class="card-title mt-3">Farm Management</h5>
-            <p class="card-text">Smart monitoring, reporting, and data-driven farm management solutions.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-3">
-        <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/Marketplace.png" class="card-img-top rounded" alt="Marketplace">
-          <div class="card-body">
-            <h5 class="card-title mt-3">Marketplace</h5>
-            <p class="card-text">Sell and buy agricultural goods, equipment, and produce easily and securely.</p>
-          </div>
-        </div>
-      </div>
+// 📦 **Get Order Item ID**
+$order_item_id = (int) ($_POST['order_item_id'] ?? 0);
+if ($order_item_id <= 0) {
+    http_response_code(400);
+    echo "Invalid Order Item ID.";
+    exit;
+}
 
-    </div>
-  </div>
-</section>
+// 🔎 **Verify this item belongs to the seller**
+$check = $conn->prepare("
+    SELECT oi.id, oi.subtotal, oi.delivery_status, p.seller_id 
+    FROM order_items oi
+    JOIN products p ON p.id = oi.product_id
+    WHERE oi.id = ? AND p.seller_id = ?
+    LIMIT 1
+");
+$check->bind_param("ii", $order_item_id, $seller_id);
+$check->execute();
+$result = $check->get_result();
+$order_item = $result->fetch_assoc();
+$check->close();
 
+if (!$order_item) {
+    http_response_code(404);
+    echo "Order item not found or you do not have permission to update.";
+    exit;
+}
 
-<!-- ✅ Categories Section -->
-<section class="py-5 bg-white">
-  <div class="container">
-    <h2 class="text-center mb-5">Explore Categories</h2>
-    <div class="row g-4">
-      <?php
-      $categories = [
-        'Cash Crops' => 'Cashew, Cocoa, Bitter Kola',
-        'Vegetables & Fruits' => 'Tomatoes, Leafy Greens, Citrus',
-        'Grains & Tubers' => 'Rice, Maize, Cassava, Yam',
-        'Animal Produce' => 'Catfish, Poultry, Cattle, Pigs',
-        'Farm Equipment' => 'Tractors, Planters, Irrigation Kits',
-        'Processing Tools' => 'Grinders, Threshers, Oil Extractors',
-        'Kitchenware' => 'Knives, Cooking Pots, Storage',
-        'Farm Wear' => 'Boots, Gloves, Overalls'
-      ];
-      foreach ($categories as $title => $desc): ?>
-        <div class="col-md-3">
-          <div class="card h-100 text-center border-0">
-            <div class="card-body">
-              <h5 class="card-title"><?= $title ?></h5>
-              <p class="text-muted small"><?= $desc ?></p>
-              <a href="/products/index.php" class="btn btn-sm btn-outline-success">Browse</a>
-            </div>
-          </div>
-        </div>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</section>
+// ✅ **Handle Status Update**
+if (isset($_POST['status'])) {
+    $valid_statuses = ['pending', 'in-transit', 'delivered'];
+    $new_status = $_POST['status'];
+    
+    if (!in_array($new_status, $valid_statuses)) {
+        http_response_code(400);
+        echo "Invalid status value.";
+        exit;
+    }
 
-<!-- ✅ Call to Action -->
-<section class="py-5 bg-success text-white text-center">
-  <div class="container">
-    <h3 class="mb-3">Join us in revolutionizing African agriculture 🌍</h3>
-    <a href="/register.php" class="btn btn-outline-light btn-lg">Get Started</a>
-  </div>
-</section>
+    // 🚀 **Begin Transaction**
+    $conn->begin_transaction();
+    try {
+        // 🔄 **Update delivery status and timestamp**
+        $update = $conn->prepare("UPDATE order_items SET delivery_status = ?, updated_at = NOW() WHERE id = ?");
+        $update->bind_param("si", $new_status, $order_item_id);
+        $update->execute();
+        $update->close();
 
-<?php 
-include 'includes/footer.php'; 
+        // ✅ **If status is delivered, set a timer for 3 days for auto-confirmation**
+        if ($new_status === 'delivered' && $order_item['delivery_status'] !== 'delivered') {
+            // ➡️ **Schedule Auto-Confirmation in 3 Days**
+            $timer_date = date('Y-m-d H:i:s', strtotime('+3 days'));
+            $set_timer = $conn->prepare("
+                INSERT INTO auto_confirmations (order_item_id, confirm_date) 
+                VALUES (?, ?) 
+                ON DUPLICATE KEY UPDATE confirm_date = VALUES(confirm_date)
+            ");
+            $set_timer->bind_param("is", $order_item_id, $timer_date);
+            $set_timer->execute();
+            $set_timer->close();
+        }
+
+        $conn->commit();
+        echo "✅ Delivery status updated successfully.";
+    } catch (Exception $e) {
+        $conn->rollback();
+        http_response_code(500);
+        echo "❌ Failed to update delivery status.";
+    }
+    exit;
+}
+
+// ✅ **Handle Delivery Date Update**
+if (isset($_POST['delivery_date'])) {
+    $delivery_date = $_POST['delivery_date'];
+
+    // ✅ **Validate date format (YYYY-MM-DD)**
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $delivery_date)) {
+        http_response_code(400);
+        echo "❌ Invalid date format. Use YYYY-MM-DD.";
+        exit;
+    }
+
+    // 🚀 **Begin Transaction**
+    $conn->begin_transaction();
+    try {
+        $update = $conn->prepare("UPDATE order_items SET estimated_delivery_date = ?, updated_at = NOW() WHERE id = ?");
+        $update->bind_param("si", $delivery_date, $order_item_id);
+        $update->execute();
+        $update->close();
+        
+        $conn->commit();
+        echo "✅ Delivery date updated successfully.";
+    } catch (Exception $e) {
+        $conn->rollback();
+        http_response_code(500);
+        echo "❌ Failed to update delivery date.";
+    }
+    exit;
+}
+
+// ❗ If we get here, no valid update type was specified
+http_response_code(400);
+echo "Invalid request. Must specify either status or delivery_date.";
 ?>

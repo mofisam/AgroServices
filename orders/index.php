@@ -1,16 +1,13 @@
 <?php
-ob_start(); // Start output buffering
-// 🔒 Secure the page
 session_start();
 include '../config/db.php';
-include '../includes/header.php';
 
 // 🔒 Ensure buyer is logged in
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'buyer') {
     header("Location: ../login.php");
     exit();
 }
-
+include '../includes/header.php';
 $buyer_id = $_SESSION['user_id'];
 
 // ✅ Fetch buyer's orders
@@ -41,7 +38,7 @@ $result = $stmt->get_result();
             <tr>
               <td><?= $i++ ?></td>
               <td><?= htmlspecialchars($order['payment_reference']) ?></td>
-              <td><?= number_format($order['total_amount']) ?></td>
+              <td><?= number_format($order['total_amount']/100) ?></td>
               <td>
                 <?php if ($order['payment_status'] === 'paid'): ?>
                   <span class="badge bg-success">Paid</span>
@@ -64,4 +61,3 @@ $result = $stmt->get_result();
 </div>
 
 <?php include '../includes/footer.php'; ?>
-<? ob_flush(); // Flush the output buffer ?>

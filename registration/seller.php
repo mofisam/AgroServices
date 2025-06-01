@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../config/db.php';
+include '../../config/db.php';
 
 // Fetch registration fee
 $fee_stmt = $conn->prepare("SELECT registration_fee FROM settings LIMIT 1");

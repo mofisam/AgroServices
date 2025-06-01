@@ -1,13 +1,13 @@
 <?php
 session_start();
 include '../config/db.php';
-include '../includes/header.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
     header("Location: ../login.php");
     exit();
 }
 
+include '../includes/header.php';
 $seller_id = $_SESSION['user_id'];
 
 // 🔍 Filter Inputs
@@ -29,7 +29,7 @@ if ($keyword) {
 }
 
 if ($status_filter) {
-    $conditions[] = "o.delivery_status = ?";
+    $conditions[] = "oi.delivery_status = ?";
     $params[] = $status_filter;
     $types .= "s";
 }
@@ -42,9 +42,9 @@ if ($date_from && $date_to) {
 
 $sql = "
 SELECT 
-    oi.*, o.payment_reference, o.created_at AS order_date, o.delivery_status,
+    oi.*, o.payment_reference, o.created_at AS order_date,
     o.first_name, o.last_name, o.email, o.phone, o.shipping_address, o.state,
-    p.name AS product_name, o.estimated_delivery_date
+    p.name AS product_name
 FROM order_items oi
 JOIN orders o ON oi.order_id = o.id
 JOIN products p ON oi.product_id = p.id
@@ -120,18 +120,18 @@ $orders = $stmt->get_result();
               </td>
               <td><?= date('M d, Y h:i A', strtotime($row['order_date'])) ?></td>
               <td>
-                <input type="date" class="form-control form-control-sm" id="delivery-date-<?= $row['order_id'] ?>" 
+                <input type="date" class="form-control form-control-sm" id="delivery-date-<?= $row['id'] ?>" 
                        value="<?= $row['estimated_delivery_date'] ?>">
               </td>
               <td><span id="status-<?= $row['id'] ?>" class="badge bg-secondary"><?= ucfirst($row['delivery_status']) ?></span></td>
               <td>
-                <select class="form-select form-select-sm mb-2" onchange="updateStatus(<?= $row['order_id'] ?>, this.value)">
+                <select class="form-select form-select-sm mb-2" onchange="updateStatus(<?= $row['id'] ?>, this.value)">
                   <option value="">Change</option>
                   <option value="pending">Pending</option>
                   <option value="in-transit">In Transit</option>
                   <option value="delivered">Delivered</option>
                 </select>
-                <button class="btn btn-primary btn-sm" onclick="setDeliveryDate(<?= $row['order_id'] ?>)">Set Date</button>
+                <button class="btn btn-primary btn-sm" onclick="setDeliveryDate(<?= $row['id'] ?>)">Set Date</button>
               </td>
             </tr>
           <?php endwhile; ?>
@@ -144,21 +144,21 @@ $orders = $stmt->get_result();
 </div>
 
 <script>
-function updateStatus(order_id, new_status) {
+function updateStatus(order_item_id, new_status) {
   if (!new_status) return;
   fetch('update_delivery_status.php', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: 'order_id=' + order_id + '&status=' + new_status
+    body: 'order_item_id=' + order_item_id + '&status=' + new_status
   }).then(res => res.text()).then(alert);
 }
 
-function setDeliveryDate(order_id) {
-  const date = document.getElementById('delivery-date-' + order_id).value;
+function setDeliveryDate(order_item_id) {
+  const date = document.getElementById('delivery-date-' + order_item_id).value;
   fetch('update_delivery_status.php', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: 'order_id=' + order_id + '&delivery_date=' + date
+    body: 'order_item_id=' + order_item_id + '&delivery_date=' + date
   }).then(res => res.text()).then(alert);
 }
 </script>

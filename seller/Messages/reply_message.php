@@ -35,5 +35,5 @@ if ($message && $to_user) {
     }
 }
 
-header("Location: seller_messages.php?user=$to_user");
+header("Location: http://localhost/web/agroservices/seller/messages/index.php?user=$to_user");
 exit();

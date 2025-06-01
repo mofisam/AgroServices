@@ -7,7 +7,7 @@ if (isset($_SESSION["user_id"])) {
     if ($_SESSION["role"] === "buyer") {
         header("Location: dashboard.php");
     } elseif ($_SESSION["role"] === "seller") {
-        header("Location: seller_dashboard.php");
+        header("Location: seller/index.php");
     } else {
         header("Location: admin/admin_dashboard.php");
     }
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($role === "buyer") {
                 header("Location: buyer_dashboard.php");
             } elseif ($role === "seller") {
-                header("Location: seller_dashboard.php");
+                header("Location: seller/index.php");
             } else {
                 header("Location: admin/admin_dashboard.php");
             }

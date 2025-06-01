@@ -1,5 +1,5 @@
 <?php
-include '../config/db.php';
+include '../../config/db.php';
 
 $id = $_GET['id'];
 $stmt = $conn->prepare("SELECT * FROM product_categories WHERE id = ?");

@@ -71,6 +71,6 @@ $stmt->bind_param("sdidssiii", $name, $price, $stock, $discount, $desc, $newImag
 $stmt->execute();
 
 // Redirect to manage products page
-header("Location: manage_products.php");
+header("Location: index.php");
 exit();
 ?>

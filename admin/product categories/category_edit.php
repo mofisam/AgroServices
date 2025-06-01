@@ -1,5 +1,5 @@
 <?php
-include '../config/db.php';
+include '../../config/db.php';
 
 $id = $_POST['id'];
 $name = trim($_POST['name']);
@@ -28,7 +28,7 @@ $existingImage = $existing['image'];
 // Handle new image upload
 if (!empty($_FILES['image']['name'])) {
     // Validate image file
-    $targetDir = "../uploads/category_images/";
+    $targetDir = "../../uploads/category_images/";
     $newImageName = time() . "_" . basename($_FILES["image"]["name"]);
     $imagePath = $targetDir . $newImageName;
     $imageType = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION));

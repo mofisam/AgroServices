@@ -1,16 +1,17 @@
 <?php
 session_start();
 include '../config/db.php';
-include '../includes/header.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'buyer') {
     header("Location: ../login.php");
     exit();
 }
+include '../includes/header.php';
 
 $ref = $_GET['ref'] ?? '';
 $buyer_id = $_SESSION['user_id'];
 
+// 🔎 **Fetch Order Information**
 $stmt = $conn->prepare("SELECT * FROM orders WHERE payment_reference = ? AND buyer_id = ?");
 $stmt->bind_param("si", $ref, $buyer_id);
 $stmt->execute();
@@ -23,7 +24,14 @@ if (!$order) {
     exit();
 }
 
-$stmt = $conn->prepare("SELECT * FROM order_items WHERE order_id = ?");
+// 🔎 **Fetch Order Items**
+$stmt = $conn->prepare("
+    SELECT oi.*, p.name AS product_name, p.price AS product_price, p.discount_percent, ba.business_name 
+    FROM order_items oi
+    JOIN products p ON oi.product_id = p.id
+    JOIN business_accounts ba ON ba.user_id = p.seller_id
+    WHERE oi.order_id = ?
+");
 $stmt->bind_param("i", $order['id']);
 $stmt->execute();
 $items = $stmt->get_result();
@@ -46,17 +54,8 @@ $items = $stmt->get_result();
           <span class="badge bg-warning text-dark"><?= ucfirst($order['payment_status']) ?></span>
         <?php endif; ?>
       </p>
-      <p><strong>Total:</strong> ₦<?= number_format($order['total_amount']) ?></p>
+      <p><strong>Total:</strong> ₦<?= number_format($order['total_amount']/100) ?></p>
       <p><strong>Date:</strong> <?= date('M d, Y h:i A', strtotime($order['created_at'])) ?></p>
-      <p><strong>Delivery:</strong>
-        <?php if ($order['delivery_status'] === 'delivered'): ?>
-          <span class="badge bg-primary">Delivered</span>
-        <?php elseif ($order['delivery_status'] === 'in-transit'): ?>
-          <span class="badge bg-info text-dark">In Transit</span>
-        <?php else: ?>
-          <span class="badge bg-secondary">Pending</span>
-        <?php endif; ?>
-      </p>
     </div>
   </div>
 
@@ -84,43 +83,39 @@ $items = $stmt->get_result();
               <th>Business</th>
               <th>Price (₦)</th>
               <th>Qty</th>
+              <th>Discount (%)</th>
               <th>Subtotal (₦)</th>
+              <th>Delivery Status</th>
             </tr>
           </thead>
           <tbody>
             <?php 
               $total = 0;
               while ($item = $items->fetch_assoc()):
-                $product_info = getProductMeta($conn, $item['product_id']);
-                $discount_percent = (int)($product_info['discount_percent'] ?? 0);
-                $original_price = (float)($product_info['price'] ?? $item['price']);
+                $price = $item['product_price'];
+                $discount = $item['discount_percent'];
                 
-                // Calculate the discounted price
-                if ($discount_percent > 0) {
-                    $price = round($original_price * (1 - $discount_percent / 100), 2);
-                } else {
-                    $price = $original_price;
-                }
-
-                $savings = $discount_percent > 0 ? $original_price - $price : 0;
-                $subtotal = $price * $item['quantity']; // Corrected subtotal calculation
+                // Calculate final price and subtotal
+                $final_price = $discount > 0 ? round($price * (1 - $discount / 100), 2) : $price;
+                $subtotal = $final_price * $item['quantity'];
                 $total += $subtotal;
             ?>
               <tr>
+                <td><?= htmlspecialchars($item['product_name']) ?></td>
+                <td><?= htmlspecialchars($item['business_name']) ?></td>
+                <td>₦<?= number_format($final_price) ?></td>
+                <td><?= $item['quantity'] ?></td>
+                <td><?= $discount ?>%</td>
+                <td>₦<?= number_format($subtotal) ?></td>
                 <td>
-                  <?= htmlspecialchars($product_info['name'] ?? 'Unknown') ?><br>
-                  <?php if ($discount_percent > 0): ?>
-                    <small><del>₦<?= number_format($original_price) ?></del> → ₦<?= number_format($price) ?> 
-                      <span class="badge bg-danger ms-1">-<?= $discount_percent ?>%</span>
-                    </small>
+                  <?php if ($item['delivery_status'] === 'delivered'): ?>
+                    <span class="badge bg-primary">Delivered</span>
+                  <?php elseif ($item['delivery_status'] === 'in-transit'): ?>
+                    <span class="badge bg-info text-dark">In Transit</span>
                   <?php else: ?>
-                    <small>₦<?= number_format($price) ?></small>
+                    <span class="badge bg-secondary">Pending</span>
                   <?php endif; ?>
                 </td>
-                <td><?= htmlspecialchars($item['business_name']) ?></td>
-                <td>₦<?= number_format($price) ?></td>
-                <td><?= $item['quantity'] ?></td>
-                <td>₦<?= number_format($subtotal) ?></td>
               </tr>
             <?php endwhile; ?>
           </tbody>
@@ -148,17 +143,4 @@ function printInvoice() {
 }
 </script>
 
-<?php
-// Enhanced product meta fetch
-function getProductMeta($conn, $product_id) {
-    $stmt = $conn->prepare("SELECT name, price, discount_percent FROM products WHERE id = ?");
-    $stmt->bind_param("i", $product_id);
-    $stmt->execute();
-    $res = $stmt->get_result();
-    $product = $res->fetch_assoc();
-    $stmt->close();
-    return $product ?? [];
-}
-
-include '../includes/footer.php';
-?>
+<?php include '../includes/footer.php'; ?>

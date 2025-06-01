@@ -1,19 +1,19 @@
 <?php
 session_start();
 include '../../config/db.php';
-include '../../includes/header.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
     header("Location: ../../login.php");
     exit();
 }
 
+include '../../includes/header.php';
 $user_id = $_SESSION['user_id'];
 $success = $error = "";
 
 // 🔄 Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $bank_code = trim($_POST['bank_name']); // actually the code now
+    $bank_code = trim($_POST['bank_name']); // actual bank code
     $bank_display_name = trim($_POST['bank_display_name']);
     $account_number = trim($_POST['account_number']);
     $account_name = trim($_POST['account_name']);
@@ -21,30 +21,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($bank_code) || empty($bank_display_name) || empty($account_number) || empty($account_name)) {
         $error = "All fields are required.";
     } else {
-        // 🔍 Check if user already has bank account
-        $check_stmt = $conn->prepare("SELECT id FROM bank_accounts WHERE user_id = ?");
-        $check_stmt->bind_param("i", $user_id);
-        $check_stmt->execute();
-        $check_stmt->store_result();
+        // 🔄 Create recipient on Paystack
+        $paystack_key = 'sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae'; // Replace with live key
+        $payload = [
+            'type' => 'nuban',
+            'name' => $account_name,
+            'account_number' => $account_number,
+            'bank_code' => $bank_code,
+            'currency' => 'NGN'
+        ];
 
-        if ($check_stmt->num_rows > 0) {
-            // 🔁 Update
-            $stmt = $conn->prepare("UPDATE bank_accounts SET bank_name=?, account_number=?, account_name=?, bank_code=? WHERE user_id=?");
-            $stmt->bind_param("ssssi", $bank_display_name, $account_number, $account_name, $bank_code, $user_id);
+        $ch = curl_init("https://api.paystack.co/transferrecipient");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Authorization: Bearer $paystack_key",
+            "Cache-Control: no-cache"
+        ]);
+
+        $response = curl_exec($ch);
+        $err = curl_error($ch);
+        curl_close($ch);
+
+        if ($err) {
+            $error = "Curl error: $err";
         } else {
-            // ➕ Insert
-            $stmt = $conn->prepare("INSERT INTO bank_accounts (user_id, bank_name, account_number, account_name, bank_code) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("issss", $user_id, $bank_display_name, $account_number, $account_name, $bank_code);
-        }
+            $result = json_decode($response, true);
 
-        if ($stmt->execute()) {
-            $success = "Bank account information saved successfully.";
-        } else {
-            $error = "Failed to save bank account information.";
-        }
+            if (!$result['status']) {
+                $error = "Paystack error: " . $result['message'];
+            } else {
+                $recipient_code = $result['data']['recipient_code'];
 
-        $stmt->close();
-        $check_stmt->close();
+                // 🔍 Check if user already has bank account
+                $check_stmt = $conn->prepare("SELECT id FROM bank_accounts WHERE user_id = ?");
+                $check_stmt->bind_param("i", $user_id);
+                $check_stmt->execute();
+                $check_stmt->store_result();
+
+                if ($check_stmt->num_rows > 0) {
+                    // 🔁 Update
+                    $stmt = $conn->prepare("UPDATE bank_accounts SET bank_name=?, account_number=?, account_name=?, bank_code=?, recipient_code=? WHERE user_id=?");
+                    $stmt->bind_param("sssssi", $bank_display_name, $account_number, $account_name, $bank_code, $recipient_code, $user_id);
+                } else {
+                    // ➕ Insert
+                    $stmt = $conn->prepare("INSERT INTO bank_accounts (user_id, bank_name, account_number, account_name, bank_code, recipient_code) VALUES (?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param("isssss", $user_id, $bank_display_name, $account_number, $account_name, $bank_code, $recipient_code);
+                }
+
+                if ($stmt->execute()) {
+                    $success = "✅ Bank account saved & Paystack recipient created.";
+                } else {
+                    $error = "❌ Failed to save bank account.";
+                }
+
+                $stmt->close();
+                $check_stmt->close();
+            }
+        }
     }
 }
 
@@ -103,9 +138,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const accountNumberInput = document.querySelector('input[name="account_number"]');
     const accountNameInput = document.querySelector('input[name="account_name"]');
 
-    const paystackKey = "sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae"; // 🛑 Replace with LIVE key in production
+    const paystackKey = "sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae";
 
-    // 🚀 Fetch all Nigerian banks
     fetch("https://api.paystack.co/bank?country=nigeria&type=nuban", {
         headers: { Authorization: `Bearer ${paystackKey}` }
     })
@@ -125,13 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Sync display name
     selectBank.addEventListener('change', function () {
         const selectedOption = this.options[this.selectedIndex];
         bankDisplayInput.value = selectedOption.getAttribute("data-name");
     });
 
-    // ⚙️ Resolve account name
     accountNumberInput.addEventListener('input', function () {
         const accountNumber = this.value.trim();
         const bankCode = selectBank.value;

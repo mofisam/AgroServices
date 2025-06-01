@@ -11,5 +11,5 @@ $stmt = $conn->prepare("DELETE FROM products WHERE id = ? AND seller_id = ?");
 $stmt->bind_param("ii", $id, $seller_id);
 $stmt->execute();
 
-header("Location: manage_products.php");
+header("Location: index.php");
 exit();
