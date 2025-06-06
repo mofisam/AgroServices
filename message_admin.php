@@ -12,25 +12,11 @@ $user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['username'] ?? 'User';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Support Chat</title>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
     <style>
         :root {
-            --primary-color: #4361ee;
+            --primary-color: #14532d;
             --secondary-color: #3f37c9;
-            --user-message-bg: #4361ee;
+            --user-message-bg:rgb(141, 181, 155);
             --admin-message-bg: #f0f2f5;
             --text-dark: #212529;
             --text-light: #f8f9fa;
