@@ -3,7 +3,7 @@ session_start();
 include '../../config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: ../../login.php");
+    header("Location: ../../login");
     exit();
 }
 include '../../includes/header.php';
@@ -67,7 +67,7 @@ $transactions_result = $transactions_stmt->get_result();
                 <div class="card-body">
                     <h5>Withdrawable Balance</h5>
                     <p class="display-6">₦<?= number_format($withdrawable_balance, 2) ?></p>
-                    <a href="withdraw_request.php" class="btn btn-light btn-sm">Request Withdrawal</a>
+                    <a href="withdraw_request" class="btn btn-light btn-sm">Request Withdrawal</a>
                 </div>
             </div>
         </div>

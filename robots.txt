@@ -1,0 +1,35 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /login.php
+Disallow: /verify.php
+Disallow: /reset_password.php
+Disallow: /edit_profile.php
+Disallow: /seller/
+Disallow: /buyer/
+Disallow: /wallet/
+Disallow: /withdrawal_request.php
+Disallow: /bank_account.php
+Disallow: /messages/
+Disallow: /order_invoice.php
+Disallow: /confirm_delivery.php
+Disallow: /edit_profile.php
+Disallow: /fetch_messages.php
+Disallow: /fetch_new_messages.php
+Disallow: /forgot_password.php
+Disallow: /messages_admin.php
+Disallow: /resend_otp.php
+Disallow: /resend_password.php
+
+# Allow product and policy pages
+Allow: /contact.php
+Allow: /products/
+Allow: /products/
+Allow: /policy.php
+Allow: /terms.php
+
+# Sitemap
+Sitemap: https://yourdomain.com/sitemap.xml

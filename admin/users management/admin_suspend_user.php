@@ -43,6 +43,6 @@ $stmt->bind_param("isi", $admin_id, $action, $user_id);
 $stmt->execute();
 $stmt->close();
 
-header("Location: manage_users.php?message=User+Updated");
+header("Location: manage_users?message=User+Updated");
 exit();
 ?>

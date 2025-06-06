@@ -3,7 +3,7 @@ session_start();
 include '../config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 include '../includes/header.php';
@@ -17,7 +17,7 @@ $stmt->fetch();
 $stmt->close();
 
 $reference = 'RNW' . time() . rand(1000, 9999);
-$paystack_public_key = 'pk_test_3d8772ab51c1407f1302d2fffc114220b0b1d9ee';
+$paystack_public_key = PAYSTACK_PUBLIC;
 
 $_SESSION['renewal'] = [
     'user_id' => $user_id,
@@ -46,7 +46,7 @@ $_SESSION['renewal'] = [
             amount: <?= $_SESSION['renewal']['amount'] ?>,
             ref: '<?= $reference ?>',
             callback: function(response) {
-                window.location.href = "verify_renewal.php?reference=" + response.reference;
+                window.location.href = "verify_renewal?reference=" + response.reference;
             },
             onClose: function() {
                 alert('Payment was not completed.');

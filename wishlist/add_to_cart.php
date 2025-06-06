@@ -8,5 +8,5 @@ if ($product_id > 0) {
     $_SESSION['cart'][$product_id] = ['quantity' => $qty];
 }
 
-header("Location: ../cart/index.php");
+header("Location: ../cart/index");
 exit;

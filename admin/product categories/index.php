@@ -4,7 +4,7 @@ session_start();
 
 // Ensure only admin users can access this page
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../../login.php");
+    header("Location: ../../login");
     exit();
 }
 
@@ -90,7 +90,7 @@ include '../../includes/header.php';
                                                             data-bs-target="#editModal">
                                                         <i class="bi bi-pencil"></i> Edit
                                                     </button>
-                                                    <a href="category_delete.php?id=<?= $row['id'] ?>" 
+                                                    <a href="category_delete?id=<?= $row['id'] ?>" 
                                                        class="btn btn-sm btn-outline-danger" 
                                                        onclick="return confirm('Are you sure you want to delete this category? All products in this category will become uncategorized.')">
                                                         <i class="bi bi-trash"></i> Delete

@@ -182,7 +182,7 @@
         <p class="mb-lg-0">Our team of experts is ready to help you achieve exceptional results.</p>
       </div>
       <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
-        <a href="contact.php" class="btn btn-light btn-lg px-4 py-2 rounded-pill fw-bold">Get Started Today</a>
+        <a href="contact" class="btn btn-light btn-lg px-4 py-2 rounded-pill fw-bold">Get Started Today</a>
       </div>
     </div>
   </div>

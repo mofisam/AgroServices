@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php'; 
+require_once 'config/.env.php'; // Load environment variables
 
 /**
  * Generates a styled HTML email template.
@@ -80,12 +81,12 @@ function sendEmail($recipientEmail, $subject, $messageBody, $isHTML = true) {
     try {
         // 📡 **SMTP Server Settings**
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io'; // Replace with your SMTP server
+        $mail->Host = SMTP_HOST; // Replace with your SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = '61afe5fbfca488';  // Replace with your email
-        $mail->Password = '98b8d56957eaa6';   // Replace with your password
+        $mail->Username = SMTP_USERNAME;  // Replace with your email
+        $mail->Password = SMTP_PASSWORD;   // Replace with your password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 2525;
+        $mail->Port = SMTP_PORT;
 
         // 🏷️ **Sender & Recipient Info**
         $mail->setFrom('your-email@gmail.com', 'F and V Agro Services');

@@ -30,8 +30,8 @@ $ref = $_GET['ref'] ?? '';
       You'll get an email update soon.
     </p>
 
-    <a href="/dashboard.php" class="btn btn-success btn-lg me-2">Go to Dashboard</a>
-    <a href="/products/index.php" class="btn btn-outline-secondary btn-lg">Continue Shopping</a>
+    <a href="../dashboard" class="btn btn-success btn-lg me-2">Go to Dashboard</a>
+    <a href="../products/" class="btn btn-outline-secondary btn-lg">Continue Shopping</a>
   </div>
 </div>
 

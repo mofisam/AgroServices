@@ -3,7 +3,7 @@ session_start();
 include '../config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'buyer') {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 include '../includes/header.php';
@@ -40,7 +40,7 @@ $items = $stmt->get_result();
 <div class="container py-5" id="invoiceArea">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>🧾 Order Details</h2>
-    <a href="invoice_download.php?ref=<?= $order['payment_reference'] ?>" class="btn btn-success">📥 Download PDF Invoice</a>
+    <a href="invoice_download?ref=<?= $order['payment_reference'] ?>" class="btn btn-success">📥 Download PDF Invoice</a>
   </div>
 
   <!-- Order Info -->

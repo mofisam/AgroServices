@@ -153,7 +153,7 @@ $products = $stmt->get_result();
                         <span class="fs-5 fw-bold">₦<?= number_format($p['price'], 2) ?></span>
                       <?php endif; ?>
                     </div>
-                    <a href="view_product.php?id=<?= $p['id'] ?>" class="btn btn-sm btn-primary">
+                    <a href="view_product?id=<?= $p['id'] ?>" class="btn btn-sm btn-primary">
                       <i class="bi bi-eye me-1"></i> View
                     </a>
                   </div>
@@ -172,7 +172,7 @@ $products = $stmt->get_result();
     </div>
   </div>
 
-  <a href="../index.php" class="btn btn-outline-secondary">
+  <a href="../index" class="btn btn-outline-secondary">
     <i class="bi bi-arrow-left me-1"></i> Back to Marketplace
   </a>
 </div>

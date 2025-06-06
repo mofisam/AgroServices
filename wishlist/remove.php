@@ -13,5 +13,5 @@ $stmt = $conn->prepare("DELETE FROM wishlists WHERE user_id = ? AND product_id =
 $stmt->bind_param("ii", $user_id, $product_id);
 $stmt->execute();
 
-header("Location: index.php");
+header("Location: index");
 exit;

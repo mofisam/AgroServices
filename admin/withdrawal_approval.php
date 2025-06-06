@@ -3,9 +3,10 @@ session_start();
 include '../config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
+include '../config/.env.php';
 
 // Handle POST (Approval/Rejection)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['request_id'], $_POST['action'])) {
@@ -29,18 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['request_id'], $_POST[
 
     if (!$result) {
         $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Invalid request or already processed.'];
-        header("Location: withdrawal_approval.php");
+        header("Location: withdrawal_approval");
         exit();
     }
 
     if ($action === 'approve') {
         if (!$result['recipient_code']) {
             $_SESSION['alert'] = ['type' => 'danger', 'message' => 'No Paystack recipient code found for seller.'];
-            header("Location: withdrawal_approval.php");
+            header("Location: withdrawal_approval");
             exit();
         }
 
-        $paystack_secret_key = 'sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae'; // Replace with production key for live environment
+        $paystack_secret_key = PAYSTACK_SECRET; // Replace with production key for live environment
         $amount_kobo = (int)($result['amount'] * 100);
 
         $payload = [
@@ -67,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['request_id'], $_POST[
 
         if ($err) {
             $_SESSION['alert'] = ['type' => 'danger', 'message' => "Curl Error: $err"];
-            header("Location: withdrawal_approval.php");
+            header("Location: withdrawal_approval");
             exit();
         }
 
@@ -76,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['request_id'], $_POST[
         if (!$transfer_response['status']) {
             $error_msg = $transfer_response['message'] ?? 'Unknown Paystack error';
             $_SESSION['alert'] = ['type' => 'danger', 'message' => "Paystack Error: $error_msg"];
-            header("Location: withdrawal_approval.php");
+            header("Location: withdrawal_approval");
             exit();
         }
 
@@ -97,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['request_id'], $_POST[
             'type' => 'success', 
             'message' => "Withdrawal approved and money sent. Reference: $reference"
         ];
-        header("Location: withdrawal_approval.php");
+        header("Location: withdrawal_approval");
         exit();
 
     } elseif ($action === 'reject') {
@@ -112,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['request_id'], $_POST[
         $update->close();
 
         $_SESSION['alert'] = ['type' => 'warning', 'message' => 'Withdrawal request rejected.'];
-        header("Location: withdrawal_approval.php");
+        header("Location: withdrawal_approval");
         exit();
     }
 }

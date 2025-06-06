@@ -12,5 +12,5 @@ $stmt = $conn->prepare("UPDATE products SET status = ? WHERE id = ? AND seller_i
 $stmt->bind_param("sii", $status, $id, $seller_id);
 $stmt->execute();
 
-header("Location: index.php");
+header("Location: index");
 exit();

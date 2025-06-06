@@ -3,7 +3,7 @@ session_start();
 include '../config/db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 
@@ -11,7 +11,7 @@ $user_id = $_SESSION['user_id'];
 $product_id = $_GET['id'] ?? null;
 
 if (!$product_id) {
-    header("Location: ../products.php");
+    header("Location: ../products");
     exit();
 }
 
@@ -35,7 +35,7 @@ $stmt->execute();
 $product = $stmt->get_result()->fetch_assoc();
 
 if (!$product) {
-    header("Location: ../products.php");
+    header("Location: ../products");
     exit();
 }
 
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php include "../includes/header.php" ?>
+<?php include "../includes/header" ?>
 
 <body class="bg-gray-100">
 <div class="container py-5">
@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             
                             <div class="d-flex justify-content-between align-items-center mt-4 pt-2 border-top">
-                                <a href="view_product.php?id=<?= $product_id ?>" class="btn btn-outline-secondary rounded-pill px-4">
+                                <a href="view_product?id=<?= $product_id ?>" class="btn btn-outline-secondary rounded-pill px-4">
                                     <i class="bi bi-arrow-left me-1"></i> Back to Product
                                 </a>
                                 <button type="submit" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm">

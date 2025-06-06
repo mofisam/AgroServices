@@ -4,6 +4,7 @@ require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+require_once '../config/.env.php'; // Load environment variables
 
 include '../config/db.php';
 
@@ -45,20 +46,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($stmt->execute()) {
                 $mail = new PHPMailer();
                 $mail->isSMTP();
-                $mail->Host = 'sandbox.smtp.mailtrap.io';
                 $mail->SMTPAuth = true;
-                $mail->Username = '61afe5fbfca488';
-                $mail->Password = '98b8d56957eaa6';
+                $mail->Username = SMTP_USERNAME;
+                $mail->Password = SMTP_PASSWORD;
                 $mail->SMTPSecure = 'tls';
-                $mail->Port = 2525;
-                $mail->setFrom('your_email@example.com', 'Agro E-commerce');
+                $mail->Port = SMTP_PORT;
+                $mail->setFrom('malaosamuel2020@gmail.com', 'Agro E-commerce');
                 $mail->addAddress($email, "$first_name $last_name");
                 $mail->Subject = "Verify Your Account";
-                $mail->Body = "Your OTP is: $otp_code. Click here to verify: <a href='verify.php?email=$email'>Verify Now</a>";
+                $mail->Body = "Your OTP is: $otp_code. Click here to verify: <a href='verify?email=$email'>Verify Now</a>";
                 $mail->isHTML(true);
 
                 if ($mail->send()) {
-                    header("Location: verify.php?email=$email");
+                    header("Location: verify?email=$email");
                     exit();
                 } else {
                     $error = "❌ Email sending failed: " . $mail->ErrorInfo;
@@ -222,7 +222,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <div class="registration-footer">
-        Already have an account? <a href="login.php">Login here</a>
+        Already have an account? <a href="login">Login here</a>
     </div>
 </div>
 

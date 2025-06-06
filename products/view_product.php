@@ -268,7 +268,7 @@ for ($i = 1; $i <= 5; $i++) {
                     <div class="alert alert-success d-flex align-items-center">
                         <i class="bi bi-check-circle-fill me-2"></i>
                         Added to cart successfully!
-                        <a href="../cart/index.php" class="btn btn-sm btn-success ms-3">View Cart</a>
+                        <a href="../cart/index" class="btn btn-sm btn-success ms-3">View Cart</a>
                     </div>
                 <?php endif; ?>
                 
@@ -308,10 +308,10 @@ for ($i = 1; $i <= 5; $i++) {
                         </div>
                     </div>
                     <div class="mt-3 d-flex gap-2">
-                        <a href="ask_seller.php?id=<?= $product_id ?>" class="btn btn-outline-secondary btn-sm">
+                        <a href="ask_seller?id=<?= $product_id ?>" class="btn btn-outline-secondary btn-sm">
                             <i class="bi bi-chat-left-text me-1"></i> Message Seller
                         </a>
-                        <a href="storefront.php?business=<?= htmlspecialchars($product['business_name']) ?>" class="btn btn-outline-primary btn-sm">
+                        <a href="storefront?business=<?= htmlspecialchars($product['business_name']) ?>" class="btn btn-outline-primary btn-sm">
                             <i class="bi bi-shop me-1"></i> View Store
                         </a>
                     </div>
@@ -388,7 +388,7 @@ for ($i = 1; $i <= 5; $i++) {
                                         <?php endwhile; ?>
                                         
                                         <div class="text-center mt-4">
-                                            <a href="product_reviews.php?id=<?= $product_id ?>" class="btn btn-outline-primary">
+                                            <a href="product_reviews?id=<?= $product_id ?>" class="btn btn-outline-primary">
                                                 <i class="bi bi-chat-square-text me-1"></i> View All Reviews
                                             </a>
                                         </div>

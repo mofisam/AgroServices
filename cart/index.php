@@ -12,7 +12,7 @@ $total = 0;
   <h2 class="mb-4">🛒 Your Shopping Cart</h2>
 
   <?php if (empty($cart)): ?>
-    <div class="alert alert-info">Your cart is empty. <a href="../products/index.php">Start shopping</a>.</div>
+    <div class="alert alert-info">Your cart is empty. <a href="../products/index">Start shopping</a>.</div>
   <?php else: ?>
     <form method="post" action="update_cart.php">
       <div class="table-responsive">
@@ -73,7 +73,7 @@ $total = 0;
       <div class="text-end mb-4">
         <h4>Total: ₦<?= number_format($total) ?></h4>
         <button type="submit" class="btn btn-secondary">Update Cart</button>
-        <a href="../checkout/step1.php" class="btn btn-success">Proceed to Checkout</a>
+        <a href="../checkout/step1" class="btn btn-success">Proceed to Checkout</a>
       </div>
     </form>
   <?php endif; ?>

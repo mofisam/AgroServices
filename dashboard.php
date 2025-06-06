@@ -3,7 +3,7 @@ session_start();
 include 'config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'buyer') {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }
 
@@ -56,11 +56,11 @@ $monthly_spent = $monthly_spent ?? 0;
 
 // 🔗 Card Links
 $links = [
-    'total_orders' => 'orders/index.php',
-    'delivered_orders' => 'orders/index.php?status=delivered',
-    'pending_orders' => 'orders/index.php?status=pending',
-    'wishlist' => 'wishlist/index.php',
-    'messages' => 'messages/index.php',
+    'total_orders' => 'orders/index',
+    'delivered_orders' => 'orders/index?status=delivered',
+    'pending_orders' => 'orders/index?status=pending',
+    'wishlist' => 'wishlist/index',
+    'messages' => 'messages/index',
 ];
 
 // 📷 Profile Picture
@@ -68,9 +68,9 @@ $profile_img = $profile['profile_picture'] && file_exists("uploads/profile_pics/
     ? "uploads/profile_pics/" . $profile['profile_picture']
     : "assets/images/img1.jpg";
 
-include 'includes/header.php';
 ?>
 
+<?php include 'includes/header.php'; ?>
 <div class="container py-5">
     <!-- Page Header with Quick Actions -->
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -79,10 +79,10 @@ include 'includes/header.php';
             <p class="text-muted mb-0">Welcome back, <?= htmlspecialchars($profile['first_name']) ?>!</p>
         </div>
         <div class="d-flex gap-2">
-            <a href="edit_profile.php" class="btn btn-outline-primary">
+            <a href="edit_profile" class="btn btn-outline-primary">
                 <i class="bi bi-pencil-square"></i> Edit Profile
             </a>
-            <a href="message_admin.php" class="btn btn-outline-secondary">
+            <a href="message_admin" class="btn btn-outline-secondary">
                 <i class="bi bi-headset"></i> Contact Admin
             </a>
         </div>
@@ -102,13 +102,13 @@ include 'includes/header.php';
                 </div>
                 <div class="col-md-5">
                     <div class="d-flex flex-wrap gap-2 justify-content-md-end">
-                        <a href="profile.php" class="btn btn-primary">
+                        <a href="profile" class="btn btn-primary">
                             <i class="bi bi-person me-1"></i> View Profile
                         </a>
-                        <a href="cart/index.php" class="btn btn-success">
+                        <a href="cart/index" class="btn btn-success">
                             <i class="bi bi-cart me-1"></i> View Cart
                         </a>
-                        <a href="confirm_delivery.php" class="btn btn-warning">
+                        <a href="confirm_delivery" class="btn btn-warning">
                             <i class="bi bi-check-circle me-1"></i> Confirm Delivery
                         </a>
                     </div>
@@ -133,7 +133,7 @@ include 'includes/header.php';
                         </div>
                     </div>
                     <div class="mt-3">
-                        <a href="orders/index.php" class="text-decoration-none small">
+                        <a href="orders/index" class="text-decoration-none small">
                             View spending history <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -264,10 +264,10 @@ include 'includes/header.php';
                 <div class="card-body">
                     <h6 class="text-uppercase text-muted mb-3">Quick Actions</h6>
                     <div class="d-grid gap-2">
-                        <a href="products/index.php" class="btn btn-outline-primary text-start">
+                        <a href="products/index" class="btn btn-outline-primary text-start">
                             <i class="bi bi-search me-2"></i> Browse Products
                         </a>
-                        <a href="orders/index.php" class="btn btn-outline-success text-start">
+                        <a href="orders/index" class="btn btn-outline-success text-start">
                             <i class="bi bi-list-check me-2"></i> View Orders
                         </a>
                     </div>
@@ -281,10 +281,10 @@ include 'includes/header.php';
                 <div class="card-body">
                     <h6 class="text-uppercase text-muted mb-3">Need Help?</h6>
                     <div class="d-grid gap-2">
-                        <a href="message_admin.php" class="btn btn-outline-danger text-start">
+                        <a href="message_admin" class="btn btn-outline-danger text-start">
                             <i class="bi bi-headset me-2"></i> Contact Admin
                         </a>
-                        <a href="faq.php" class="btn btn-outline-secondary text-start">
+                        <a href="faq" class="btn btn-outline-secondary text-start">
                             <i class="bi bi-question-circle me-2"></i> FAQ
                         </a>
                     </div>
@@ -294,20 +294,20 @@ include 'includes/header.php';
     </div>
 
     <!-- Recent Activity Section -->
-    <div class="card border-0 shadow-sm mb-4">
+    <!--<div class="card border-0 shadow-sm mb-4">
         <div class="card-header bg-white border-0">
             <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i> Recent Activity</h5>
         </div>
         <div class="card-body">
-            <p class="text-muted">Recent orders, messages, and other activity will appear here.</p>
+            <p class="text-muted">Recent orders, messages, and other activity will appear here.</p>-->
             <!-- I will add dynamic content here later -->
-            <div class="text-center py-3">
-                <a href="orders/index.php" class="btn btn-sm btn-outline-primary">
+            <!--<div class="text-center py-3">
+                <a href="orders/index" class="btn btn-sm btn-outline-primary">
                     View All Activity
                 </a>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <?php include 'includes/footer.php'; ?>

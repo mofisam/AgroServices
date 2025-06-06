@@ -9,7 +9,7 @@ $final_price = $has_discount ? round($original_price * (1 - $discount / 100)) : 
 
 <div class="card h-100 shadow-sm">
   <div class="position-relative">
-    <a href="view_product.php?id=<?= $p['id'] ?>" onclick="trackProductClick(<?= $p['id'] ?>)">
+    <a href="view_product?id=<?= $p['id'] ?>" onclick="trackProductClick(<?= $p['id'] ?>)">
       <img src="<?= htmlspecialchars($p['image'] ?? 'assets/images/placeholder.jpg') ?>" 
            class="card-img-top" alt="<?= htmlspecialchars($p['name']) ?>" 
            style="height:140px; object-fit:cover;">
@@ -44,7 +44,7 @@ $final_price = $has_discount ? round($original_price * (1 - $discount / 100)) : 
     </div>
 
     <div class="mt-2 d-flex gap-1">
-      <a href="view_product.php?id=<?= $p['id'] ?>" class="btn btn-sm btn-outline-primary w-100"
+      <a href="view_product?id=<?= $p['id'] ?>" class="btn btn-sm btn-outline-primary w-100"
          onclick="trackProductClick(<?= $p['id'] ?>)">
         <i class="bi bi-eye"></i>
       </a>

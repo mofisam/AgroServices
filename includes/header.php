@@ -171,7 +171,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <div class="container">
 
     <!-- Logo -->
-    <a class="navbar-brand d-flex align-items-center" href="http://localhost/web/agroservices/index.php">
+    <a class="navbar-brand d-flex align-items-center" href="http://localhost/web/agroservices/index">
       <img src="http://localhost/web/agroservices/assets/images/logo.jpg" alt="F and V Agro Services" onerror="this.style.display='none';">
     </a>
 
@@ -183,42 +183,86 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
     <!-- Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/products/index.php">🛍️ Marketplace</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/services.php">💼 Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/about us.php">📖 About</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/contact.php">📞 Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/products">🛍️ Marketplace</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/services">💼 Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/about us">📖 About</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/contact">📞 Contact</a></li>
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
-        <!--  User Links -->
-        <?php if (isset($_SESSION['user_id'])): ?>
-          <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/dashboard.php"><i class="bi bi-person-circle nav-icon"></i> Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link text-warning" href="logout.php"><i class="bi bi-box-arrow-right nav-icon"></i> Logout</a></li>
+        <!-- 👤 User Session Check -->
+        <?php if (isset($_SESSION['user_id'])): 
+          $role = $_SESSION['role'] ?? '';
+          $base = "http://localhost/web/agroservices";
+
+          // Dashboard Links Based on Role
+          switch ($role) {
+            case 'buyer':
+              $dashboard_url = "$base/dashboard";
+              $message_url   = "$base/messages";
+              break;
+            case 'seller':
+              $dashboard_url = "$base/seller";
+              $message_url   = "$base/seller/messages/index";
+              break;
+            case 'admin':
+              $dashboard_url = "$base/admin/admin_dashboard.php";
+              $message_url   = "$base/admin/messages";
+              break;
+            default:
+              $dashboard_url = "$base/dashboard";
+              $message_url   = "$base/messages";
+              break;
+          }
+        ?>
+          <!-- 🧭 Dashboard -->
+          <li class="nav-item">
+            <a class="nav-link" href="<?= $dashboard_url ?>">
+              <i class="bi bi-person-circle nav-icon"></i> Dashboard
+            </a>
+          </li>
+
+          <!-- 🚪 Logout -->
+          <li class="nav-item">
+            <a class="nav-link text-warning" href="<?= $base ?>/logout">
+              <i class="bi bi-box-arrow-right nav-icon"></i> Logout
+            </a>
+          </li>
+
+          <!-- ✉️ Messages (Role-Based) -->
+          <li class="nav-item position-relative me-3">
+            <a href="<?= $message_url ?>" class="nav-link">
+              <i class="bi bi-envelope-fill nav-icon"></i>
+              <?php if (!empty($msg_count) && $msg_count > 0): ?>
+                <span class="cart-badge"><?= $msg_count ?></span>
+              <?php endif; ?>
+            </a>
+          </li>
         <?php else: ?>
-          <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/login.php"><i class="bi bi-box-arrow-in-right nav-icon"></i> Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservicesregister.php"><i class="bi bi-person-plus-fill nav-icon"></i> Register</a></li>
+          <!-- 🔐 Login / Register -->
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost/web/agroservices/login">
+              <i class="bi bi-box-arrow-in-right nav-icon"></i> Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost/web/agroservices/registration/index">
+              <i class="bi bi-person-plus-fill nav-icon"></i> Register
+            </a>
+          </li>
         <?php endif; ?>
 
-        <!-- ✉️ Messages -->
-        <li class="nav-item position-relative me-3">
-          <a href="<?= ($_SESSION['role'] ?? '') === 'buyer' ? 'http://localhost/web/agroservices/messages/' : 'http://localhost/web/agroservices/seller/messages/index.php' ?>" class="nav-link">
-            <i class="bi bi-envelope-fill nav-icon"></i>
-            <?php if ($msg_count > 0): ?>
-              <span class="cart-badge"><?= $msg_count ?></span>
-            <?php endif; ?>
-          </a>
-        </li>
-
-        <!-- 🛒 Cart (updated with dynamic badge) -->
+        <!-- 🛒 Cart -->
         <li class="nav-item position-relative">
           <a href="http://localhost/web/agroservices/cart" class="nav-link">
             <i class="bi bi-cart-fill nav-icon"></i>
-            <span id="cart-badge" class="cart-badge" <?= $cart_count > 0 ? '' : 'style="display: none;"' ?>>
-              <?= $cart_count > 0 ? $cart_count : '' ?>
+            <span id="cart-badge" class="cart-badge" <?= isset($cart_count) && $cart_count > 0 ? '' : 'style="display: none;"' ?>>
+              <?= isset($cart_count) && $cart_count > 0 ? $cart_count : '' ?>
             </span>
           </a>
         </li>
       </ul>
+
     </div>
   </div>
 </nav>

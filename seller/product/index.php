@@ -4,7 +4,7 @@ session_start();
 
 // 🔒 Ensure only sellers can access
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 
@@ -135,9 +135,9 @@ include '../../includes/header.php';
                                 </td>
                                 <td>
                                     <div>
-                                        <strong>₦<?= number_format($row['price'], 2) ?></strong>
+                                        <strong>₦<?= number_format($row['price'] - ($row['price'] * $row['discount_percent'] / 100) , 2) ?></strong>
                                         <?php if($row['discount_percent'] > 0): ?>
-                                            <div class="text-danger"><small><s>₦<?= number_format($row['price'] + ($row['price'] * $row['discount_percent'] / 100), 2) ?></s></small></div>
+                                            <div class="text-danger"><small><s>₦<?= number_format($row['price'] , 2) ?></s></small></div>
                                         <?php endif; ?>
                                     </div>
                                 </td>
@@ -161,15 +161,15 @@ include '../../includes/header.php';
                                             <i class="bi bi-plus-lg"></i>
                                         </button>
                                         <?php if ($row['status'] === 'active'): ?>
-                                            <a href="product_toggle_status.php?id=<?= $row['id'] ?>&status=inactive" class="btn btn-sm btn-outline-secondary" title="Deactivate">
+                                            <a href="product_toggle_status?id=<?= $row['id'] ?>&status=inactive" class="btn btn-sm btn-outline-secondary" title="Deactivate">
                                                 <i class="bi bi-pause"></i>
                                             </a>
                                         <?php else: ?>
-                                            <a href="product_toggle_status.php?id=<?= $row['id'] ?>&status=active" class="btn btn-sm btn-outline-success" title="Activate">
+                                            <a href="product_toggle_status?id=<?= $row['id'] ?>&status=active" class="btn btn-sm btn-outline-success" title="Activate">
                                                 <i class="bi bi-play"></i>
                                             </a>
                                         <?php endif; ?>
-                                        <a href="product_delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this product?')" class="btn btn-sm btn-outline-danger" title="Delete">
+                                        <a href="product_delete?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this product?')" class="btn btn-sm btn-outline-danger" title="Delete">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                     </div>

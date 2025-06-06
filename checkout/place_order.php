@@ -69,7 +69,7 @@ try {
     // 5. All good – commit transaction
     $conn->commit();
     unset($_SESSION['cart']);
-    header("Location: ../orders/buyer_orders.php?order=success");
+    header("Location: ../orders/buyer_orders?order=success");
     exit();
 
 } catch (Exception $e) {

@@ -3,7 +3,7 @@ session_start();
 include '../config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }
 
@@ -126,7 +126,7 @@ $profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" .
                     <?= $biz['payment_expiry'] && strtotime($biz['payment_expiry']) > time() ? 'Active' : 'Expired' ?>
                 </span>
             </div>
-            <a href="edit_profile.php" class="btn btn-outline-primary">
+            <a href="edit_profile" class="btn btn-outline-primary">
                 <i class="bi bi-pencil-square me-1"></i> Edit Profile
             </a>
         </div>
@@ -137,7 +137,9 @@ $profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" .
         <div class="card-body p-4">
             <div class="row align-items-center">
                 <div class="col-md-2 text-center mb-3 mb-md-0">
-                    <img src="<?= $profile_img ?>" alt="Profile Image" class="rounded-circle shadow" style="width: 100px; height: 100px; object-fit: cover;">
+                    <a href="profile">
+                        <img src="<?= $profile_img ?>" alt="Profile Image" class="rounded-circle shadow" style="width: 100px; height: 100px; object-fit: cover;">
+                    </a>
                 </div>
                 <div class="col-md-5">
                     <h4 class="mb-2"><?= htmlspecialchars($biz['business_name']) ?></h4>
@@ -147,10 +149,10 @@ $profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" .
                 </div>
                 <div class="col-md-5">
                     <div class="d-flex flex-wrap gap-2 justify-content-md-end">
-                        <a href="product/index.php" class="btn btn-primary">
+                        <a href="product" class="btn btn-primary">
                             <i class="bi bi-box-seam me-1"></i> My Products (<?= $total_products ?>)
                         </a>
-                        <a href="wallet/index.php" class="btn btn-success">
+                        <a href="wallet" class="btn btn-success">
                             <i class="bi bi-wallet2 me-1"></i> Wallet (₦<?= number_format($current_balance, 2) ?>)
                         </a>
                     </div>
@@ -166,7 +168,7 @@ $profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" .
             <div>
                 <h5 class="alert-heading mb-1">Stock Alert!</h5>
                 You have <?= $out_of_stock ?> product<?= $out_of_stock > 1 ? 's' : '' ?> out of stock.
-                <a href="product/index.php" class="alert-link">Manage inventory</a> to avoid missed sales.
+                <a href="product" class="alert-link">Manage inventory</a> to avoid missed sales.
             </div>
         </div>
     <?php endif; ?>
@@ -179,12 +181,12 @@ $profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" .
                     <h5 class="card-title mb-3"><i class="bi bi-lightning-charge-fill text-warning me-2"></i> Quick Actions</h5>
                     <div class="row g-2">
                         <div class="col-6">
-                            <a href="product/index.php" class="btn btn-outline-primary w-100 text-start">
+                            <a href="product/" class="btn btn-outline-primary w-100 text-start">
                                 <i class="bi bi-plus-circle me-2"></i> Add Product
                             </a>
                         </div>
                         <div class="col-6">
-                            <a href="manage_orders.php" class="btn btn-outline-success w-100 text-start">
+                            <a href="manage_orders" class="btn btn-outline-success w-100 text-start">
                                 <i class="bi bi-truck me-2"></i> Manage Orders
                             </a>
                         </div>
@@ -199,12 +201,12 @@ $profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" .
                             </a>
                         </div>
                         <div class="col-6">
-                            <a href="admin_support/index.php" class="btn btn-outline-dark w-100 text-start">
+                            <a href="admin_support/" class="btn btn-outline-dark w-100 text-start">
                                 <i class="bi bi-headset me-2"></i> Contact Admin
                             </a>
                         </div>
                         <div class="col-6">
-                            <a href="renew_account.php" class="btn btn-outline-danger w-100 text-start">
+                            <a href="renew_account" class="btn btn-outline-danger w-100 text-start">
                                 <i class="bi bi-arrow-repeat me-2"></i> Renew Business
                             </a>
                         </div>
@@ -266,7 +268,7 @@ $profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" .
         <div class="card-header bg-white border-0">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-0"><i class="bi bi-bar-chart-line me-2"></i> Order Trends (Last 6 Months)</h5>
-                <a href="orders/manage_orders.php" class="btn btn-sm btn-outline-primary">
+                <a href="orders/manage_orders" class="btn btn-sm btn-outline-primary">
                     View All Orders
                 </a>
             </div>
@@ -277,20 +279,20 @@ $profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" .
     </div>
 
     <!-- Recent Activity -->
-    <div class="card border-0 shadow-sm">
+    <!--<div class="card border-0 shadow-sm">
         <div class="card-header bg-white border-0">
             <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i> Recent Activity</h5>
         </div>
         <div class="card-body">
-            <p class="text-muted">Recent orders, product updates, and messages will appear here.</p>
+            <p class="text-muted">Recent orders, product updates, and messages will appear here.</p>-->
             <!-- You can add dynamic content here later -->
-            <div class="text-center py-3">
-                <a href="activity_log.php" class="btn btn-sm btn-outline-primary">
+            <!--<div class="text-center py-3">
+                <a href="activity_log" class="btn btn-sm btn-outline-primary">
                     View Full Activity Log
                 </a>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -6,7 +6,7 @@ include 'includes/header.php';
 <section class="hero-section text-white text-center py-5 position-relative">
   <div class="video-background">
     <video autoplay muted loop>
-      <source src="assets/videos/farm-hero.mp4" type="video/mp4">
+      <source src="assets/video/homebg.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
   </div>
@@ -14,7 +14,7 @@ include 'includes/header.php';
     <h1 class="display-4 fw-bold">Empowering Agriculture. Feeding the Future.</h1>
     <p class="lead mt-3">Integrated Agribusiness & E-commerce platform for farmers, buyers, and innovators.</p>
     <div class="d-flex justify-content-center gap-3 mt-4">
-      <a href="/products/index.php" class="btn btn-light btn-lg">🌱 Explore Marketplace</a>
+      <a href="/products/index" class="btn btn-light btn-lg">🌱 Explore Marketplace</a>
       <a href="#video-tour" class="btn btn-outline-light btn-lg">▶ Watch Intro</a>
     </div>
   </div>
@@ -136,7 +136,7 @@ include 'includes/header.php';
           <li>Integrated livestock management</li>
           <li>Post-harvest processing units</li>
         </ul>
-        <a href="/virtual-tour.php" class="btn btn-success mt-3">Explore All Facilities</a>
+        <a href="/virtual-tour" class="btn btn-success mt-3">Explore All Facilities</a>
       </div>
     </div>
   </div>
@@ -286,6 +286,7 @@ include 'includes/header.php';
   
 </style>
 
+<?php if (!isset($_SESSION['user_id'])): ?>
 <!-- ✅ Dual Registration Section -->
 <section class="py-5 bg-light">
   <div class="container">
@@ -306,11 +307,11 @@ include 'includes/header.php';
             <p class="mb-4">Join as a buyer to access quality farm products at competitive prices from verified sellers.</p>
             <ul class="text-start mb-4 ps-4">
               <li>Browse thousands of agricultural products</li>
-              <li>Get bulk purchase discounts</li>
+              <li> </li>
               <li>Access verified suppliers</li>
               <li>Secure payment options</li>
             </ul>
-            <a href="/register/buyer" class="btn btn-success btn-lg px-4 py-3 stretched-link">
+            <a href="registration/buyer" class="btn btn-success btn-lg px-4 py-3 stretched-link">
               Register as Buyer <i class="bi bi-arrow-right ms-2"></i>
             </a>
           </div>
@@ -337,7 +338,7 @@ include 'includes/header.php';
               <li>Seller protection policies</li>
               <li>Business growth tools</li>
             </ul>
-            <a href="/register/seller" class="btn btn-warning btn-lg px-4 py-3 stretched-link text-white">
+            <a href="registration/seller" class="btn btn-warning btn-lg px-4 py-3 stretched-link text-white">
               Register as Seller <i class="bi bi-arrow-right ms-2"></i>
             </a>
           </div>
@@ -350,6 +351,7 @@ include 'includes/header.php';
     </div>
   </div>
 </section>
+<?php endif; ?>
 
 <?php 
 include 'includes/footer.php'; 

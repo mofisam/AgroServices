@@ -47,6 +47,6 @@ $stmt = $conn->prepare("INSERT INTO products (seller_id, name, price, stock, dis
 $stmt->bind_param("isdiissi", $seller_id, $name, $price, $stock, $discount, $desc, $imagePath, $cat_id);
 $stmt->execute();
 
-header("Location: index.php");
+header("Location: index");
 exit();
 ?>

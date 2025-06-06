@@ -119,7 +119,7 @@ include 'includes/header.php';
     <div class="container">
         <h3>Need expert advice for your farm?</h3>
         <p>Contact our team today for consultation and support.</p>
-        <a href="contact.php" class="btn btn-light mt-2">Get in Touch</a>
+        <a href="contact" class="btn btn-light mt-2">Get in Touch</a>
     </div>
 </section>
 

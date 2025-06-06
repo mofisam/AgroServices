@@ -14,7 +14,7 @@ $stmt->close();
 
 // Redirect to Paystack if expired
 if ($payment_status !== "paid" || strtotime($payment_expiry) < time()) {
-    header("Location: paystack.php");
+    header("Location: paystack");
     exit();
 }
 

@@ -22,7 +22,7 @@ document.getElementById("payBtn").addEventListener("click", function () {
         amount: <?= $amount ?>,
         ref: "<?= $ref ?>",
         callback: function(response) {
-            window.location.href = "verify.php?reference=" + response.reference;
+            window.location.href = "verify?reference=" + response.reference;
         },
         onClose: function() {
             alert('💡 Payment window closed.');

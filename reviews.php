@@ -1,10 +1,9 @@
 <?php
 session_start();
 include 'config/db.php';
-include 'includes/header.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'buyer') {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }
 
@@ -94,6 +93,7 @@ $review_stmt->execute();
 $past_reviews = $review_stmt->get_result();
 $review_stmt->close();
 ?>
+<?php include 'includes/header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -290,7 +290,7 @@ $review_stmt->close();
                                 </div>
                                 <h4>No purchases to review</h4>
                                 <p class="text-muted mb-4">You've reviewed all your purchased items</p>
-                                <a href="products.php" class="btn btn-outline-primary">
+                                <a href="products" class="btn btn-outline-primary">
                                     <i class="bi bi-cart me-2"></i> Browse Products
                                 </a>
                             </div>
@@ -316,7 +316,7 @@ $review_stmt->close();
                                             <div class="flex-grow-1">
                                                 <div class="d-flex justify-content-between align-items-start">
                                                     <h6 class="mb-1">
-                                                        <a href="product.php?id=<?= $review['product_id'] ?>" class="text-decoration-none">
+                                                        <a href="product?id=<?= $review['product_id'] ?>" class="text-decoration-none">
                                                             <?= htmlspecialchars($review['name']) ?>
                                                         </a>
                                                     </h6>

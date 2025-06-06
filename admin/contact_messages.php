@@ -1,11 +1,11 @@
 <?php
 ob_start();  // Start output buffering
-include '../includes/header.php'; 
-include '../config/db.php'; 
 
+include '../config/db.php'; 
+include '../includes/header.php'; 
 // Admin Auth Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 
@@ -72,7 +72,7 @@ $total_pages = ceil($total_records / $per_page);
                 <button class="btn btn-sm btn-primary view-btn" data-id="<?= $row['id'] ?>" data-name="<?= htmlspecialchars($row['name']) ?>" data-email="<?= htmlspecialchars($row['email']) ?>" data-message="<?= htmlspecialchars($row['message']) ?>" data-date="<?= $row['created_at'] ?>">View</button>
                 
                 <!-- Delete Button -->
-                <a href="delete_contact.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this message?')">Delete</a>
+                <a href="delete_contact?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this message?')">Delete</a>
               </td>
             </tr>
           <?php endwhile; ?>

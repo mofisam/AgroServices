@@ -1,7 +1,7 @@
 <?php
 session_start();
-include '../../config/db.php';
-include '../../includes/email_template.php';
+include '../config/db.php';
+include '../includes/email_template.php';
 
 if (!isset($_GET['user_id'])) {
     die("Invalid request!");
@@ -36,7 +36,7 @@ $_SESSION['checkout'] = [
 ];
 
 // ✅ **Paystack Keys**
-$paystack_public_key = 'pk_test_3d8772ab51c1407f1302d2fffc114220b0b1d9ee'; // Replace with your public key
+$paystack_public_key = PAYSTACK_PUBLIC; // Replace with your public key
 ?>
 
 <!-- ✅ **Payment Confirmation Form** -->

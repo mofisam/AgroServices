@@ -3,7 +3,7 @@ session_start();
 include 'config/db.php';
 
 if (!isset($_SESSION["user_id"])) {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }
 
@@ -47,7 +47,7 @@ include 'includes/header.php';
                              class="rounded-circle shadow" 
                              width="150" height="150" 
                              style="object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.1);">
-                        <a href="edit_profile.php" class="btn btn-sm btn-primary rounded-circle position-absolute bottom-0 end-0" 
+                        <a href="edit_profile" class="btn btn-sm btn-primary rounded-circle position-absolute bottom-0 end-0" 
                            style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;">
                             <i class="bi bi-pencil"></i>
                         </a>
@@ -66,10 +66,10 @@ include 'includes/header.php';
                     </div>
                     
                     <div class="d-grid gap-2">
-                        <a href="edit_profile.php" class="btn btn-outline-primary">
+                        <a href="edit_profile" class="btn btn-outline-primary">
                             <i class="bi bi-pencil-square me-1"></i> Edit Profile
                         </a>
-                        <a href="change_password.php" class="btn btn-outline-secondary">
+                        <a href="change_password" class="btn btn-outline-secondary">
                             <i class="bi bi-shield-lock me-1"></i> Change Password
                         </a>
                     </div>
@@ -168,7 +168,7 @@ include 'includes/header.php';
                         <div class="card-body text-center">
                             <div class="display-5 text-primary mb-1"><?= $user['order_count'] ?></div>
                             <div class="text-muted">Orders</div>
-                            <a href="orders.php" class="stretched-link"></a>
+                            <a href="orders" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@ include 'includes/header.php';
                         <div class="card-body text-center">
                             <div class="display-5 text-info mb-1"><?= $user['review_count'] ?></div>
                             <div class="text-muted">Reviews</div>
-                            <a href="reviews.php" class="stretched-link"></a>
+                            <a href="reviews" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@ include 'includes/header.php';
                         <div class="card-body text-center">
                             <div class="display-5 text-warning mb-1"><?= $user['wishlist_count'] ?></div>
                             <div class="text-muted">Wishlist</div>
-                            <a href="wishlist.php" class="stretched-link"></a>
+                            <a href="wishlist" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>

@@ -6,10 +6,11 @@ include '../config/db.php';
 if (!isset($_GET['reference'], $_SESSION['checkout'])) {
     die("Unauthorized access.");
 }
+include '../config/.env.php';
 
 $reference = $_GET['reference'];
 $checkout = $_SESSION['checkout'];
-$paystack_secret_key = 'sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae'; // Replace with your live key
+$paystack_secret_key = PAYSTACK_SECRET; // Replace with your live key
 
 // ✅ **Verify Paystack Transaction**
 $curl = curl_init();
@@ -139,6 +140,6 @@ unset($_SESSION['cart']);
 unset($_SESSION['checkout']);
 
 // ✅ **Redirect to Success Page**
-header("Location: success.php?ref=" . urlencode($reference));
+header("Location: success?ref=" . urlencode($reference));
 exit();
 ?>

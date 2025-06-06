@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addAddress($email);
         $mail->Subject = "Password Reset Request";
         $mail->isHTML(true);
-        $mail->Body = "Click here to reset your password: <a href='reset_password.php?token=$reset_token'>Reset Password</a>";
+        $mail->Body = "Click here to reset your password: <a href='reset_password?token=$reset_token'>Reset Password</a>";
 
         if ($mail->send()) {
             $message = "<div class='alert alert-success text-center'>✅ Password reset email sent!</div>";
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <div class="card-footer">
-        <a href="login.php">Back to Login</a>
+        <a href="login">Back to Login</a>
     </div>
 </div>
 

@@ -9,6 +9,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
+require_once 'config/.env.php'; // Load environment variables
+
 ?>
 
 <!-- Hero Section -->
@@ -48,12 +50,12 @@ require 'vendor/autoload.php';
                     $mail = new PHPMailer(true);
                     try {
                         $mail->isSMTP();
-                        $mail->Host = 'sandbox.smtp.mailtrap.io'; // 🔥 Use your SMTP server (example for Gmail)
+                        $mail->Host = SMTP_HOST; // 🔥 Use your SMTP server (example for Gmail)
                         $mail->SMTPAuth = true;
-                        $mail->Username = '61afe5fbfca488'; // 🔥 YOUR Gmail
-                        $mail->Password = '98b8d56957eaa6'; // 🔥 YOUR Gmail App Password
+                        $mail->Username = SMTP_USERNAME; // 🔥 YOUR Gmail
+                        $mail->Password = SMTP_PASSWORD; // 🔥 YOUR Gmail App Password
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                        $mail->Port = 2525;
+                        $mail->Port = SMTP_PORT;
 
                         //Recipients
                         $mail->setFrom('your_gmail@gmail.com', 'F and V Agro Services System');
@@ -83,7 +85,7 @@ require 'vendor/autoload.php';
         }
         ?>
 
-        <form method="POST" action="contact.php" class="needs-validation" novalidate>
+        <form method="POST" action="contact" class="needs-validation" novalidate>
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" required>

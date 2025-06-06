@@ -4,7 +4,7 @@ include '../config/db.php';
 include '../includes/header.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 
@@ -23,7 +23,7 @@ $logs = $conn->query("
     <h2 class="mb-4">📜 Withdrawal Transaction Logs</h2>
 
     <div class="d-flex justify-content-end mb-3">
-        <a href="export_withdrawals.php" class="btn btn-success">📄 Export to CSV</a>
+        <a href="export_withdrawals" class="btn btn-success">📄 Export to CSV</a>
     </div>
 
     <div class="table-responsive">

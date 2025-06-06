@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $update_stmt = $conn->prepare("UPDATE users SET is_verified=1, otp_code=NULL WHERE email=?");
         $update_stmt->bind_param("s", $email);
         $update_stmt->execute();
-        $message = "<div class='alert alert-success text-center'>✅ Account Verified! <a href='login.php' class='text-success fw-bold'>Login Now</a></div>";
+        $message = "<div class='alert alert-success text-center'>✅ Account Verified! <a href='login' class='text-success fw-bold'>Login Now</a></div>";
     } else {
         $message = "<div class='alert alert-danger text-center'>❌ Invalid OTP or already verified!</div>";
     }
@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <div class="back-link mt-3">
-        <a href="login.php">Back to Login</a>
+        <a href="login">Back to Login</a>
     </div>
 </div>
 

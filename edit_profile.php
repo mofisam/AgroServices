@@ -3,7 +3,7 @@ session_start();
 include 'config/db.php';
 
 if (!isset($_SESSION["user_id"])) {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }
 
@@ -110,7 +110,7 @@ include 'includes/header.php';
             <!-- Page Header -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="h3 mb-0">Profile Settings</h1>
-                <a href="profile.php" class="btn btn-outline-secondary">
+                <a href="profile" class="btn btn-outline-secondary">
                     <i class="bi bi-arrow-left me-1"></i> Back to Profile
                 </a>
             </div>

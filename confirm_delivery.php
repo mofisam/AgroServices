@@ -3,7 +3,7 @@ session_start();
 include 'config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'buyer') {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }
 
@@ -82,12 +82,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['item_id'])) {
                 <strong>F and V Agro Services</strong>
             ";
 
-            include 'includes/email_template.php';
+            include 'includes/email_template';
             sendEmail($seller_email, $subject, $message);
 
             // 🚀 **Redirect with success message**
             $_SESSION['success'] = "Delivery confirmed successfully.";
-            header("Location: confirm_delivery.php");
+            header("Location: confirm_delivery");
             exit();
         } catch (Exception $e) {
             $conn->rollback();

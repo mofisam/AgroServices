@@ -6,10 +6,10 @@ include '../../includes/email_template.php';
 if (!isset($_GET['reference']) || !isset($_SESSION['checkout'])) {
     die("Unauthorized access.");
 }
-
+include '../config/.env.php';
 $reference = $_GET['reference'];
 $checkout = $_SESSION['checkout'];
-$paystack_secret_key = 'sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae'; // Replace with your secret key
+$paystack_secret_key = PAYSTACK_SECRET; // Replace with your secret key
 
 // ✅ **Verify Paystack Transaction**
 $curl = curl_init();
@@ -95,7 +95,7 @@ try {
 
     // ✅ **Clear Session and Redirect**
     unset($_SESSION['checkout']);
-    header("Location: ../success.php?ref=" . urlencode($reference));
+    header("Location: ../success?ref=" . urlencode($reference));
     exit();
     
 } catch (Exception $e) {

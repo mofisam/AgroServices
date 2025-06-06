@@ -3,7 +3,7 @@ session_start();
 include '../../config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: ../../login.php");
+    header("Location: ../../login");
     exit();
 }
 include '../../includes/header.php';
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p><strong>Account Name:</strong> <?= htmlspecialchars($bank_details['account_name']) ?></p>
         <?php else: ?>
             <div class="alert alert-warning">
-                ⚠️ No bank account found. Please <a href="bank_account.php" class="alert-link">add a bank account</a>.
+                ⚠️ No bank account found. Please <a href="bank_account" class="alert-link">add a bank account</a>.
             </div>
         <?php endif; ?>
 

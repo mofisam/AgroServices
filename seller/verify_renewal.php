@@ -6,10 +6,11 @@ include '../includes/email_template.php';
 if (!isset($_GET['reference']) || !isset($_SESSION['renewal'])) {
     die("Unauthorized access.");
 }
+include '../config/.env.php';
 
 $reference = $_GET['reference'];
 $renewal = $_SESSION['renewal'];
-$paystack_secret_key = 'sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae'; // Replace with your secret key
+$paystack_secret_key = PAYSTACK_SECRET; // Replace with your secret key
 
 // ✅ **Verify Paystack Transaction**
 $curl = curl_init();
@@ -73,7 +74,7 @@ try {
     sendEmail($email_from_paystack, $subject, $message);
 
     unset($_SESSION['renewal']);
-    header("Location: success.php");
+    header("Location: success");
     exit();
 } catch (Exception $e) {
     $conn->rollback();

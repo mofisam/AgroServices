@@ -122,14 +122,14 @@ include 'includes/header.php';
   <div class="text-center mb-5">
     <h2 class="fw-bold">👥 Meet the Team</h2>
     <p class="text-muted">Behind every innovation is a passionate team. See who’s making it all happen.</p>
-    <a href="team.php" class="btn btn-outline-success px-4 py-2">🌟 View Our Team</a>
+    <a href="team" class="btn btn-outline-success px-4 py-2">🌟 View Our Team</a>
   </div>
 
   <!-- Contact CTA -->
   <div class="bg-success text-white text-center rounded p-5">
     <h4 class="fw-bold mb-2">💬 Partner With Us or Learn More</h4>
     <p class="mb-3">Let’s transform agriculture together.</p>
-    <a href="contact.php" class="btn btn-light btn-lg">📞 Contact Us</a>
+    <a href="contact" class="btn btn-light btn-lg">📞 Contact Us</a>
   </div>
 </div>
 

@@ -48,7 +48,7 @@
         <ul class="list-unstyled text-white-50">
           <li class="mb-2 d-flex align-items-center">
             <i class="bi bi-envelope me-2"></i>
-            <span>info@fandvagroservices.com</span>
+            <span>info@fandvagroservices.com.ng</span>
           </li>
           <li class="mb-2 d-flex align-items-center">
             <i class="bi bi-telephone me-2"></i>
@@ -120,3 +120,4 @@
   }
 </style>
 </body>
+</html>

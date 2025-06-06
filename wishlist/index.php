@@ -4,7 +4,7 @@ include '../config/db.php';
 include '../includes/header.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 
@@ -40,8 +40,8 @@ $wishlist = $stmt->get_result();
             <div class="card-body">
               <h5 class="card-title"><?= htmlspecialchars($item['name']) ?></h5>
               <p class="card-text text-success">₦<?= number_format($item['price']) ?></p>
-              <a href="../products/view_product.php?id=<?= $item['product_id'] ?>" class="btn btn-outline-primary btn-sm">🔍 View</a>
-              <a href="remove.php?id=<?= $item['product_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Remove from wishlist?')">🗑 Remove</a>
+              <a href="../products/view_product?id=<?= $item['product_id'] ?>" class="btn btn-outline-primary btn-sm">🔍 View</a>
+              <a href="remove?id=<?= $item['product_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Remove from wishlist?')">🗑 Remove</a>
               <form action="../cart/add_to_cart.php" method="POST" class="d-inline-block ms-1">
                 <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
                 <input type="hidden" name="quantity" value="1">
@@ -53,7 +53,7 @@ $wishlist = $stmt->get_result();
       <?php endwhile; ?>
     </div>
   <?php else: ?>
-    <div class="alert alert-info">Your wishlist is empty. <a href="../products/index.php">Browse products</a>.</div>
+    <div class="alert alert-info">Your wishlist is empty. <a href="../products/index">Browse products</a>.</div>
   <?php endif; ?>
 </div>
 

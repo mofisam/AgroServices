@@ -1,12 +1,13 @@
 <?php
 session_start();
-include '../config/db.php';
+require_once '../config/db.php';
 
 // ✅ Confirm POSTed billing data
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['email'], $_POST['grand_total'])) {
-    header("Location: step1.php");
+    header("Location: step1");
     exit();
 }
+include '../config/.env.php';
 
 // ✅ Collect billing details
 $billing = [
@@ -29,8 +30,8 @@ $_SESSION['checkout'] = [
 ];
 
 // ✅ Paystack Keys
-$paystack_secret_key = 'sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae'; // 🔥 replace with your real secret #citl
-$paystack_public_key = 'pk_test_3d8772ab51c1407f1302d2fffc114220b0b1d9ee'; // 🔥 replace with your real public key #citl
+$paystack_secret_key = PAYSTACK_SECRET; // 🔥 replace with your real secret #citl
+$paystack_public_key = PAYSTACK_PUBLIC; // 🔥 replace with your real public key #citl
 
 // ✅ Initiate Transaction via CURL
 $curl = curl_init();
@@ -42,7 +43,7 @@ curl_setopt_array($curl, [
         'amount' => $amount,
         'email' => $billing['email'],
         'reference' => $reference,
-        'callback_url' => 'http://localhost/web/AgroServices/checkout/verify.php' //i will change it later #citl
+        'callback_url' => 'http://localhost/web/AgroServices/checkout/verify' //i will change it later #citl
     ]),
     CURLOPT_HTTPHEADER => [
         "Authorization: Bearer $paystack_secret_key",

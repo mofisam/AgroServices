@@ -4,7 +4,7 @@ session_start();
 
 // Admin Auth Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 
@@ -13,6 +13,6 @@ if (isset($_GET['id'])) {
     $conn->query("DELETE FROM contact_messages WHERE id = $id");
 }
 
-header("Location: contact_messages.php");
+header("Location: contact_messages");
 exit();
 ?>

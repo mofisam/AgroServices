@@ -18,7 +18,7 @@ while ($seller = $result->fetch_assoc()) {
     $subject = "Renew Your Seller Subscription - AgroServices";
     $message = "<h3>Dear Seller,</h3><p>Your subscription for <b>{$business_name}</b> is expiring on {$expiry_date}. Please renew to continue selling.
     Please renew to continue selling.</p>
-        <p><a href='https://fjjj.com/renew_payment.php'>Click here to renew</a></p>";
+        <p><a href='https://fjjjf.com/renew_payment.php'>Click here to renew</a></p>";
     sendEmail($email, $subject, $message);
 }
 

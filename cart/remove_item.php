@@ -6,5 +6,5 @@ if (isset($_SESSION['cart'][$id])) {
     unset($_SESSION['cart'][$id]);
 }
 
-header("Location: index.php");
+header("Location: index");
 exit;

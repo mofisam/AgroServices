@@ -3,7 +3,7 @@ session_start();
 include 'config/db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $update->bind_param("si", $new_hashed, $user_id);
             if ($update->execute()) {
                 $success = "Password changed successfully!";
-                header("Location: profile.php" );
+                header("Location: profile" );
                 exit();
             } else {
                 $error = "Failed to update password. Please try again.";
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <button type="submit" class="btn btn-primary btn-lg">
                                 <i class="bi bi-key me-2"></i>Update Password
                             </button>
-                            <a href="profile.php" class="btn btn-outline-secondary">
+                            <a href="profile" class="btn btn-outline-secondary">
                                 <i class="bi bi-arrow-left me-2"></i>Back to Profile
                             </a>
                         </div>

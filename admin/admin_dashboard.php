@@ -3,7 +3,7 @@ session_start();
 include '../config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit();
 }
 include '../includes/header.php';
@@ -88,10 +88,10 @@ for ($i = 5; $i >= 0; $i--) {
             <p class="text-muted mb-0">System overview and quick actions</p>
         </div>
         <div class="d-flex gap-2">
-            <a href="settings.php" class="btn btn-outline-primary">
+            <a href="settings" class="btn btn-outline-primary">
                 <i class="bi bi-gear me-1"></i> System Settings
             </a>
-            <a href="admin_logs.php" class="btn btn-outline-secondary">
+            <a href="admin_logs" class="btn btn-outline-secondary">
                 <i class="bi bi-journal-text me-1"></i> View Logs
             </a>
         </div>
@@ -115,13 +115,13 @@ for ($i = 5; $i >= 0; $i--) {
             </div>
             <div class="col-md-5">
                 <div class="d-flex flex-wrap gap-2 justify-content-md-end">
-                    <a href="profile.php" class="btn btn-primary">
+                    <a href="profile" class="btn btn-primary">
                         <i class="bi bi-person me-1"></i> View Profile
                     </a>
-                    <a href="edit_profile.php" class="btn btn-outline-primary">
+                    <a href="edit_profile" class="btn btn-outline-primary">
                         <i class="bi bi-pencil-square me-1"></i> Edit Profile
                     </a>
-                    <a href="messages/index.php" class="btn btn-success">
+                    <a href="messages/index" class="btn btn-success">
                         <i class="bi bi-chat-left-text me-1"></i> Messages
                     </a>
                 </div>
@@ -136,42 +136,42 @@ for ($i = 5; $i >= 0; $i--) {
             <h5 class="card-title mb-3"><i class="bi bi-lightning-charge-fill text-warning me-2"></i> Quick Actions</h5>
             <div class="row g-2">
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="users management/manage_users.php" class="btn btn-outline-dark w-100 text-start">
+                    <a href="users management/manage_users" class="btn btn-outline-dark w-100 text-start">
                         <i class="bi bi-people me-2"></i> Manage Users
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="products.php" class="btn btn-outline-info w-100 text-start">
+                    <a href="products" class="btn btn-outline-info w-100 text-start">
                         <i class="bi bi-box-seam me-2"></i> Products
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="orders.php" class="btn btn-outline-primary w-100 text-start">
+                    <a href="orders" class="btn btn-outline-primary w-100 text-start">
                         <i class="bi bi-cart-check me-2"></i> Orders
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="withdrawal_approval.php" class="btn btn-outline-warning w-100 text-start">
+                    <a href="withdrawal_approval" class="btn btn-outline-warning w-100 text-start">
                         <i class="bi bi-cash-coin me-2"></i> Withdrawals
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="business_payments.php" class="btn btn-outline-success w-100 text-start">
+                    <a href="business_payments" class="btn btn-outline-success w-100 text-start">
                         <i class="bi bi-building me-2"></i> Business Accounts
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="delivery_overview.php" class="btn btn-outline-secondary w-100 text-start">
+                    <a href="delivery_overview" class="btn btn-outline-secondary w-100 text-start">
                         <i class="bi bi-truck me-2"></i> Delivery Overview
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="product categories/index.php" class="btn btn-outline-primary w-100 text-start">
+                    <a href="product categories/index" class="btn btn-outline-primary w-100 text-start">
                         <i class="bi bi-tags me-2"></i>Product Categories
                     </a>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="contact_messages.php" class="btn btn-outline-danger w-100 text-start">
+                    <a href="contact_messages" class="btn btn-outline-danger w-100 text-start">
                         <i class="bi bi-envelope me-2"></i> Contact Messages
                     </a>
                 </div>
@@ -366,7 +366,7 @@ for ($i = 5; $i >= 0; $i--) {
     <div class="card border-0 shadow-sm">
         <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
             <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i> Recent System Activity</h5>
-            <a href="admin_logs.php" class="btn btn-sm btn-outline-primary">View All</a>
+            <a href="admin_logs" class="btn btn-sm btn-outline-primary">View All</a>
         </div>
         <div class="card-body">
             <div class="list-group list-group-flush">

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $update_stmt->bind_param("ss", $new_password, $email);
         $update_stmt->execute();
 
-        echo "✅ Password reset successful! <a href='login.php'>Login Now</a>";
+        echo "✅ Password reset successful! <a href='login'>Login Now</a>";
     } else {
         echo "❌ Invalid or expired token!";
     }

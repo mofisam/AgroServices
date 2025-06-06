@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addAddress($email);
         $mail->Subject = "Resend OTP - Agro E-commerce";
         $mail->isHTML(true);
-        $mail->Body = "Your new OTP is: <strong>$otp_code</strong>. Click to verify: <a href='verify.php?email=$email'>Verify Now</a>";
+        $mail->Body = "Your new OTP is: <strong>$otp_code</strong>. Click to verify: <a href='verify?email=$email'>Verify Now</a>";
 
         if ($mail->send()) {
             $message = "<div class='alert alert-success text-center'>✅ OTP Resent! Check your email.</div>";
@@ -133,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <div class="back-link mt-3">
-        <a href="login.php">Back to Login</a>
+        <a href="login">Back to Login</a>
     </div>
 </div>
 

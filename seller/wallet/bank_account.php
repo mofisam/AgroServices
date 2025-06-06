@@ -3,10 +3,10 @@ session_start();
 include '../../config/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: ../../login.php");
+    header("Location: ../../login");
     exit();
 }
-
+include '../config/.env.php';
 include '../../includes/header.php';
 $user_id = $_SESSION['user_id'];
 $success = $error = "";
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "All fields are required.";
     } else {
         // 🔄 Create recipient on Paystack
-        $paystack_key = 'sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae'; // Replace with live key
+        $paystack_key = PAYSTACK_SECRET; // Replace with live key
         $payload = [
             'type' => 'nuban',
             'name' => $account_name,
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const accountNumberInput = document.querySelector('input[name="account_number"]');
     const accountNameInput = document.querySelector('input[name="account_name"]');
 
-    const paystackKey = "sk_test_41008269e1c6f30a68e89226ebe8bf9628c9e3ae";
+    const paystackKey = "<?= PAYSTACK_SECRET ?>";
 
     fetch("https://api.paystack.co/bank?country=nigeria&type=nuban", {
         headers: { Authorization: `Bearer ${paystackKey}` }

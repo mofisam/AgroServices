@@ -31,7 +31,7 @@ include 'includes/header.php';
                     <hr>
                     <div class="alert alert-success">
                         <i class="bi bi-question-circle-fill me-2"></i>
-                        <strong>Questions?</strong> Contact our <a href="contact.php" class="alert-link">support team</a>
+                        <strong>Questions?</strong> Contact our <a href="contact" class="alert-link">support team</a>
                     </div>
                 </div>
             </div>

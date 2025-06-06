@@ -5,12 +5,12 @@ include '../config/db.php';
 include '../includes/header.php';
 
 if (!isset($_SESSION['user_id'])) {
-  header('Location: /login.php');
+  header('Location: /login');
   exit();
 }
 // Redirect if cart is empty
 if (!isset($_SESSION['cart']) || count($_SESSION['cart']) === 0) {
-    header('Location: /products/index.php');
+    header('Location: /products/index');
     exit();
 }
 
@@ -72,7 +72,7 @@ foreach ($cart as $product_id => $item) {
     <div class="col-md-6">
       <div class="card shadow-sm p-4">
         <h4 class="mb-3 text-success">Billing Information</h4>
-        <form method="POST" action="step2.php">
+        <form method="POST" action="step2">
           <div class="mb-3">
             <label>First Name</label>
             <input type="text" name="first_name" class="form-control" required value="<?= htmlspecialchars($billing['first_name']) ?>">
