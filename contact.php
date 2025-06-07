@@ -121,7 +121,7 @@ require_once 'config/.env.php'; // Load environment variables
 
         <div class="mb-4">
           <strong>Email</strong>
-          <p class="mb-0"><a href="mailto:info@fandvagroservices.com.ng.ng">info@fandvagroservices.com.ng.ng</a></p>
+          <p class="mb-0"><a href="mailto:info@fandvagroservices.com.ng">info@fandvagroservices.com.ng</a></p>
         </div>
 
         <div class="mb-4">

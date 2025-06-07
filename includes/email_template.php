@@ -50,7 +50,7 @@ function emailTemplate($messageBody) {
     <body>
         <div class='email-container'>
             <div class='email-header'>
-                <img src='https://fandvagroservices.com.ng.ng/assets/images/logo.png' alt='F and V Agro Services'>
+                <img src='https://fandvagroservices.com.ng/assets/images/logo.png' alt='F and V Agro Services'>
                 <h2>F and V Agro Services</h2>
             </div>
             <div class='email-content'>
@@ -58,7 +58,7 @@ function emailTemplate($messageBody) {
             </div>
             <div class='email-footer'>
                 &copy; " . date('Y') . " F and V Agro Services. All rights reserved.<br>
-                Need help? Contact us at <a href='mailto:support@fandvagroservices.com.ng.ng'>support@fandvagroservices.com.ng.ng</a>
+                Need help? Contact us at <a href='mailto:support@fandvagroservices.com.ng'>support@fandvagroservices.com.ng</a>
             </div>
         </div>
     </body>
