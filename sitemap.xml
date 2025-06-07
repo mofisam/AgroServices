@@ -4,22 +4,22 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fandvagroservices.com.ng/</loc>
+    <loc>https://fandvagroservices.com.ng.ng/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://fandvagroservices.com.ng/products/</loc>
+    <loc>https://fandvagroservices.com.ng.ng/products/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fandvagroservices.com.ng/policy.php</loc>
+    <loc>https://fandvagroservices.com.ng.ng/policy.php</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fandvagroservices.com.ng/contact.php</loc>
+    <loc>https://fandvagroservices.com.ng.ng/contact.php</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -29,7 +29,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
   while ($row = $stmt->fetch_assoc()):
   ?>
   <url>
-    <loc>https://fandvagroservices.com.ng/products/<?= htmlspecialchars($row['slug']) ?></loc>
+    <loc>https://fandvagroservices.com.ng.ng/products/<?= htmlspecialchars($row['slug']) ?></loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

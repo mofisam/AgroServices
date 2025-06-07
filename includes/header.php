@@ -47,7 +47,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="http://fandvagroservices.com/includes/style.css">
+  <link rel="stylesheet" href="http://fandvagroservices.com.ng/includes/style.css">
 
   <!-- Inline Styles with Cart Auto-Update -->
   <style>
@@ -135,7 +135,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
       // Function to update cart count
       function updateCartCount() {
           $.ajax({
-              url: 'http://fandvagroservices.com/includes/get_cart_count.php',
+              url: 'http://fandvagroservices.com.ng/includes/get_cart_count.php',
               method: 'GET',
               success: function(response) {
                   const cartCount = parseInt(response.count) || 0;
@@ -171,8 +171,8 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <div class="container">
 
     <!-- Logo -->
-    <a class="navbar-brand d-flex align-items-center" href="http://fandvagroservices.com/index">
-      <img src="http://fandvagroservices.com/assets/images/logo.jpg" alt="F and V Agro Services" onerror="this.style.display='none';">
+    <a class="navbar-brand d-flex align-items-center" href="http://fandvagroservices.com.ng/index">
+      <img src="http://fandvagroservices.com.ng/assets/images/logo.jpg" alt="F and V Agro Services" onerror="this.style.display='none';">
     </a>
 
     <!-- Mobile Menu Toggle -->
@@ -183,17 +183,17 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
     <!-- Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="http://fandvagroservices.com/products">🛍️ Marketplace</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://fandvagroservices.com/services">💼 Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://fandvagroservices.com/about us">📖 About</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://fandvagroservices.com/contact">📞 Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://fandvagroservices.com.ng/products">🛍️ Marketplace</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://fandvagroservices.com.ng/services">💼 Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://fandvagroservices.com.ng/about us">📖 About</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://fandvagroservices.com.ng/contact">📞 Contact</a></li>
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
         <!-- 👤 User Session Check -->
         <?php if (isset($_SESSION['user_id'])): 
           $role = $_SESSION['role'] ?? '';
-          $base = "http://fandvagroservices.com";
+          $base = "http://fandvagroservices.com.ng";
 
           // Dashboard Links Based on Role
           switch ($role) {
@@ -241,12 +241,12 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
         <?php else: ?>
           <!-- 🔐 Login / Register -->
           <li class="nav-item">
-            <a class="nav-link" href="http://fandvagroservices.com/login">
+            <a class="nav-link" href="http://fandvagroservices.com.ng/login">
               <i class="bi bi-box-arrow-in-right nav-icon"></i> Login
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://fandvagroservices.com/registration/index">
+            <a class="nav-link" href="http://fandvagroservices.com.ng/registration/index">
               <i class="bi bi-person-plus-fill nav-icon"></i> Register
             </a>
           </li>
@@ -254,7 +254,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
 
         <!-- 🛒 Cart -->
         <li class="nav-item position-relative">
-          <a href="http://fandvagroservices.com/cart" class="nav-link">
+          <a href="http://fandvagroservices.com.ng/cart" class="nav-link">
             <i class="bi bi-cart-fill nav-icon"></i>
             <span id="cart-badge" class="cart-badge" <?= isset($cart_count) && $cart_count > 0 ? '' : 'style="display: none;"' ?>>
               <?= isset($cart_count) && $cart_count > 0 ? $cart_count : '' ?>
