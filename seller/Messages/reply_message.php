@@ -35,5 +35,5 @@ if ($message && $to_user) {
     }
 }
 
-header("Location: http://localhost/web/agroservices/seller/messages/index?user=$to_user");
+header("Location: http://fandvagroservices.com/seller/messages/index?user=$to_user");
 exit();
