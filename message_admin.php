@@ -16,7 +16,7 @@ $user_name = $_SESSION['username'] ?? 'User';
         :root {
             --primary-color: #14532d;
             --secondary-color: #3f37c9;
-            --user-message-bg:rgb(141, 181, 155);
+            --user-message-bg:rgb(132, 174, 147);
             --admin-message-bg: #f0f2f5;
             --text-dark: #212529;
             --text-light: #f8f9fa;
