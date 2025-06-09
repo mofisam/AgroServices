@@ -58,7 +58,7 @@ require_once 'config/.env.php'; // Load environment variables
                         $mail->Port = SMTP_PORT;
 
                         //Recipients
-                        $mail->setFrom('info@fandvagroservices.com.ng', 'F and V Agro Services System');
+                        $mail->setFrom('no-reply@fandvagroservices.com.ng', 'F and V Agro Services System');
                         $mail->addAddress('info@fandvagroservices.com.ng'); // Admin email
 
                         // Content

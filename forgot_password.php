@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->SMTPSecure = 'tls';
         $mail->Port = SMTP_PORT;
         
-        $mail->setFrom('info@fandvagroservices.com.ng', 'F and V Agroservices');
+        $mail->setFrom('no-reply@fandvagroservices.com.ng', 'F and V Agroservices');
         $mail->addAddress($email);
         $mail->Subject = "Password Reset Request";
         $mail->isHTML(true);

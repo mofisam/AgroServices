@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->SMTPDebug  = 0; // Set to 2 for debugging
 
                     // Recipients
-                    $mail->setFrom('info@fandvagroservices.com.ng', 'F and V Agroservices');
+                    $mail->setFrom('no-reply@fandvagroservices.com.ng', 'F and V Agroservices');
                     $mail->addAddress($email);
                     
                     // Content
