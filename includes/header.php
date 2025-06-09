@@ -47,7 +47,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="http://localhost/web/agroservices/includes/style.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>/includes/style.css">
 
   <!-- Inline Styles with Cart Auto-Update -->
   <style>
@@ -135,7 +135,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
       // Function to update cart count
       function updateCartCount() {
           $.ajax({
-              url: 'http://localhost/web/agroservices/includes/get_cart_count.php',
+              url: '<?= BASE_URL ?>/includes/get_cart_count.php',
               method: 'GET',
               success: function(response) {
                   const cartCount = parseInt(response.count) || 0;
@@ -171,8 +171,8 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <div class="container">
 
     <!-- Logo -->
-    <a class="navbar-brand d-flex align-items-center" href="http://localhost/web/agroservices/index">
-      <img src="http://localhost/web/agroservices/assets/images/logo.jpg" alt="F and V Agro Services" onerror="this.style.display='none';">
+    <a class="navbar-brand d-flex align-items-center" href="<?= BASE_URL ?>/index">
+      <img src="<?= BASE_URL ?>/assets/images/logo.jpg" alt="F and V Agro Services" onerror="this.style.display='none';">
     </a>
 
     <!-- Mobile Menu Toggle -->
@@ -183,17 +183,17 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
     <!-- Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/products">🛍️ Marketplace</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/services">💼 Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/about us">📖 About</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://localhost/web/agroservices/contact">📞 Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/products">🛍️ Marketplace</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/services">💼 Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/about us">📖 About</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/contact">📞 Contact</a></li>
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
         <!-- 👤 User Session Check -->
         <?php if (isset($_SESSION['user_id'])): 
           $role = $_SESSION['role'] ?? '';
-          $base = "http://localhost/web/agroservices";
+          $base = "<?= BASE_URL ?>";
 
           // Dashboard Links Based on Role
           switch ($role) {
@@ -241,12 +241,12 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
         <?php else: ?>
           <!-- 🔐 Login / Register -->
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost/web/agroservices/login">
+            <a class="nav-link" href="<?= BASE_URL ?>/login">
               <i class="bi bi-box-arrow-in-right nav-icon"></i> Login
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost/web/agroservices/registration/index">
+            <a class="nav-link" href="<?= BASE_URL ?>/registration/index">
               <i class="bi bi-person-plus-fill nav-icon"></i> Register
             </a>
           </li>
@@ -254,7 +254,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
 
         <!-- 🛒 Cart -->
         <li class="nav-item position-relative">
-          <a href="http://localhost/web/agroservices/cart" class="nav-link">
+          <a href="<?= BASE_URL ?>/cart" class="nav-link">
             <i class="bi bi-cart-fill nav-icon"></i>
             <span id="cart-badge" class="cart-badge" <?= isset($cart_count) && $cart_count > 0 ? '' : 'style="display: none;"' ?>>
               <?= isset($cart_count) && $cart_count > 0 ? $cart_count : '' ?>

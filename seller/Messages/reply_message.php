@@ -35,5 +35,5 @@ if ($message && $to_user) {
     }
 }
 
-header("Location: http://localhost/web/agroservices/seller/messages/index?user=$to_user");
+header("Location: <?= BASE_URL ?>/seller/messages/index?user=$to_user");
 exit();

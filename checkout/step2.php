@@ -43,7 +43,7 @@ curl_setopt_array($curl, [
         'amount' => $amount,
         'email' => $billing['email'],
         'reference' => $reference,
-        'callback_url' => 'http://localhost/web/AgroServices/checkout/verify' //i will change it later #citl
+        'callback_url' => '<?= BASE_URL ?>/checkout/verify' //i will change it later #citl
     ]),
     CURLOPT_HTTPHEADER => [
         "Authorization: Bearer $paystack_secret_key",

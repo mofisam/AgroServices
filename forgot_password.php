@@ -3,6 +3,9 @@ include 'config/db.php';
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
+require 'vendor/autoload.php';
+require_once 'config/.env.php'; // Load environment variables
+
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,18 +25,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.example.com';
+        $mail->Host = SMTP_HOST;
         $mail->SMTPAuth = true;
-        $mail->Username = 'your_email@example.com';
-        $mail->Password = 'your_email_password';
+        $mail->Username = SMTP_USERNAME;
+        $mail->Password = SMTP_PASSWORD;
         $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
-
-        $mail->setFrom('your_email@example.com', 'Agro E-commerce');
+        $mail->Port = SMTP_PORT;
+        
+        $mail->setFrom('info@fandvagroservices.com.ng', 'F and V Agroservices');
         $mail->addAddress($email);
         $mail->Subject = "Password Reset Request";
         $mail->isHTML(true);
-        $mail->Body = "Click here to reset your password: <a href='reset_password?token=$reset_token'>Reset Password</a>";
+        $mail->Body = "Click here to reset your password: <a href='https://fandvagroservices.com.ng/reset_password?token=$reset_token'>Reset Password</a>";
 
         if ($mail->send()) {
             $message = "<div class='alert alert-success text-center'>✅ Password reset email sent!</div>";
