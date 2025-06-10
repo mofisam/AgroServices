@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 $count = 0;
 
 if (!empty($_SESSION['cart']) && is_array($_SESSION['cart'])) {
-    $count = count($_SESSgit ION['cart']);
+    $count = count($_SESSION['cart']);
 }
 
 echo json_encode(['count' => $count]);
