@@ -1,6 +1,6 @@
 <?php
 include '../config/db.php';
-include '../config/.env.php'; // contains PAYSTACK_PUBLIC
+include '../config/.env'; // contains PAYSTACK_PUBLIC
 session_start();
 
 $ref = $_GET['ref'];

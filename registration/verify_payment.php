@@ -6,7 +6,7 @@ include '../../includes/email_template.php';
 if (!isset($_GET['reference']) || !isset($_SESSION['checkout'])) {
     die("Unauthorized access.");
 }
-include '../config/.env.php';
+include '../config/.env';
 $reference = $_GET['reference'];
 $checkout = $_SESSION['checkout'];
 $paystack_secret_key = PAYSTACK_SECRET; // Replace with your secret key

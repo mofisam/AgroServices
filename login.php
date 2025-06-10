@@ -104,7 +104,7 @@ $_SESSION['csrf_token'] = $csrfToken;
 
 function redirectBasedOnRole(string $role): void {
     $locations = [
-        'buyer' => 'buyer_dashboard',
+        'buyer' => 'dashboard',
         'seller' => 'seller/index',
         'admin' => 'admin/admin_dashboard'
     ];

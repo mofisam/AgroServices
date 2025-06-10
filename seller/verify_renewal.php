@@ -6,7 +6,7 @@ include '../includes/email_template.php';
 if (!isset($_GET['reference']) || !isset($_SESSION['renewal'])) {
     die("Unauthorized access.");
 }
-include '../config/.env.php';
+include '../config/.env';
 
 $reference = $_GET['reference'];
 $renewal = $_SESSION['renewal'];

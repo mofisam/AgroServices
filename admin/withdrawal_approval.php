@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login");
     exit();
 }
-include '../config/.env.php';
+include '../config/.env';
 
 // Handle POST (Approval/Rejection)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['request_id'], $_POST['action'])) {

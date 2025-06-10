@@ -4,7 +4,7 @@ require '../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require_once '../config/.env.php'; // Load environment variables
+require_once '../config/.env'; // Load environment variables
 
 include '../config/db.php';
 
