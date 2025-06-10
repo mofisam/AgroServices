@@ -6,7 +6,7 @@ include 'includes/header.php';
 <section class="hero-section text-white text-center py-5 position-relative">
   <div class="video-background">
     <video autoplay muted loop>
-      <source src="assets/video/homebg.mp4" type="video/mp4">
+      <source src="<?= BASE_URL ?>/assets/video/homebg.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
   </div>

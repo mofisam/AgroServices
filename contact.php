@@ -58,8 +58,8 @@ require_once 'config/.env.php'; // Load environment variables
                         $mail->Port = SMTP_PORT;
 
                         //Recipients
-                        $mail->setFrom('your_gmail@gmail.com', 'F and V Agro Services System');
-                        $mail->addAddress('techempery@gmail.com'); // Admin email
+                        $mail->setFrom('no-reply@fandvagroservices.com.ng', 'F and V Agro Services System');
+                        $mail->addAddress('info@fandvagroservices.com.ng'); // Admin email
 
                         // Content
                         $mail->isHTML(true);

@@ -35,5 +35,5 @@ if ($message && $to_user) {
     }
 }
 
-header("Location: http://fandvagroservices.com.ng/seller/messages/index?user=$to_user");
+header("Location: <?= BASE_URL ?>/seller/messages/index?user=$to_user");
 exit();

@@ -33,7 +33,7 @@ include '../includes/header.php';
                     </ul>
                 </div>
                 <div class="card-footer bg-transparent border-0 text-center pb-4">
-                    <a href="buyer.php" class="btn btn-success btn-lg px-4 py-2">
+                    <a href="buyer" class="btn btn-success btn-lg px-4 py-2">
                         <i class="bi bi-arrow-right-circle me-2"></i> Register as Buyer
                     </a>
                 </div>
@@ -61,7 +61,7 @@ include '../includes/header.php';
                     </ul>
                 </div>
                 <div class="card-footer bg-transparent border-0 text-center pb-4">
-                    <a href="seller.php" class="btn btn-primary btn-lg px-4 py-2">
+                    <a href="seller" class="btn btn-primary btn-lg px-4 py-2">
                         <i class="bi bi-arrow-right-circle me-2"></i> Register as Seller
                     </a>
                 </div>
@@ -73,7 +73,7 @@ include '../includes/header.php';
         <div class="col-lg-8 text-center">
             <div class="card border-0 shadow-sm">
                 <div class="card-body py-3">
-                <a href="../login.php" class="btn btn-outline-secondary">
+                <a href="../login" class="btn btn-outline-secondary">
                     <i class="bi bi-box-arrow-in-right me-2"></i> Already have an account? Login
                 </a>
                 </div>
