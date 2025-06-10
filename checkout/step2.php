@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['email'], $_POST['gra
     header("Location: step1");
     exit();
 }
-include '../config/.env.php';
+include '../config/.env';
 
 // ✅ Collect billing details
 $billing = [

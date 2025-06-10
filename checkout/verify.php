@@ -6,7 +6,7 @@ include '../config/db.php';
 if (!isset($_GET['reference'], $_SESSION['checkout'])) {
     die("Unauthorized access.");
 }
-include '../config/.env.php';
+include '../config/.env';
 
 $reference = $_GET['reference'];
 $checkout = $_SESSION['checkout'];

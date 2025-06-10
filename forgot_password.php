@@ -4,7 +4,7 @@ require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 require 'vendor/autoload.php';
-require_once 'config/.env.php'; // Load environment variables
+require_once 'config/.env'; // Load environment variables
 
 $message = "";
 

@@ -6,7 +6,7 @@ session_regenerate_id(true);
 // Include configuration files
 require __DIR__ . '/config/db.php';
 require __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/config/.env.php';
+require_once __DIR__ . '/config/.env';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

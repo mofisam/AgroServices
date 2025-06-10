@@ -193,25 +193,25 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
         <!-- 👤 User Session Check -->
         <?php if (isset($_SESSION['user_id'])): 
           $role = $_SESSION['role'] ?? '';
-          $base = "<?= BASE_URL ?>";
+         
 
           // Dashboard Links Based on Role
           switch ($role) {
             case 'buyer':
-              $dashboard_url = "$base/dashboard";
-              $message_url   = "$base/messages";
+              $dashboard_url = BASE_URL . "/dashboard";
+              $message_url   = BASE_URL . "/messages";
               break;
             case 'seller':
-              $dashboard_url = "$base/seller";
-              $message_url   = "$base/seller/messages/index";
+              $dashboard_url = BASE_URL . "/seller";
+              $message_url   = BASE_URL . "/seller/messages/index";
               break;
             case 'admin':
-              $dashboard_url = "$base/admin/admin_dashboard.php";
-              $message_url   = "$base/admin/messages";
+              $dashboard_url = BASE_URL . "/admin/admin_dashboard.php";
+              $message_url   = BASE_URL . "/admin/messages";
               break;
             default:
-              $dashboard_url = "$base/dashboard";
-              $message_url   = "$base/messages";
+              $dashboard_url = BASE_URL . "/dashboard";
+              $message_url   = BASE_URL . "/messages";
               break;
           }
         ?>
@@ -224,7 +224,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
 
           <!-- 🚪 Logout -->
           <li class="nav-item">
-            <a class="nav-link text-warning" href="<?= $base ?>/logout">
+            <a class="nav-link text-warning" href="<?= BASE_URL ?>/logout">
               <i class="bi bi-box-arrow-right nav-icon"></i> Logout
             </a>
           </li>
