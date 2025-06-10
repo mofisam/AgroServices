@@ -5,7 +5,7 @@
       <!-- Company Info -->
       <div class="col-lg-4 mb-4 mb-lg-0">
         <div class="d-flex align-items-center mb-3">
-          <img src="assets/images/logo.jpg" alt="F and V Agro Services" height="40" class="me-2">
+          <img src="<?= BASE_URL ?>/assets/images/logo.jpg" alt="F and V Agro Services" height="40" class="me-2">
           <h5 class="mb-0 text-white">F and V Agro Services</h5>
         </div>
         <p class="mb-3">Empowering farmers. Connecting markets. Driving food security through technology and innovation.</p>

@@ -1,5 +1,5 @@
 <?php 
-include 'includes/header.php'; 
+
 include 'config/db.php'; // Database connection
 ?>
 
@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 require_once 'config/.env'; // Load environment variables
-
+include 'includes/header.php'; 
 ?>
 
 <!-- Hero Section -->
