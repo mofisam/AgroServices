@@ -243,7 +243,7 @@ function redirectBasedOnRole(string $role): void {
 
         <div class="text-center mt-3 text-register">
             <span>Don't have an account?</span>
-            <a href="register" class="text-primary fw-semibold">Register here</a>
+            <a href="registration" class="text-primary fw-semibold">Register here</a>
         </div>
     </div>
 

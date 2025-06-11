@@ -1,5 +1,4 @@
 <?php 
-
 include 'config/db.php'; // Database connection
 ?>
 
