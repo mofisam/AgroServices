@@ -23,11 +23,11 @@
       <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
         <h6 class="text-uppercase fw-bold mb-3">Quick Links</h6>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href="products/index.php" class="text-white-50 text-decoration-none hover-white">Marketplace</a></li>
-          <li class="mb-2"><a href="services.php" class="text-white-50 text-decoration-none hover-white">Services</a></li>
-          <li class="mb-2"><a href="blog.php" class="text-white-50 text-decoration-none hover-white">Blog</a></li>
-          <li class="mb-2"><a href="about.php" class="text-white-50 text-decoration-none hover-white">About Us</a></li>
-          <li><a href="contact.php" class="text-white-50 text-decoration-none hover-white">Contact</a></li>
+          <li class="mb-2"><a href="<?= BASE_URL ?>/products" class="text-white-50 text-decoration-none hover-white">Marketplace</a></li>
+          <li class="mb-2"><a href="<?= BASE_URL ?>/services" class="text-white-50 text-decoration-none hover-white">Services</a></li>
+          <li class="mb-2"><a href="<?= BASE_URL ?>/blog.php" class="text-white-50 text-decoration-none hover-white">Blog</a></li>
+          <li class="mb-2"><a href="<?= BASE_URL ?>/about us.php" class="text-white-50 text-decoration-none hover-white">About Us</a></li>
+          <li><a href="<?= BASE_URL ?>/contact.php" class="text-white-50 text-decoration-none hover-white">Contact</a></li>
         </ul>
       </div>
 
@@ -35,10 +35,9 @@
       <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
         <h6 class="text-uppercase fw-bold mb-3">Resources</h6>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href="faq.php" class="text-white-50 text-decoration-none hover-white">FAQs</a></li>
-          <li class="mb-2"><a href="team.php" class="text-white-50 text-decoration-none hover-white">Meet Our Team</a></li>
-          <li class="mb-2"><a href="pricing.php" class="text-white-50 text-decoration-none hover-white">Pricing</a></li>
-          <li><a href="policy.php" class="text-white-50 text-decoration-none hover-white">Privacy Policy</a></li>
+          <li class="mb-2"><a href="<?= BASE_URL ?>/faq" class="text-white-50 text-decoration-none hover-white">FAQs</a></li>
+          <li class="mb-2"><a href="<?= BASE_URL ?>/team" class="text-white-50 text-decoration-none hover-white">Meet Our Team</a></li>
+          <li><a href="<?= BASE_URL ?>/policy" class="text-white-50 text-decoration-none hover-white">Privacy Policy</a></li>
         </ul>
       </div>
 

@@ -125,7 +125,7 @@ include 'includes/header.php';
 
         <div class="mb-4">
           <strong>Phone</strong>
-          <p class="mb-0">07037997601</p>
+          <p class="mb-0">07037997601, 08130834858</p>
         </div>
       </div>
     </div>

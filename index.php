@@ -26,25 +26,25 @@ include 'includes/header.php';
     <div class="row text-center">
       <div class="col-md-3">
         <div class="counter">
-          <h3 class="count" data-target="12500">0</h3>
+          <h3 class="count" data-target="0">0</h3>
           <p>Farmers Empowered</p>
         </div>
       </div>
       <div class="col-md-3">
         <div class="counter">
-          <h3 class="count" data-target="3200">0</h3>
+          <h3 class="count" data-target="0">0</h3>
           <p>Agribusinesses Supported</p>
         </div>
       </div>
       <div class="col-md-3">
         <div class="counter">
-          <h3 class="count" data-target="75">0</h3>
+          <h3 class="count" data-target="0">0</h3>
           <p>Million ₦ Processed</p>
         </div>
       </div>
       <div class="col-md-3">
         <div class="counter">
-          <h3 class="count" data-target="18">0</h3>
+          <h3 class="count" data-target="0">0</h3>
           <p>States Covered</p>
         </div>
       </div>
