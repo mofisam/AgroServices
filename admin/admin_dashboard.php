@@ -88,7 +88,7 @@ for ($i = 5; $i >= 0; $i--) {
             <p class="text-muted mb-0">System overview and quick actions</p>
         </div>
         <div class="d-flex gap-2">
-            <a href="settings" class="btn btn-outline-primary">
+            <a href="set_registration_fee" class="btn btn-outline-primary">
                 <i class="bi bi-gear me-1"></i> System Settings
             </a>
             <a href="admin_logs" class="btn btn-outline-secondary">
