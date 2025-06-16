@@ -117,7 +117,7 @@ function redirectBasedOnRole(string $role): void {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - AgriConnect</title>
+    <title>Login - fandvagroservices.com.ng</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -205,7 +205,7 @@ function redirectBasedOnRole(string $role): void {
 <body>
     <div class="login-container">
         <div class="login-logo">
-            <img src="assets/images/logo.jpg" alt="AgriConnect Logo">
+            <img src="assets/images/logo.jpg" alt="F and V Agroservices Logo">
             <h4 class="mt-2">Welcome to F and V Agro Services</h4>
         </div>
 
