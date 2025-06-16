@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->SMTPAuth   = true;
                     $mail->Username   = SMTP_USERNAME;
                     $mail->Password   = SMTP_PASSWORD;
-                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->SMTPSecure = SMTP_ENCRYPTION;
                     $mail->Port       = SMTP_PORT;
                     $mail->SMTPDebug  = 0; // Set to 2 for debugging
 

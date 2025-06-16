@@ -53,7 +53,7 @@ include 'includes/header.php';
                         $mail->SMTPAuth = true;
                         $mail->Username = SMTP_USERNAME; // 🔥 YOUR Gmail
                         $mail->Password = SMTP_PASSWORD; // 🔥 YOUR Gmail App Password
-                        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                        $mail->SMTPSecure = SMTP_ENCRYPTION;
                         $mail->Port = SMTP_PORT;
 
                         //Recipients

@@ -4,8 +4,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php'; 
-require_once 'config/.env'; // Load environment variables
+require '../vendor/autoload.php'; 
+require_once '../config/.env'; // Load environment variables
 
 /**
  * Generates a styled HTML email template.
@@ -85,7 +85,7 @@ function sendEmail($recipientEmail, $subject, $messageBody, $isHTML = true) {
         $mail->SMTPAuth = true;
         $mail->Username = SMTP_USERNAME;  // Replace with your email
         $mail->Password = SMTP_PASSWORD;   // Replace with your password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPSecure = SMTP_ENCRYPTION;
         $mail->Port = SMTP_PORT;
 
         // 🏷️ **Sender & Recipient Info**
