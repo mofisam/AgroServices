@@ -267,19 +267,19 @@ include 'includes/header.php';
           <div class="card-body">
             <i class="bi bi-graph-up-arrow display-4 text-warning mb-3"></i>
             <h5>Proven Track Record</h5>
-            <p class="mb-0">Average % annual returns since 2018</p>
+            <p class="mb-0">Average % annual returns since 2025</p>
           </div>
         </div>
       </div>
     </div>
   </div>
   
-  <!-- Background elements -->
+  <!-- Background elements 
   <div class="position-absolute top-0 end-0 opacity-10">
     <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <path fill="#FFFFFF" d="M45,-45C58.1,-29.6,68.6,-14.8,68.5,0.1C68.4,15,57.7,30.1,44.6,43.8C31.4,57.5,15.7,69.9,0.7,69.2C-14.3,68.5,-28.6,54.7,-42.3,41C-56,27.3,-69.2,13.6,-70.4,-1.2C-71.6,-16.1,-60.8,-32.1,-47.1,-47.5C-33.5,-62.8,-16.7,-77.4,-0.3,-77.1C16.2,-76.8,32.3,-61.5,45,-45Z" transform="translate(100 100)" />
     </svg>
-  </div>
+  </div> -->
 </section>
 
 <style>

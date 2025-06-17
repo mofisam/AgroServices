@@ -1,7 +1,7 @@
 <?php
 session_start();
-include '../../config/db.php';
-include '../../includes/email_template.php';
+include '../config/db.php';
+include '../includes/email_template.php';
 
 if (!isset($_GET['reference']) || !isset($_SESSION['checkout'])) {
     die("Unauthorized access.");
@@ -95,7 +95,7 @@ try {
 
     // ✅ **Clear Session and Redirect**
     unset($_SESSION['checkout']);
-    header("Location: ../success?ref=" . urlencode($reference));
+    header("Location: success?ref=" . urlencode($reference));
     exit();
     
 } catch (Exception $e) {

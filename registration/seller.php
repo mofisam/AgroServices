@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow-lg border-0">
-                <div class="card-header bg-primary text-white py-3">
+                <div class="card-header bg-sucess text-white py-3">
                     <h2 class="h4 mb-0"><i class="bi bi-shop-window me-2"></i> Seller Registration</h2>
                 </div>
                 <div class="card-body p-4">

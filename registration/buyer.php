@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
 
                     // Recipients
-                    $mail->setFrom('no-reply@yourdomain.com', 'Your Service Name');
+                    $mail->setFrom('no-reply@yourdomain.com', 'F and V Agro Services');
                     $mail->addAddress($email, $input_values['first_name'] . ' ' . $input_values['last_name']);
                     
                     // Content
@@ -160,7 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->Subject = 'Verify Your Account';
                     $verification_url = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . '/verify?email=' . urlencode($email);
                     $mail->Body    = "
-                        <h2>Welcome to Our Service!</h2>
+                        <h2>Welcome to F and V Agro Services!</h2>
                         <p>Your verification code is: <strong>$otp_code</strong></p>
                         <p>This code will expire in 15 minutes.</p>
                         <p>Click the button below to verify your account:</p>
@@ -176,11 +176,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                     // Redirect to verification page
                     $_SESSION['registration_success'] = true;
-                    header("Location: ../verify?email=" . urlencode($email));
+                    //header("Location: ../verify?email=" . urlencode($email));
+                    header("Location: ../login");
                     exit();
                 } catch (Exception $e) {
                     error_log("Mailer Error: " . $mail->ErrorInfo);
-                    $errors[] = "Error sending verification email. Please try again later.";
+                    $errors[] = 'Error sending verification email. Please try again after logging in. <a href="../login" class="btn">Login</a>';
                 }
             } else {
                 $errors[] = "Registration error: " . $conn->error;
