@@ -120,6 +120,10 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
     .nav-item {
       margin-left: 10px;
     }
+    
+    .green-bg {
+      background-color:rgb(25, 96, 53)
+    }
 
     @media (max-width: 991.98px) {
       .nav-item {
