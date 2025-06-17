@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (empty($_POST['password'])) {
         $errors['password'] = 'Password is required';
-    } elseif (strlen($_POST['password']) < 8) {
-        $errors['password'] = 'Password must be at least 8 characters';
+    } elseif (strlen($_POST['password']) < 6) {
+        $errors['password'] = 'Password must be at least 6 characters';
     } elseif ($_POST['password'] !== $_POST['confirm_password']) {
         $errors['confirm_password'] = 'Passwords do not match';
     }
@@ -70,12 +70,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->begin_transaction();
         try {
             // Insert into users table
-            $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, phone, state, sex, password, role) VALUES (?, ?, ?, ?, ?, ?, ?, 'seller')");
-            $stmt->bind_param("sssssss", 
+            $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, phone, address, state, sex, password, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'seller')");
+            $stmt->bind_param("ssssssss", 
                 $input_values['first_name'],
                 $input_values['last_name'],
                 $input_values['email'],
                 $input_values['phone'],
+                $input_values['business_address'],
                 $input_values['state'],
                 $input_values['gender'],
                 $hashed_password
