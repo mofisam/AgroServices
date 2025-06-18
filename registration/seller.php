@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->begin_transaction();
         try {
             // Insert into users table
-            $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, phone, address, state, sex, password, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'seller')");
+            $stmt = $conn->prepare("INSERT INTO users (id, first_name, last_name, email, phone, address, state, sex, password, role) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, 'seller')");
             $stmt->bind_param("ssssssss", 
                 $input_values['first_name'],
                 $input_values['last_name'],
