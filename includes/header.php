@@ -180,7 +180,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <div class="container">
 
     <!-- Logo -->
-    <a class="navbar-brand d-flex align-items-center" href="<?= BASE_URL ?>/index">
+    <a class="navbar-brand d-flex align-items-center" href="<?= BASE_URL ?>/">
       <img src="<?= BASE_URL ?>/assets/images/logo.jpg" alt="F and V Agro Services" onerror="this.style.display='none';">
       <span class="nav-link">Home</SPAN>
     </a>

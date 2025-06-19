@@ -2,7 +2,6 @@
 include 'includes/header.php'; 
 ?>
 
-
 <!-- Add this modal at the top of your body content -->
 <?php if (!isset($_SESSION['user_id'])): ?>
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-hidden="true">
