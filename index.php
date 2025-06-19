@@ -2,6 +2,51 @@
 include 'includes/header.php'; 
 ?>
 
+
+<!-- Add this modal at the top of your body content -->
+<?php if (!isset($_SESSION['user_id'])): ?>
+<div class="modal fade" id="registrationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Join Our Agro Community</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center py-4">
+                <div class="mb-4">
+                    <i class="bi bi-people-fill text-success" style="font-size: 3rem;"></i>
+                </div>
+                <h4 class="mb-3">Get Started as a Buyer or Seller</h4>
+                <p class="text-muted mb-4">Register now to access all features of our agricultural platform</p>
+                
+                <div class="d-grid gap-3">
+                    <a href="/registration/buyer" class="btn btn-success py-3">
+                        <i class="bi bi-cart-check me-2"></i> Register as Buyer
+                    </a>
+                    <a href="/registration/seller" class="btn btn-warning py-3 text-white">
+                        <i class="bi bi-shop me-2"></i> Register as Seller
+                    </a>
+                    <a href="/login" class="btn btn-outline-secondary">
+                        Already have an account? Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Show modal after 5 seconds for non-logged-in users
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        var modal = new bootstrap.Modal(document.getElementById('registrationModal'));
+        modal.show();
+    }, 5000); // 5000 milliseconds = 5 seconds
+});
+</script>
+<?php endif; ?>
+
+
 <!-- ✅ Hero Section with Video Background -->
 <section class="hero-section text-white text-center py-5 position-relative">
   <div class="video-background">
