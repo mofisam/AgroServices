@@ -2,6 +2,7 @@
 include 'includes/header.php'; 
 ?>
 
+
 <!-- Add this modal at the top of your body content -->
 <?php if (!isset($_SESSION['user_id'])): ?>
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-hidden="true">
@@ -168,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="row align-items-center">
       <div class="col-md-6">
         <div class="ratio ratio-16x9">
-          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+          <iframe src="<?= BASE_URL ?>/assets/Video/intro.mp4" allowfullscreen></iframe>
         </div>
       </div>
       <div class="col-md-6">
