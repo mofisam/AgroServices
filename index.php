@@ -2,7 +2,6 @@
 include 'includes/header.php'; 
 ?>
 
-
 <!-- Add this modal at the top of your body content -->
 <?php if (!isset($_SESSION['user_id'])): ?>
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-hidden="true">
@@ -14,7 +13,7 @@ include 'includes/header.php';
             </div>
             <div class="modal-body text-center py-4">
                 <div class="mb-4">
-                    <i class="bi bi-people-fill text-success" style="font-size: 3rem;"></i>
+                <img src="assets/images/logo.jpg" alt="Description of image">
                 </div>
                 <h4 class="mb-3">Get Started as a Buyer or Seller</h4>
                 <p class="text-muted mb-4">Register now to access all features of our agricultural platform</p>
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <h1 class="display-4 fw-bold">Empowering Agriculture. Feeding the Future.</h1>
     <p class="lead mt-3">Integrated Agribusiness & E-commerce platform for farmers, buyers, and innovators.</p>
     <div class="d-flex justify-content-center gap-3 mt-4">
-      <a href="/products/index" class="btn btn-light btn-lg">🌱 Explore Marketplace</a>
+      <a href="products/index" class="btn btn-light btn-lg">🌱 Explore Marketplace</a>
       <a href="#video-tour" class="btn btn-outline-light btn-lg">▶ Watch Intro</a>
     </div>
   </div>
@@ -132,27 +131,27 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="col-md-6">
         <div class="card border-0 bg-dark-light">
           <div class="card-body p-4">
-            <h4 class="mb-3">Success Blueprint</h4>
+            <h4 class="mb-3">Building Agricultural Legacies That Last</h4>
             <div class="timeline">
               <div class="timeline-item">
                 <div class="timeline-badge bg-success"></div>
-                <div class="timeline-content ">
-                  <h6>Year 1-2: Establishment</h6>
-                  <p>Infrastructure development, crop cycles, operational systems</p>
+                <div class="timeline-content">
+                  <h6>Laying the Foundation</h6>
+                  <p>We start with strategic infrastructure and operational planning — no shortcuts, just solid ground for long-term success.</p>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-badge bg-warning"></div>
                 <div class="timeline-content">
-                  <h6>Year 3-5: Growth</h6>
-                  <p>Production scaling, market penetration, value addition</p>
+                  <h6>Smart Growth</h6>
+                  <p>With professional management in place, farms begin to scale efficiently, increasing output and profitability.</p>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-badge bg-primary"></div>
                 <div class="timeline-content">
-                  <h6>Year 5+: Maturity</h6>
-                  <p>Diversification, processing, generational transition</p>
+                  <h6>Generational Impact</h6>
+                  <p>Farms become lasting assets, delivering 3–5× returns and positioning families for long-term wealth and food security.</p>
                 </div>
               </div>
             </div>
@@ -173,15 +172,16 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
       <div class="col-md-6">
-        <h2 class="mb-3">See Our Farms in Action</h2>
-        <p>Take a virtual tour of our model farms and processing facilities across Nigeria. See firsthand how we're implementing modern agricultural techniques for maximum yield and profitability.</p>
+        <h2 class="mb-3">Connecting Farmers to Buyers Nationwide</h2>
+        <p>At F and V Agro Services, we empower farmers by connecting them directly with buyers online — no middlemen, no delays.</p>
         <ul class="list-check">
-          <li>Smart irrigation systems</li>
-          <li>Precision farming technology</li>
-          <li>Integrated livestock management</li>
-          <li>Post-harvest processing units</li>
+          <li>🚛 Faster and more reliable transactions</li>
+          <li>📈 Better prices and more profit for farmers</li>
+          <li>🤝 A trusted marketplace for agro-inputs and produce</li>
+          <li>💡 Simple tools to list and sell with ease</li>
         </ul>
-        <a href="/virtual-tour" class="btn btn-success mt-3">Explore All Facilities</a>
+        <p>Join thousands of farmers already growing their income through our digital platform.</p>
+        <a href="registration" class="btn btn-success mt-3">Register today</a>
       </div>
     </div>
   </div>
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="col-md-3">
         <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/Marketplace.png" class="card-img-top rounded" alt="Marketplace">
+          <img src="assets/images/product.jpg" class="card-img-top rounded" alt="Marketplace">
           <div class="card-body">
             <h5 class="card-title mt-3">Marketplace</h5>
             <p class="card-text">Sell and buy agricultural goods, equipment, and produce easily and securely.</p>
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="row">
       <div class="col-md-4 mb-4">
         <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/blog/post1.jpg" class="card-img-top" alt="Blog Post">
+          <img src="assets/images/maize.jpg" class="card-img-top" alt="Blog Post">
           <div class="card-body">
             <span class="badge bg-success mb-2">Farm Management</span>
             <h5 class="card-title">5 Irrigation Techniques That Boost Yield by 30%</h5>
@@ -444,7 +444,7 @@ include 'includes/footer.php';
   }
   .timeline-badge {
     position: absolute;
-    left: -15px;
+    left: -35px;
     top: 0;
     width: 30px;
     height: 30px;
@@ -464,7 +464,7 @@ include 'includes/footer.php';
     margin-bottom: 10px;
   }
   .list-check li:before {
-    content: "\f00c";
+    
     font-family: "Bootstrap Icons";
     position: absolute;
     left: 0;
