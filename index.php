@@ -168,7 +168,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="row align-items-center">
       <div class="col-md-6">
         <div class="ratio ratio-16x9">
-          <iframe src="<?= BASE_URL ?>/assets/Video/intro.mp4" allowfullscreen></iframe>
+        <video controls>
+          <source src="<?= BASE_URL ?>/assets/Video/intro.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>  
         </div>
       </div>
       <div class="col-md-6">
