@@ -13,7 +13,7 @@ include 'includes/header.php';
             </div>
             <div class="modal-body text-center py-4">
                 <div class="mb-4">
-                <img src="assets/images/logo.jpg" alt="Description of image">
+                <img src="assets/images/logo.jpg" alt="Description of image" width="40">
                 </div>
                 <h4 class="mb-3">Get Started as a Buyer or Seller</h4>
                 <p class="text-muted mb-4">Register now to access all features of our agricultural platform</p>
