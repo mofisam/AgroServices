@@ -246,13 +246,34 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="card h-100 border-0 shadow-sm">
           <div class="card-body">
             <div class="d-flex mb-3">
-              <img src="assets/images/testimonials/client1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Client">
+              <img src="assets/images/img1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Client">
               <div>
-                <h5 class="mb-0">Adebayo Farms</h5>
-                <p class="text-muted small">Poultry & Fish Farm, Ogun</p>
+                <h5 class="mb-0">Maxlife Integrated Farm</h5>
+                <p class="text-muted small">Mushroom farm, Nigeria</p>
               </div>
             </div>
-            <p>"Working with F and V Agro Services transformed our 5-acre farm into a profitable enterprise. Their management system increased our egg production by 40% in one year."</p>
+            <p>F and V Agro Services delivered an exceptional setup of our mushroom farm. Nearly a year later, we are still harvesting fresh mushrooms consistently. They also established several acres of maize and cassava farmland for us within just one month—a task that would have typically taken over two months. The yields from both crops were impressive. Their efficiency and expertise truly exceeded our expectations.</p>
+            <div class="rating">
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex mb-3">
+              <img src="assets/images/img1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Client">
+              <div>
+                <h5 class="mb-0">Skymedew Farm</h5>
+                <p class="text-muted small"> Nigeria</p>
+              </div>
+            </div>
+            <p>F and V Agro Services helped us acquire multiple acres of farmland and handled all the necessary documentation seamlessly. They prepared the land and planted cocoa, plantain, maize, and cassava—all without requiring our physical presence. Their professionalism, transparency, and reliability make them the most dependable agricultural service provider we’ve worked with.</p>
             <div class="rating">
               <i class="bi bi-star-fill text-warning"></i>
               <i class="bi bi-star-fill text-warning"></i>
