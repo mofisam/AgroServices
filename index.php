@@ -47,13 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <!-- ✅ Hero Section with Video Background -->
-<section class="hero-section text-white text-center py-5 position-relative">
-  <div class="video-background">
-    <video autoplay muted loop>
-      <source src="<?= BASE_URL ?>/assets/Video/hero.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
-  </div>
+<section class="hero-section text-white text-center py-5 position-relative" style="background-image: url('<?= BASE_URL ?>/assets/images/ads.jpg'); background-size: cover; background-position: center;">
+  <div class="overlay"></div>
   <div class="container position-relative">
     <h1 class="display-4 fw-bold">Empowering Agriculture. Feeding the Future.</h1>
     <p class="lead mt-3">Integrated Agribusiness & E-commerce platform for farmers, buyers, and innovators.</p>
@@ -63,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </section>
+
 
 <!-- ✅ Stats Counter -->
 <section class="py-4 bg-success text-white">
@@ -168,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="row align-items-center">
       <div class="col-md-6">
         <div class="ratio ratio-16x9">
-        <video >
+        <video controls>
           <source src="<?= BASE_URL ?>/assets/Video/intro.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>  
@@ -249,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="card h-100 border-0 shadow-sm">
           <div class="card-body">
             <div class="d-flex mb-3">
-              <img src="assets/images/img1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Client">
+              <img src="<?= BASE_URL ?>/assets/images/img1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Client">
               <div>
                 <h5 class="mb-0">Maxlife Integrated Farm</h5>
                 <p class="text-muted small">Mushroom farm, Nigeria</p>
@@ -270,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="card h-100 border-0 shadow-sm">
           <div class="card-body">
             <div class="d-flex mb-3">
-              <img src="assets/images/img1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Client">
+              <img src="<?= BASE_URL ?>/assets/images/img1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Client">
               <div>
                 <h5 class="mb-0">Skymedew Farm</h5>
                 <p class="text-muted small"> Nigeria</p>
@@ -432,20 +428,7 @@ include 'includes/footer.php';
     display: flex;
     align-items: center;
   }
-  .video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-  }
-  .video-background video {
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-  }
+  
   .overlay {
     position: absolute;
     top: 0;

@@ -107,9 +107,9 @@ for ($i = 5; $i >= 0; $i--) {
 }
 
 // Profile Image
-$profile_img = $user['profile_picture'] && file_exists("uploads/profile_pics/" . $user['profile_picture'])
-    ? "uploads/profile_pics/" . $user['profile_picture']
-    : "assets/images/img1.jpg";
+$profile_img = (isset($seller_id['profile_picture']) && $user['profile_picture'] !== '' && file_exists("uploads/profile_pics/" . $user['profile_picture']))
+    ? "../uploads/profile_pics/" . $seller_id['profile_picture']
+    : "../assets/images/img1.jpg";
 ?>
 
 <div class="container py-4">
