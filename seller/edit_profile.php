@@ -135,7 +135,7 @@ include '../includes/header.php';
                         <!-- Profile Picture Section -->
                         <div class="text-center mb-4">
                             <div class="position-relative d-inline-block">
-                                <img id="profileImagePreview" src="<?= !empty($profile_picture) ? 'uploads/profile_pics/' . htmlspecialchars($profile_picture) : 'assets/images/default-profile.png' ?>" 
+                                <img id="profileImagePreview" src="<?= !empty($profile_picture) ? '../uploads/profile_pics/' . htmlspecialchars($profile_picture) : 'assets/images/default-profile.png' ?>" 
                                      class="rounded-circle shadow" width="150" height="150" style="object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
                                 <label for="profile_picture" class="btn btn-sm btn-primary rounded-circle position-absolute bottom-0 end-0" style="width: 40px; height: 40px;">
                                     <i class="bi bi-camera"></i>

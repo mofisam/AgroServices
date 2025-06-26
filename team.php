@@ -96,16 +96,16 @@ include 'includes/header.php';
             "name" => "Falade Victory. O",
             "title" => "Co-Founder",
             "img" => "assets/images/img1.jpg",
-            "bio" => "Is the co-founder of F and V Agro Services and a season business developer expert, she is also a Business negotiator with high knowledge of financial management. She studied accounting from the Federal Polytechnic Nassarawa State. She is currently top Marketing Lead for a tech company in Ibadan, Oyo State.",
+            "bio" => "His the co-founder of F and V Agro Services and a season business developer expert, she is also a Business negotiator with high knowledge of financial management. She studied accounting from the Federal Polytechnic Nassarawa State. She is currently top Marketing Lead for a tech company in Ibadan, Oyo State.",
             "linkedin" => "#",
             "twitter" => "#"
         ],
         [
             "id" => "member3",
-            "name" => "Pauls Deborah I",
+            "name" => "Adewale Damilare Owoade",
             "title" => "Team Member",
-            "img" => "assets/images/img1.jpg",
-            "bio" => "Dedicated team member at F and V Agro Services with expertise in agricultural operations and customer relations. Committed to supporting our clients with professional service and agricultural solutions.",
+            "img" => "assets/images/OWOADE ADEWALE.jpg",
+            "bio" => "He is an experienced broiler producer and agricultural extension agent with a proven track record in commercial poultry production. He has successfully raised over 43,000 broiler chickens at my current facility, supplying to top industry players including ZARTECH Farms, Coker Farms, TAGHINI Foods,  Durante Foods, and CHICKEN REPUBLIC. His academic background from FUNAAB (B.Agric and M.Agric) is complemented by practical expertise and a commitment to sustainable, high-quality poultry farming.<br/><br/><i>B.Agric, M.Agric (FUNAAB) | Certified Project Manager (CPM)<br/> Broiler Producer | Agricultural Extension Specialist</i>",
             "linkedin" => "#",
             "twitter" => "#"
         ],
@@ -115,7 +115,7 @@ include 'includes/header.php';
             "title" => "Tech Lead",
             "img" => "assets/images/sam.jpg",
             "bio" => "Samuel Alao is a Full-Stack Developer with a strong foundation in both frontend and backend technologies, passionate about building dynamic, user-friendly websites and applications. With a B.Tech in Urban and Regional Planning from Ladoke Akintola University of Technology and professional training in Software Engineering from ALX, he bring a unique blend of analytical thinking and technical expertise to every project. <br/><br/> He specialize in helping businesses grow through innovative, scalable tech solutions, ensuring high standards of quality, efficiency, and client satisfaction in all my work. His mission is to transform ideas into powerful digital products that drive real-world impact.",
-            "linkedin" => "#",
+            "linkedin" => "https://www.linkedin.com/in/samuel-alao/",
             "twitter" => "#"
         ]
     ];
