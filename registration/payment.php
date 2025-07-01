@@ -5,7 +5,7 @@ include '../includes/email_template.php';
 
 // Validate user_id parameter
 if (!isset($_GET['user_id']) || !ctype_digit($_GET['user_id'])) {
-    header("Location: ../error.php?code=400");
+    header("Location: ../403");
     exit();
 }
 

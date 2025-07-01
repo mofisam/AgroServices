@@ -6,7 +6,6 @@ include '../includes/email_template.php';
 if (!isset($_GET['reference']) || !isset($_SESSION['checkout'])) {
     die("Unauthorized access.");
 }
-include '../config/.env';
 $reference = $_GET['reference'];
 $checkout = $_SESSION['checkout'];
 $paystack_secret_key = PAYSTACK_SECRET; // Replace with your secret key
@@ -95,6 +94,7 @@ try {
 
     // ✅ **Clear Session and Redirect**
     unset($_SESSION['checkout']);
+    $_SESSION['payment_success'] = true;
     header("Location: success?ref=" . urlencode($reference));
     exit();
     

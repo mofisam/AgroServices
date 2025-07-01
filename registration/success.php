@@ -1,30 +1,56 @@
 <?php
+session_start();
+include '../config/db.php';
 include '../includes/header.php';
 
-// Check if payment was actually successful (security measure)
-if (!isset($_SESSION['payment_success'])) {
+// Check if we have a reference and valid session
+if (!isset($_GET['ref'])) {
     header("Location: ../403.php");
     exit();
 }
 
-// Clear the payment success flag
-unset($_SESSION['payment_success']);
+$reference = $_GET['ref'];
+
+// Verify the payment exists in database
+$stmt = $conn->prepare("SELECT * FROM business_payment_records WHERE reference = ?");
+$stmt->bind_param("s", $reference);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    header("Location: ../403.php");
+    exit();
+}
+
+$payment = $result->fetch_assoc();
+$stmt->close();
+
+// Get user information
+$user_stmt = $conn->prepare("SELECT first_name FROM users WHERE id = ?");
+$user_stmt->bind_param("i", $payment['user_id']);
+$user_stmt->execute();
+$user_result = $user_stmt->get_result();
+$user = $user_result->fetch_assoc();
+$user_stmt->close();
 ?>
+
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-6">
             <!-- Success Card -->
             <div class="card border-0 shadow-sm text-center">
                 <div class="card-body p-5">
-                    <!-- Animated Checkmark -->
+                    <!-- Success Icon -->
                     <div class="mb-4">
-                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="80" height="80">
-                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" stroke="#28a745" stroke-width="3"/>
-                            <path class="checkmark__check" fill="none" stroke="#28a745" stroke-width="4" stroke-linecap="round" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                        </svg>
+                        <div class="bg-success bg-opacity-10 d-inline-flex p-4 rounded-circle">
+                            <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+                        </div>
                     </div>
                     
                     <h2 class="mb-3">🎉 Payment Successful!</h2>
+                    <?php if(isset($user['first_name'])): ?>
+                    <p class="lead text-muted mb-4">Congratulations <?= htmlspecialchars($user['first_name']) ?>!</p>
+                    <?php endif; ?>
                     <p class="lead text-muted mb-4">Your registration fee has been processed successfully.</p>
                     
                     <div class="alert alert-success mb-4">
@@ -73,29 +99,4 @@ unset($_SESSION['payment_success']);
     </div>
 </div>
 
-<style>
-    /* Animated checkmark styles */
-    .checkmark__circle {
-        stroke-dasharray: 166;
-        stroke-dashoffset: 166;
-        stroke-width: 3;
-        stroke-miterlimit: 10;
-        stroke: #28a745;
-        fill: none;
-        animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-    }
-    
-    .checkmark__check {
-        transform-origin: 50% 50%;
-        stroke-dasharray: 48;
-        stroke-dashoffset: 48;
-        animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-    }
-    
-    @keyframes stroke {
-        100% {
-            stroke-dashoffset: 0;
-        }
-    }
-</style>
 <?php include '../includes/footer.php'; ?>
