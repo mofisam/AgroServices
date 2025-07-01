@@ -68,6 +68,10 @@ $user_stmt->close();
                         <div class="card-body">
                             <h5 class="mb-3"><i class="bi bi-list-check me-2"></i> Next Steps</h5>
                             <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent d-flex align-items-center">
+                                <i class="bi bi-check-circle text-success me-3"></i>
+                                    <span>Login to your Account</span>
+                                </li>
                                 <li class="list-group-item bg-transparent d-flex align-items-center">
                                     <i class="bi bi-check-circle text-success me-3"></i>
                                     <span>Complete your business profile</span>
@@ -86,11 +90,8 @@ $user_stmt->close();
                     
                     <!-- Action Buttons -->
                     <div class="d-grid gap-3">
-                        <a href="../seller/dashboard" class="btn btn-primary py-3">
-                            <i class="bi bi-speedometer2 me-2"></i> Go to Dashboard
-                        </a>
-                        <a href="../seller/add_product" class="btn btn-outline-primary">
-                            <i class="bi bi-plus-circle me-2"></i> Add Your First Product
+                        <a href="../login" class="btn btn-success py-3">
+                            <i class="bi bi-box-arrow-in-right me-2"></i> Login
                         </a>
                     </div>
                 </div>
