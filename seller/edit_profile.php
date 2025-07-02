@@ -2,6 +2,7 @@
 session_start();
 include '../config/db.php';
 
+
 if (!isset($_SESSION["user_id"])) {
     header("Location: login");
     exit();
@@ -10,86 +11,147 @@ if (!isset($_SESSION["user_id"])) {
 $user_id = $_SESSION["user_id"];
 $message = "";
 
+// Function to sanitize input
+function sanitizeInput($data, $type = 'string') {
+    $data = trim($data);
+    $data = stripslashes($data);
+    
+    switch($type) {
+        case 'email':
+            return filter_var($data, FILTER_SANITIZE_EMAIL);
+        case 'int':
+            return filter_var($data, FILTER_SANITIZE_NUMBER_INT);
+        case 'float':
+            return filter_var($data, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        case 'url':
+            return filter_var($data, FILTER_SANITIZE_URL);
+        case 'string':
+        default:
+            return htmlspecialchars($data, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Input sanitization and validation
-    $first_name = trim(filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING));
-    $last_name = trim(filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING));
-    $phone = trim(filter_input(INPUT_POST, "phone", FILTER_SANITIZE_STRING));
-    $address = trim(filter_input(INPUT_POST, "address", FILTER_SANITIZE_STRING));
-    $state = trim(filter_input(INPUT_POST, "state", FILTER_SANITIZE_STRING));
-    $sex = trim(filter_input(INPUT_POST, "sex", FILTER_SANITIZE_STRING));
+    // Validate CSRF token
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        $message = ["type" => "danger", "text" => "Invalid CSRF token"];
+    } else {
+        // Input sanitization and validation
+        $first_name = sanitizeInput($_POST["first_name"]);
+        $last_name = sanitizeInput($_POST["last_name"]);
+        $phone = sanitizeInput($_POST["phone"], 'int');
+        $address = sanitizeInput($_POST["address"]);
+        $state = sanitizeInput($_POST["state"]);
+        $sex = in_array($_POST["sex"], ['Male', 'Female']) ? $_POST["sex"] : '';
 
-    $update_pic = "";
-    $profile_picture = null;
+        // Additional validation
+        if (empty($first_name) || empty($last_name) || empty($phone) || empty($address) || empty($state) || empty($sex)) {
+            $message = ["type" => "danger", "text" => "All fields are required"];
+        } elseif (!preg_match('/^[a-zA-Z\s\-]{2,50}$/', $first_name) || !preg_match('/^[a-zA-Z\s\-]{2,50}$/', $last_name)) {
+            $message = ["type" => "danger", "text" => "Invalid name format"];
+        } elseif (!preg_match('/^[0-9\+]{10,15}$/', $phone)) {
+            $message = ["type" => "danger", "text" => "Invalid phone number"];
+        } else {
+            $update_pic = "";
+            $profile_picture = null;
 
-    // Handle profile picture upload
-    if (isset($_FILES["profile_picture"]) && $_FILES["profile_picture"]["error"] === UPLOAD_ERR_OK) {
-        $target_dir = "../uploads/profile_pics/";
-        if (!file_exists($target_dir)) {
-            mkdir($target_dir, 0777, true);
-        }
-        
-        $file_ext = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
-        $allowed_types = ["jpg", "jpeg", "png", "webp"];
-        
-        if (in_array($file_ext, $allowed_types)) {
-            // Delete old profile picture if exists
-            $stmt = $conn->prepare("SELECT profile_picture FROM users WHERE id = ?");
-            $stmt->bind_param("i", $user_id);
-            $stmt->execute();
-            $stmt->bind_result($old_picture);
-            $stmt->fetch();
-            $stmt->close();
-            
-            if ($old_picture && file_exists("../uploads/profile_pics/" . $old_picture)) {
-                unlink("../uploads/profile_pics/" . $old_picture);
+            // Handle profile picture upload
+            if (isset($_FILES["profile_picture"]) && $_FILES["profile_picture"]["error"] === UPLOAD_ERR_OK) {
+                $target_dir = "../uploads/profile_pics/";
+                if (!file_exists($target_dir)) {
+                    mkdir($target_dir, 0755, true); // More secure permissions
+                }
+                
+                $file_ext = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
+                $allowed_types = ["jpg", "jpeg", "png", "webp"];
+                $max_file_size = 2 * 1024 * 1024; // 2MB
+                
+                // Validate file
+                $finfo = new finfo(FILEINFO_MIME_TYPE);
+                $mime = $finfo->file($_FILES["profile_picture"]["tmp_name"]);
+                $valid_mimes = [
+                    'jpg' => 'image/jpeg',
+                    'jpeg' => 'image/jpeg',
+                    'png' => 'image/png',
+                    'webp' => 'image/webp'
+                ];
+                
+                if (!in_array($file_ext, $allowed_types) || !in_array($mime, $valid_mimes)) {
+                    $message = ["type" => "danger", "text" => "Invalid file type"];
+                } elseif ($_FILES["profile_picture"]["size"] > $max_file_size) {
+                    $message = ["type" => "danger", "text" => "File too large. Max 2MB allowed"];
+                } else {
+                    // Delete old profile picture if exists
+                    $stmt = $conn->prepare("SELECT profile_picture FROM users WHERE id = ?");
+                    $stmt->bind_param("i", $user_id);
+                    $stmt->execute();
+                    $stmt->bind_result($old_picture);
+                    $stmt->fetch();
+                    $stmt->close();
+                    
+                    if ($old_picture && file_exists("../uploads/profile_pics/" . $old_picture)) {
+                        unlink("../uploads/profile_pics/" . $old_picture);
+                    }
+
+                    $profile_picture = bin2hex(random_bytes(8)) . "." . $file_ext;
+                    $target_file = $target_dir . $profile_picture;
+                    
+                    if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
+                        $update_pic = ", profile_picture=?";
+                        
+                        // Compress image
+                        try {
+                            if ($file_ext == "jpg" || $file_ext == "jpeg") {
+                                $image = imagecreatefromjpeg($target_file);
+                                imagejpeg($image, $target_file, 85);
+                                imagedestroy($image);
+                            } elseif ($file_ext == "png") {
+                                $image = imagecreatefrompng($target_file);
+                                imagepalettetotruecolor($image);
+                                imagealphablending($image, true);
+                                imagesavealpha($image, true);
+                                imagepng($image, $target_file, 6);
+                                imagedestroy($image);
+                            } elseif ($file_ext == "webp") {
+                                $image = imagecreatefromwebp($target_file);
+                                imagewebp($image, $target_file, 85);
+                                imagedestroy($image);
+                            }
+                        } catch (Exception $e) {
+                            error_log("Image processing error: " . $e->getMessage());
+                        }
+                    }
+                }
             }
 
-            $profile_picture = uniqid("profile_") . "." . $file_ext;
-            $target_file = $target_dir . $profile_picture;
-            
-            // Resize and optimize image
-            if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
-                $update_pic = ", profile_picture=?";
-                 
-                // Compress image if needed
-                if ($file_ext == "jpg" || $file_ext == "jpeg") {
-                    $image = imagecreatefromjpeg($target_file);
-                    imagejpeg($image, $target_file, 85); // 85% quality
-                    imagedestroy($image);
-                } elseif ($file_ext == "png") {
-                    $image = imagecreatefrompng($target_file);
-                    imagepalettetotruecolor($image);
-                    imagealphablending($image, true);
-                    imagesavealpha($image, true);
-                    imagepng($image, $target_file, 6); // Compression level 6
-                    imagedestroy($image);
+            // Update user data if no errors
+            if (empty($message)) {
+                $sql = "UPDATE users SET first_name=?, last_name=?, phone=?, address=?, state=?, sex=? $update_pic WHERE id=?";
+                $stmt = $conn->prepare($sql);
+
+                if ($stmt) {
+                    if ($profile_picture !== null) {
+                        $stmt->bind_param("sssssssi", $first_name, $last_name, $phone, $address, $state, $sex, $profile_picture, $user_id);
+                    } else {
+                        $stmt->bind_param("ssssssi", $first_name, $last_name, $phone, $address, $state, $sex, $user_id);
+                    }
+                    
+                    if ($stmt->execute()) {
+                        $message = ["type" => "success", "text" => "Profile updated successfully!"];
+                    } else {
+                        $message = ["type" => "danger", "text" => "Error updating profile"];
+                    }
+                    $stmt->close();
+                } else {
+                    $message = ["type" => "danger", "text" => "Database error"];
                 }
             }
         }
     }
-
-    // Update user data
-    $sql = "UPDATE users SET first_name=?, last_name=?, phone=?, address=?, state=?, sex=? $update_pic WHERE id=?";
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt) {
-        if ($profile_picture !== null) {
-            $stmt->bind_param("ssssssss", $first_name, $last_name, $phone, $address, $state, $sex, $profile_picture, $user_id);
-        } else {
-            $stmt->bind_param("sssssss", $first_name, $last_name, $phone, $address, $state, $sex, $user_id);
-        }
-        
-        if ($stmt->execute()) {
-            $message = ["type" => "success", "text" => "Profile updated successfully!"];
-        } else {
-            $message = ["type" => "danger", "text" => "Error updating profile: " . $stmt->error];
-        }
-        $stmt->close();
-    } else {
-        $message = ["type" => "danger", "text" => "Database error: " . $conn->error];
-    }
 }
+
+// Generate new CSRF token
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 // Get current user data
 $stmt = $conn->prepare("SELECT first_name, last_name, phone, address, state, sex, profile_picture FROM users WHERE id=?");
@@ -124,7 +186,7 @@ include '../includes/header.php';
                 <div class="card-body p-4">
                     <!-- Feedback Message -->
                     <?php if (!empty($message)): ?>
-                        <div class="alert alert-<?= $message['type'] ?> alert-dismissible fade show mb-4" role="alert">
+                        <div class="alert alert-<?= htmlspecialchars($message['type']) ?> alert-dismissible fade show mb-4" role="alert">
                             <?= htmlspecialchars($message['text']) ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
@@ -132,6 +194,8 @@ include '../includes/header.php';
 
                     <!-- Profile Update Form -->
                     <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+                        
                         <!-- Profile Picture Section -->
                         <div class="text-center mb-4">
                             <div class="position-relative d-inline-block">
@@ -139,7 +203,7 @@ include '../includes/header.php';
                                      class="rounded-circle shadow" width="150" height="150" style="object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
                                 <label for="profile_picture" class="btn btn-sm btn-primary rounded-circle position-absolute bottom-0 end-0" style="width: 40px; height: 40px;">
                                     <i class="bi bi-camera"></i>
-                                    <input type="file" id="profile_picture" name="profile_picture" accept="image/*" class="d-none">
+                                    <input type="file" id="profile_picture" name="profile_picture" accept="image/jpeg,image/png,image/webp" class="d-none">
                                 </label>
                             </div>
                             <div class="mt-2">
@@ -155,15 +219,15 @@ include '../includes/header.php';
                                 <div class="col-md-6">
                                     <label for="first_name" class="form-label">First Name</label>
                                     <input type="text" class="form-control" id="first_name" name="first_name" 
-                                           value="<?= htmlspecialchars($first_name) ?>" required>
-                                    <div class="invalid-feedback">Please enter your first name</div>
+                                           value="<?= htmlspecialchars($first_name) ?>" required pattern="[a-zA-Z\s\-]{2,50}">
+                                    <div class="invalid-feedback">Please enter a valid first name (2-50 characters, letters only)</div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <label for="last_name" class="form-label">Last Name</label>
                                     <input type="text" class="form-control" id="last_name" name="last_name" 
-                                           value="<?= htmlspecialchars($last_name) ?>" required>
-                                    <div class="invalid-feedback">Please enter your last name</div>
+                                           value="<?= htmlspecialchars($last_name) ?>" required pattern="[a-zA-Z\s\-]{2,50}">
+                                    <div class="invalid-feedback">Please enter a valid last name (2-50 characters, letters only)</div>
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -179,8 +243,8 @@ include '../includes/header.php';
                                 <div class="col-md-6">
                                     <label for="phone" class="form-label">Phone Number</label>
                                     <input type="tel" class="form-control" id="phone" name="phone" 
-                                           value="<?= htmlspecialchars($phone) ?>" required>
-                                    <div class="invalid-feedback">Please enter a valid phone number</div>
+                                           value="<?= htmlspecialchars($phone) ?>" required pattern="[0-9\+]{10,15}">
+                                    <div class="invalid-feedback">Please enter a valid phone number (10-15 digits)</div>
                                 </div>
                             </div>
                         </div>

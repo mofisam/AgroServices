@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
     header("Location: ../../login");
     exit();
 }
-include '../config/.env';
+include '../../config/.env';
 include '../../includes/header.php';
 $user_id = $_SESSION['user_id'];
 $success = $error = "";
