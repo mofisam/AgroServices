@@ -37,7 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST["password"] ?? '';
 
         // Database query (always executed to prevent timing attacks)
-        $stmt = $conn->prepare("SELECT id, first_name, last_name, email, password, role, status FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT u.id, u.first_name, u.last_name, u.email, u.password, u.role, u.status, 
+                               b.payment_status FROM users u 
+                               LEFT JOIN business_accounts b ON u.id = b.user_id 
+                               WHERE u.email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
@@ -46,11 +49,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userExists = $stmt->num_rows > 0;
 
         if ($userExists) {
-            $stmt->bind_result($id, $first_name, $last_name, $email, $hashed_password, $role, $status);
+            $stmt->bind_result($id, $first_name, $last_name, $email, $hashed_password, $role, $status, $payment_status);
             $stmt->fetch();
 
             if ($status != "suspended" && password_verify($password, $hashed_password)) {
                 $loginSuccessful = true;
+                
+                // Check if seller has pending payment
+                if ($role === 'seller' && $payment_status === 'pending') {
+                    $_SESSION['temp_user_id'] = $id;
+                    header("Location: registration/payment?user_id=" . $_SESSION['temp_user_id']);
+                    exit();
+                }
                 
                 // Update last login
                 $update_stmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
