@@ -2,7 +2,7 @@
 ob_start();  // Start output buffering
 
 include '../config/db.php'; 
-include '../includes/header.php'; 
+
 // Admin Auth Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login");
@@ -31,6 +31,7 @@ $total_query = $conn->query("SELECT COUNT(id) AS total FROM contact_messages $se
 $total_row = $total_query->fetch_assoc();
 $total_records = $total_row['total'];
 $total_pages = ceil($total_records / $per_page);
+include '../includes/header.php'; 
 ?>
 
 <div class="container py-5">

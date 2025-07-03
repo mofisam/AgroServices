@@ -1,13 +1,13 @@
 <?php
 session_start();
 include '../config/db.php';
-include '../includes/header.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login");
     exit();
 }
 
+include '../includes/header.php';
 // 🔄 Fetch Logs
 $logs = $conn->query("
     SELECT w.id, w.amount, w.bank_name, w.account_number, w.account_name, w.status, 

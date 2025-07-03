@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../config/db.php';
-include '../includes/header.php';
+
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login");
@@ -50,6 +50,7 @@ $payments = $conn->query($query);
 // 🧮 **Get Total Rows for Pagination**
 $total_results = $conn->query("SELECT FOUND_ROWS() AS total")->fetch_assoc()['total'];
 $total_pages = ceil($total_results / $limit);
+include '../includes/header.php';
 ?>
 
 <div class="container py-5">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../config/db.php';
-include '../includes/header.php';
+
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../login");
@@ -21,6 +21,8 @@ $stmt = $conn->prepare("
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $wishlist = $stmt->get_result();
+
+include '../includes/header.php';
 ?>
 
 <div class="container py-5">

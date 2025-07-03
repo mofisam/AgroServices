@@ -2,12 +2,12 @@
 ob_start();
 session_start();
 include '../config/db.php';
-include '../includes/header.php';
 
 if (!isset($_SESSION['user_id'])) {
   header('Location: /login');
   exit();
 }
+include '../includes/header.php';
 // Redirect if cart is empty
 if (!isset($_SESSION['cart']) || count($_SESSION['cart']) === 0) {
     header('Location: /products/index');
