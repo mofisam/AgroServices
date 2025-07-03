@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/web/AgroServices/includes/header.php') ?>
+<?php include '../includes/header.php' ?>
 
 <body class="bg-gray-100">
 <div class="container py-5">
