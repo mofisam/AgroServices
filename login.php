@@ -233,15 +233,15 @@ function redirectBasedOnRole(string $role): void {
                 <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                 <i class="bi bi-eye-fill show-password-toggle eye" id="togglePassword" onclick="togglePasswordVisibility()"></i>
             </div>
-
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="rememberMe" name="remember_me">
-                    <label class="form-check-label" for="rememberMe">Remember Me</label>
-                </div>
-                <a href="forgot_password" class="forgot-password">Forgot Password?</a>
-            </div>
-
+            <?php
+            //<div class="d-flex justify-content-between align-items-center mb-3">
+             //   <div class="form-check">
+               //     <input class="form-check-input" type="checkbox" id="rememberMe" name="remember_me">
+                //    <label class="form-check-label" for="rememberMe">Remember Me</label>
+               // </div>
+             //   <a href="forgot_password" class="forgot-password">Forgot Password?</a>
+            //</div>
+            ?>
             <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
 

@@ -72,19 +72,19 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       <div class="col-md-3">
         <div class="counter">
-          <h3 class="count" data-target="0">0</h3>
+          <h3 class="count" data-target="10">10+</h3>
           <p>Agribusinesses Supported</p>
         </div>
       </div>
       <div class="col-md-3">
         <div class="counter">
           <h3 class="count" data-target="0">0</h3>
-          <p>Million ₦ Processed</p>
+          <p>₦ Processed</p>
         </div>
       </div>
       <div class="col-md-3">
         <div class="counter">
-          <h3 class="count" data-target="0">0</h3>
+          <h3 class="count" data-target="5">5</h3>
           <p>States Covered</p>
         </div>
       </div>
