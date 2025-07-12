@@ -64,25 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="py-4 bg-success text-white">
   <div class="container">
     <div class="row text-center">
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="counter">
           <h3 class="count" data-target="0">0</h3>
           <p>Farmers Empowered</p>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="counter">
           <h3 class="count" data-target="10">10+</h3>
           <p>Agribusinesses Supported</p>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="counter">
-          <h3 class="count" data-target="0">0</h3>
-          <p>₦ Processed</p>
-        </div>
-      </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="counter">
           <h3 class="count" data-target="5">5</h3>
           <p>States Covered</p>
