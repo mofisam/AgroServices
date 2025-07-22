@@ -38,7 +38,37 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>F and V Agro Services</title>
+  <!-- Primary Meta Tags -->
+  <title><?= $page_title ?? 'F and V Agro Services | Nigeria\'s Trusted Agro-Commerce Platform' ?></title>
+  <meta name="description" content="<?= $page_description ?? 'Nigeria\'s leading digital agro-commerce platform connecting farmers and buyers for safe, transparent trade.' ?>">
+  <meta name="keywords" content="<?= $page_keywords ?? 'agro-commerce Nigeria, digital farming platform, agricultural trade' ?>">
+  <meta name="author" content="F and V Agro Services">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<?= $page_title ?? 'F and V Agro Services | Digitizing Agricultural Trade' ?>">
+  <meta property="og:description" content="<?= $page_description ?? 'Empowering farmers and buyers through Nigeria\'s trusted agro-commerce platform.' ?>">
+  <meta property="og:image" content="<?= $og_image ?? 'https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg' ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="<?= $current_url ?? 'https://www.fandvagroservices.com.ng/' ?>">
+  <meta property="og:site_name" content="F and V Agro Services">
+
+  <!-- X/Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= $page_title ?? 'F and V Agro Services | Agro-Commerce Platform' ?>">
+  <meta name="twitter:description" content="<?= $page_description ?? 'Real-time agricultural trade platform for Nigerian farmers and buyers.' ?>">
+  <meta name="twitter:image" content="<?= $og_image ?? 'https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg' ?>">
+  <meta name="twitter:site" content="@FandVAgro">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="<?= $current_url ?? 'https://www.fandvagroservices.com.ng/' ?>">
+
+  <!-- Mobile/Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

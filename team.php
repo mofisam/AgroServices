@@ -1,10 +1,48 @@
 <?php
-$page_title = "About Us - F and V Agro Services";
-$page_description = "Learn more about F and V Agro Services – our mission, values, and team.";
-$page_keywords = "Agro Services, About, Farming, Agriculture";
-include 'includes/header.php';
-?>
+// Team Page Meta Variables
+$page_title = "Our Agricultural Experts | F and V Agro Services Team";
+$page_description = "Meet F and V Agro Services team of certified agricultural professionals, consultants, and tech experts driving Nigeria's agro-commerce revolution.";
+$page_keywords = "agricultural experts Nigeria, farm consultants, agro-commerce team, sustainable agriculture specialists, F&V Agro professionals, farming technology experts";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/team-social-preview.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/team";
 
+include('includes/header.php');
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Our Team",
+  "description": "Professional team at F&V Agro Services",
+  "about": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Person",
+          "name": "Falade Yinka O.",
+          "jobTitle": "Founder & Lead Consultant",
+          "alumniOf": "Federal University of Agriculture, Abeokuta",
+          "description": "World Bank Scholar specializing in Livestock Science and Sustainable Environment"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Person",
+          "name": "Adewale Damilare Owoade",
+          "jobTitle": "Agricultural Extension Specialist",
+          "alumniOf": "Federal University of Agriculture, Abeokuta",
+          "description": "Commercial poultry expert with 43,000+ broiler production experience"
+        }
+      }
+    ]
+  }
+}
+</script>
 <style>
     /* Team Section Styling */
     .team-card {

@@ -1,4 +1,12 @@
 <?php
+// Buyer's Dashboard Meta Variables
+$page_title = "My Dashboard | Buyer Account | F&V Agro Services";
+$page_description = "Manage your agro-commerce purchases, track orders, and discover new farm products on your personalized buyer dashboard.";
+$page_keywords = "buyer account Nigeria, farm purchase tracker, agro order management, F & V Agroservices dashboard, agricultural buyer portal";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/dashboard";
+?>
+<?php
 session_start();
 include 'config/db.php';
 
@@ -71,6 +79,10 @@ $profile_img = $profile['profile_picture'] && file_exists("uploads/profile_pics/
 ?>
 
 <?php include 'includes/header.php'; ?>
+<meta name="robots" content="noindex, nofollow"> <!-- Prevent search indexing -->
+<meta name="googlebot" content="noindex"> <!-- Hide from Google -->
+<meta http-equiv="Cache-Control" content="no-store" /> <!-- Sensitive data protection -->
+
 <div class="container py-5">
     <!-- Page Header with Quick Actions -->
     <div class="d-flex justify-content-between align-items-center mb-4">

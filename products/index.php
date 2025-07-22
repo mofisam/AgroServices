@@ -1,4 +1,13 @@
 <?php
+// Marketplace Page Meta Variables
+$page_title = "Agro Marketplace | Buy & Sell Farm Products Online in Nigeria | F and V Agroservices";
+$page_description = "Nigeria's largest digital marketplace for fresh farm produce, equipment, and agro-services. Connect directly with verified farmers and buyers for secure transactions.";
+$page_keywords = "agricultural marketplace Nigeria, buy farm produce online, sell crops Nigeria, farming equipment marketplace, livestock trading platform, agro-services Nigeria, F and V Agroservices marketplace";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/products";
+
+?>
+<?php
 session_start();
 include '../config/db.php';
 
@@ -73,9 +82,6 @@ $suggestions = $stmt->get_result();
 // 🔖 Categories
 $categories = $conn->query("SELECT id, name FROM product_categories WHERE is_deleted = 0 ORDER BY name");
 
-$page_title = "Product Discovery";
-$page_description = "Browse agriculture products, equipment, and innovations from verified sellers.";
-$page_keywords = "Agro, ecommerce, farm tools, produce, Nigeria";
 
 include '../includes/header.php';
 ?>

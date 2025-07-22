@@ -1,4 +1,11 @@
-<?php 
+<?php
+// Homepage Meta Variables
+$page_title = "F and V Agro Services | Nigeria's Leading Digital Agro-Commerce Platform";
+$page_description = "Nigeria's trusted online marketplace connecting farmers with buyers. Trade fresh produce, farming equipment, and agro-services securely in real-time.";
+$page_keywords = "agro-commerce Nigeria, digital farming platform, agricultural marketplace, buy farm produce online, sell crops Nigeria, farming equipment marketplace, agro-services Nigeria";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/homepage-social-preview.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/";
+
 include 'includes/header.php'; 
 ?>
 
@@ -80,6 +87,64 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="counter">
           <h3 class="count" data-target="5">5</h3>
           <p>States Covered</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Women Empowerment Section -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="<?= BASE_URL ?>/assets/images/women-farmers.jpg" alt="Women Farmers in Nigeria" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <span class="badge bg-success mb-3">EMPOWERMENT PROGRAM</span>
+        <h2 class="mb-4">Supporting Women in Agriculture</h2>
+        <p class="lead">We're committed to empowering poor women farmers across Nigeria with resources, training, and market access.</p>
+        
+        <div class="mb-4">
+          <div class="d-flex mb-3">
+            <div class="me-3">
+              <i class="bi bi-check-circle-fill text-success fs-4"></i>
+            </div>
+            <div>
+              <h5 class="mb-1">Financial Support</h5>
+              <p class="mb-0">Access to microloans and grants for women-led agricultural enterprises</p>
+            </div>
+          </div>
+          
+          <div class="d-flex mb-3">
+            <div class="me-3">
+              <i class="bi bi-check-circle-fill text-success fs-4"></i>
+            </div>
+            <div>
+              <h5 class="mb-1">Training Programs</h5>
+              <p class="mb-0">Specialized workshops on modern farming techniques and business skills</p>
+            </div>
+          </div>
+          
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="bi bi-check-circle-fill text-success fs-4"></i>
+            </div>
+            <div>
+              <h5 class="mb-1">Market Access</h5>
+              <p class="mb-0">Direct connections to buyers through our digital marketplace</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card border-success bg-success-light">
+          <div class="card-body">
+            <h5 class="card-title">Apply for Our Women's Empowerment Program</h5>
+            <p class="card-text">Are you a woman farmer in need of support? Fill out our application form to get started.</p>
+            <a href="women-empowerment-application" class="btn btn-success">
+              Apply Now <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>

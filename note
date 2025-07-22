@@ -38,3 +38,11 @@ I need to create a beautiful and responsive team page. the header and footer fil
 <meta property="og:image" content="<?= $og_image ?? '/assets/images/social-preview.jpg' ?>">
 <meta property="og:url" content="<?= $current_url ?? 'https://yourwebsite.com' ?>">
 <meta name="twitter:card" content="summary_large_image">
+
+
+<?php
+$page_title = "About Us - F and V Agro Services";
+$page_description = "Learn more about F and V Agro Services – our mission, values, and team.";
+$page_keywords = "Agro Services, About, Farming, Agriculture";
+include 'includes/header.php';
+?>

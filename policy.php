@@ -1,7 +1,31 @@
 <?php
+// Policy Page Meta Variables
+$page_title = "F and V Agro Services Policies | Buyer & Seller Guidelines";
+$page_description = "Review F and V Agro Services comprehensive marketplace policies for buyers and sellers. Learn about transactions, returns, commissions, and platform rules for agricultural e-commerce in Nigeria.";
+$page_keywords = "agro-commerce policies Nigeria, farm marketplace rules, buyer protection policy, seller guidelines, agricultural platform terms, F and V Agro Services terms";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/policy-social-preview.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/policy";
+
 session_start();
 include 'includes/header.php';
 ?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Marketplace Policies",
+  "description": "Official terms and conditions for F and V Agro Services platform",
+  "lastReviewed": "<?= date('Y-m-d') ?>",
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://www.fandvagroservices.com.ng/assets/images/policy-social-preview.jpg"
+  },
+  "significantLink": [
+    "https://www.fandvagroservices.com.ng/policy#buyerPolicy",
+    "https://www.fandvagroservices.com.ng/policy#sellerPolicy"
+  ]
+}
+</script>
 
 <div class="container py-5">
     <div class="text-center mb-5">

@@ -1,3 +1,11 @@
+<?php
+// Contact Us Page Meta Variables
+$page_title = "Contact F and V Agro Services | Nigeria's Agro-Commerce Platform";
+$page_description = "Get in touch with Nigeria's leading digital agro-commerce platform. Reach our team for farmer support, buyer inquiries, and partnership opportunities.";
+$page_keywords = "contact agro-commerce Nigeria, farming support helpline, agricultural customer service, agro platform contact, farm partnership Nigeria, F and V Agro contact";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/contact-social-preview.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/contact";
+?>
 <?php 
 include 'config/db.php'; // Database connection
 ?>
@@ -11,7 +19,22 @@ require 'vendor/autoload.php';
 require_once 'config/.env'; // Load environment variables
 include 'includes/header.php'; 
 ?>
-
+<!-- Local Business Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AgriculturalOrganization",
+  "name": "F and V Agro Services",
+  "url": "https://www.fandvagroservices.com.ng",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+234-379-97601",
+    "contactType": "Customer Service",
+    "areaServed": "Nigeria",
+    "availableLanguage": "English"
+  }
+}
+</script>
 <!-- Hero Section -->
 <section class="hero-image position-relative" style="background: url('assets/images/contact_us.jpg') center/cover no-repeat; height: 350px;">
   <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center">

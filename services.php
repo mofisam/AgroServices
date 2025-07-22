@@ -1,4 +1,53 @@
-<?php include 'includes/header.php'; ?>
+<?php
+// Services Page Meta Variables
+$page_title = "Agro-Services | Professional Farming Support & Solutions | F and V Agroservices";
+$page_description = "Access expert agricultural services including farm consultancy, equipment maintenance, crop protection, and livestock management. Boost your farm productivity with our certified professionals.";
+$page_keywords = "agricultural services Nigeria, farm consultancy, crop protection services, livestock management Nigeria, farming equipment maintenance, agro experts, F&V Agro services";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/services";
+
+// Include your header file
+include 'includes/header.php'; 
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Agricultural Services",
+  "provider": {
+    "@type": "Organization",
+    "name": "F and V Agro Services"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Agricultural Services",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Farm Consultancy",
+        "itemListElement": {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Farm Setup Consultation"
+          }
+        }
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Equipment Services",
+        "itemListElement": {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tractor Maintenance"
+          }
+        }
+      }
+    ]
+  }
+}
+</script>
 
 <style>
   .hero-section {

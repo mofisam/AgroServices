@@ -1,7 +1,37 @@
 <?php
+// About Us Page Meta Variables
+$page_title = "About F and V Agro Services | Nigeria's Trusted Agro-Commerce Platform";
+$page_description = "Discover how F and V Agro Services is revolutionizing Nigeria's agricultural trade through digital empowerment, transparent transactions, and farmer support.";
+$page_keywords = "about Nigerian agro-commerce, farming platform story, agricultural empowerment Nigeria, F and V Agro mission, digitizing farm trade, trusted agro platform";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/about";
+
+// Include your header file
 include 'includes/header.php';
 ?>
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About F and V Agro Services",
+  "description": "Nigeria's pioneer digital agro-commerce platform empowering farmers since 2025",
+  "publisher": {
+    "@type": "Organization",
+    "name": "F and V Agro Services",
+    "founder": {
+      "@type": "Person",
+      "name": "Founder Name",
+      "description": "Agricultural digital transformation expert"
+    },
+    "foundingDate": "2024",
+    "numberOfEmployees": "4",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "Nigeria"
+    }
+  }
+}
+</script>
 <style>
   .about-highlight {
     background: #f5f9f6;
