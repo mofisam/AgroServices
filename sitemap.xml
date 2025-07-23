@@ -3,6 +3,7 @@ header("Content-Type: application/xml; charset=utf-8");
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
   <url>
     <loc>https://fandvagroservices.com.ng/</loc>
     <changefreq>daily</changefreq>
@@ -23,6 +24,49 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  
+  <!-- New Farmer Program Pages -->
+  <url>
+    <loc>https://fandvagroservices.com.ng/farmer-registration</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fandvagroservices.com.ng/program-details</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- User Account Pages -->
+  <url>
+    <loc>https://fandvagroservices.com.ng/registration/buyer</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fandvagroservices.com.ng/registration/seller</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fandvagroservices.com.ng/login</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Blog/Information Pages -->
+  <url>
+    <loc>https://fandvagroservices.com.ng/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fandvagroservices.com.ng/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Product Pages (Dynamic) -->
   <?php
   include "config/db.php";
   $stmt = $conn->query("SELECT slug FROM products WHERE status = 'active'");
@@ -34,4 +78,18 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <priority>0.8</priority>
   </url>
   <?php endwhile; ?>
+  
+  <!-- Blog Articles (Example - you would dynamically generate these) -->
+  <!--
+  <url>
+    <loc>https://fandvagroservices.com.ng/blog/sustainable-farming-techniques</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fandvagroservices.com.ng/blog/agro-processing-tips</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  -->
 </urlset>

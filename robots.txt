@@ -23,13 +23,17 @@ Disallow: /forgot_password.php
 Disallow: /messages_admin.php
 Disallow: /resend_otp.php
 Disallow: /resend_password.php
+Disallow: /submit_farmer_registration.php
 
 # Allow product and policy pages
+Allow: /about us.php
 Allow: /contact.php
 Allow: /products/
 Allow: /products/
 Allow: /policy.php
 Allow: /terms.php
+Allow: /farmer_registration.php
+Allow: /program_details.php
 
 # Sitemap
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://fandvagroservices.com.ng/sitemap.xml
