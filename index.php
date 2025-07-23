@@ -73,13 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="row text-center">
       <div class="col-md-4">
         <div class="counter">
-          <h3 class="count" data-target="0">0</h3>
+          <h3 class="count" data-target="30">30+</h3>
           <p>Farmers Empowered</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="counter">
-          <h3 class="count" data-target="10">10+</h3>
+          <h3 class="count" data-target="50">50+</h3>
           <p>Agribusinesses Supported</p>
         </div>
       </div>

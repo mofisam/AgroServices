@@ -54,7 +54,7 @@ include 'includes/header.php';
                   <i class="bi bi-calendar-check-fill text-success fs-2"></i>
                 </div>
                 <h4>Program Duration</h4>
-                <p>12-month intensive program combining training, mentorship, and practical implementation.</p>
+                <p>2 weeks intensive program combining training, mentorship, and practical implementation.</p>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@ include 'includes/header.php';
                   <i class="bi bi-award-fill text-success fs-2"></i>
                 </div>
                 <h4>Grant Opportunity</h4>
-                <p>Top 3 participants will receive grants ranging from ₦500,000 to ₦1,500,000 to scale their businesses.</p>
+                <p>Top 3 participants will receive grants ranging from ₦30,000 to ₦500,000 to scale their businesses.</p>
               </div>
             </div>
           </div>
@@ -368,7 +368,7 @@ include 'includes/header.php';
           <a href="farmer_registration" class="btn btn-success btn-lg px-5 py-3">
             Start Your Application
           </a>
-          <p class="mt-3 text-muted">Application deadline: <?= date('F j, Y', strtotime('+30 days')) ?></p>
+          <p class="mt-3 text-muted">Application deadline: Nov 31, 2025></p>
         </div>
       </div>
     </div>
@@ -428,7 +428,7 @@ include 'includes/header.php';
           <div class="accordion-item mb-3 border-0 shadow-sm">
             <h3 class="accordion-header" id="faq4">
               <button class="accordion-button collapsed bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq4" aria-expanded="false" aria-controls="collapseFaq4">
-                What happens after the 12-month program?
+                What happens after the 2 weeks program?
               </button>
             </h3>
             <div id="collapseFaq4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
