@@ -93,17 +93,17 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- ✅ Women Empowerment Section -->
+<!-- ✅ Farmer Empowerment Section -->
 <section class="py-5 bg-white">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <img src="<?= BASE_URL ?>/assets/images/women-farmers.jpg" alt="Women Farmers in Nigeria" class="img-fluid rounded shadow">
+        <img src="<?= BASE_URL ?>/assets/images/farmers-group.jpg" alt="Smallholder Farmers in Nigeria" class="img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <span class="badge bg-success mb-3">EMPOWERMENT PROGRAM</span>
-        <h2 class="mb-4">Supporting Women in Agriculture</h2>
-        <p class="lead">We're committed to empowering poor women farmers across Nigeria with resources, training, and market access.</p>
+        <h2 class="mb-4">Supporting Smallholder Farmers</h2>
+        <p class="lead">We're committed to empowering smallholder farmers across Nigeria with resources, training, and market access. <strong>Women farmers are especially encouraged to apply.</strong></p>
         
         <div class="mb-4">
           <div class="d-flex mb-3">
@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
               <i class="bi bi-check-circle-fill text-success fs-4"></i>
             </div>
             <div>
-              <h5 class="mb-1">Financial Support</h5>
-              <p class="mb-0">Access to microloans and grants for women-led agricultural enterprises</p>
+              <h5 class="mb-1">Comprehensive Training</h5>
+              <p class="mb-0">Learn sustainable agribusiness, value chain development, and processing & packaging techniques</p>
             </div>
           </div>
           
@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
               <i class="bi bi-check-circle-fill text-success fs-4"></i>
             </div>
             <div>
-              <h5 class="mb-1">Training Programs</h5>
-              <p class="mb-0">Specialized workshops on modern farming techniques and business skills</p>
+              <h5 class="mb-1">Grant Opportunities</h5>
+              <p class="mb-0">Top applicants will receive funding to support their agro-enterprise</p>
             </div>
           </div>
           
@@ -131,19 +131,27 @@ document.addEventListener('DOMContentLoaded', function() {
               <i class="bi bi-check-circle-fill text-success fs-4"></i>
             </div>
             <div>
-              <h5 class="mb-1">Market Access</h5>
-              <p class="mb-0">Direct connections to buyers through our digital marketplace</p>
+              <h5 class="mb-1">Market Connections</h5>
+              <p class="mb-0">Direct access to buyers through our digital marketplace and networks</p>
             </div>
           </div>
         </div>
         
         <div class="card border-success bg-success-light">
           <div class="card-body">
-            <h5 class="card-title">Apply for Our Women's Empowerment Program</h5>
-            <p class="card-text">Are you a woman farmer in need of support? Fill out our application form to get started.</p>
-            <a href="women-empowerment-application" class="btn btn-success">
-              Apply Now <i class="bi bi-arrow-right ms-2"></i>
-            </a>
+            <h5 class="card-title">Smallholder Farmer Registration</h5>
+            <p class="card-text">Apply for our training and grant program to grow your agricultural business.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="farmer_registration" class="btn btn-success flex-grow-1">
+                Apply Now <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+              <a href="program_details" class="btn btn-outline-success flex-grow-1">
+                Learn More
+              </a>
+            </div>
+            <div class="mt-2 text-center">
+              <small class="text-muted"><i class="bi bi-star-fill text-warning"></i> Women farmers strongly encouraged to apply</small>
+            </div>
           </div>
         </div>
       </div>
