@@ -1,4 +1,11 @@
 <?php
+session_start();
+include '../config/db.php';
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../login");
+    exit();
+}
 include '../includes/header.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
@@ -384,7 +391,6 @@ function getStatusBadge($status) {
 </div>
 
 <style>
-
     .nav-tabs .nav-link {
         border: none;
         padding: 12px 20px;

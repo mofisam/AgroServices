@@ -33,6 +33,11 @@ function getCount($conn, $sql) {
     return $count ?? 0;
 }
 
+// 📊 Core Metrics (add this with your other count queries)
+$total_farmers = getCount($conn, "SELECT COUNT(*) FROM farmer_applications");
+$pending_farmers = getCount($conn, "SELECT COUNT(*) FROM farmer_applications WHERE status = 'Pending'");
+$approved_farmers = getCount($conn, "SELECT COUNT(*) FROM farmer_applications WHERE status = 'Approved'");
+
 // 📊 Core Metrics
 $total_buyers   = getCount($conn, "SELECT COUNT(*) FROM users WHERE role = 'buyer'");
 $total_sellers  = getCount($conn, "SELECT COUNT(*) FROM users WHERE role = 'seller'");
@@ -307,7 +312,55 @@ for ($i = 5; $i >= 0; $i--) {
                 </div>
             </div>
         </div>
+
+        <!-- Farmer Applications Metrics -->
+        <div class="col-md-12 col-lg-12">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0">
+                    <h5 class="mb-0"><i class="bi bi-people-fill me-2"></i> Farmer Applications</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="card bg-primary bg-opacity-10 border-0 h-100">
+                                <div class="card-body text-center">
+                                    <h6 class="text-muted mb-2">Total Applicants</h6>
+                                    <h3 class="mb-0"><?= $total_farmers ?></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card bg-success bg-opacity-10 border-0 h-100">
+                                <div class="card-body text-center">
+                                    <h6 class="text-muted mb-2">Approved</h6>
+                                    <h3 class="mb-0"><?= $approved_farmers ?></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card bg-warning bg-opacity-10 border-0 h-100">
+                                <div class="card-body text-center">
+                                    <h6 class="text-muted mb-2">Pending</h6>
+                                    <h3 class="mb-0"><?= $pending_farmers ?></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card bg-info bg-opacity-10 border-0 h-100">
+                                <div class="card-body text-center">
+                                    <h6 class="text-muted mb-2">Quick Actions</h6>
+                                    <a href="applications.php" class="btn btn-sm btn-info w-100">
+                                        View All
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     <!-- Financial Metrics -->
     <div class="row g-4 mb-4">
@@ -379,6 +432,13 @@ for ($i = 5; $i >= 0; $i--) {
                 </div>
                 <div class="list-group-item d-flex justify-content-between align-items-center">
                     <div>
+                        <i class="bi bi-file-earmark-plus-fill text-info me-2"></i>
+                        <span><?= $pending_farmers ?> new farmer applications pending review</span>
+                    </div>
+                    <small class="text-muted">Today</small>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
                         <i class="bi bi-cart-check-fill text-primary me-2"></i>
                         <span>12 new orders received</span>
                     </div>
@@ -390,13 +450,6 @@ for ($i = 5; $i >= 0; $i--) {
                         <span>3 withdrawal requests pending</span>
                     </div>
                     <small class="text-muted">1 day ago</small>
-                </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    <div>
-                        <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
-                        <span>System backup completed</span>
-                    </div>
-                    <small class="text-muted">2 days ago</small>
                 </div>
             </div>
         </div>

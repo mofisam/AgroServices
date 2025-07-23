@@ -1,12 +1,25 @@
 <?php
+session_start();
 include '../config/db.php';
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../login");
+    exit();
+}
 include '../includes/header.php';
 
 // Check if admin is logged in (you should implement proper authentication)
 ?>
 
 <div class="container mt-5">
-    <h2>Farmer Applications</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Farmer Applications</h2>
+        <div>
+            <a href="export_applications.php" class="btn btn-success">
+                <i class="bi bi-file-excel me-1"></i> Export to Excel
+            </a>
+        </div>
+    </div>
     
     <div class="table-responsive">
         <table class="table table-striped">
@@ -40,7 +53,7 @@ include '../includes/header.php';
                             <td><span class='badge bg-".getStatusColor($row['status'])."'>{$row['status']}</span></td>
                             <td>".date('d M Y', strtotime($row['submission_date']))."</td>
                             <td>
-                                <a href='view-application.php?id={$row['id']}' class='btn btn-sm btn-primary'>View</a>
+                                <a href='view_application.php?id={$row['id']}' class='btn btn-sm btn-primary'>View</a>
                             </td>
                         </tr>";
                     }
