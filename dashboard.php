@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'buyer') {
     header("Location: login");
     exit();
 }
-
+include_once 'includes/tracking.php';
 $buyer_id = $_SESSION['user_id'];
 
 // 🧾 Fetch user profile

@@ -7,6 +7,7 @@ $og_image = "https://www.fandvagroservices.com.ng/assets/images/farmer-program-s
 $current_url = "https://www.fandvagroservices.com.ng/program-details";
 
 include 'includes/header.php';
+include_once 'includes/tracking.php';
 ?>
 
 <!-- Hero Section -->

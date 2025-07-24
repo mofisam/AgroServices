@@ -8,6 +8,7 @@ $current_url = "https://www.fandvagroservices.com.ng/contact";
 ?>
 <?php 
 include 'config/db.php'; // Database connection
+include_once 'includes/tracking.php';
 ?>
 
 <?php

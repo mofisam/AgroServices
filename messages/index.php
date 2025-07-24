@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'buyer') {
     header("Location: ../login");
     exit();
 }
+include_once '../includes/tracking.php';
 
 $user_id = $_SESSION['user_id'];
 $selected_seller_id = $_GET['seller'] ?? null;

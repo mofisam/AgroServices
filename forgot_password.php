@@ -2,7 +2,7 @@
 include 'config/db.php';
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 use PHPMailer\PHPMailer\PHPMailer;
-
+include_once 'includes/tracking.php';
 require 'vendor/autoload.php';
 require_once 'config/.env'; // Load environment variables
 

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../includes/header.php';
+include_once '../includes/tracking.php';
 
 // Get order reference from URL
 $ref = $_GET['ref'] ?? '';

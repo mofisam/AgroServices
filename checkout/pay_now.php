@@ -2,6 +2,7 @@
 include '../config/db.php';
 include '../config/.env'; // contains PAYSTACK_PUBLIC
 session_start();
+include_once 'includes/tracking.php';
 
 $ref = $_GET['ref'];
 $amount = $_GET['amount'] * 100; // Paystack accepts kobo

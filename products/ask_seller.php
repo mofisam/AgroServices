@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../login");
     exit();
 }
+include_once '../includes/tracking.php';
 
 $user_id = $_SESSION['user_id'];
 $product_id = $_GET['id'] ?? null;

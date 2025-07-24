@@ -6,7 +6,8 @@ $page_keywords = "agro-commerce Nigeria, digital farming platform, agricultural 
 $og_image = "https://www.fandvagroservices.com.ng/assets/images/homepage-social-preview.jpg";
 $current_url = "https://www.fandvagroservices.com.ng/";
 
-include 'includes/header.php'; 
+include 'includes/header.php';
+include_once 'includes/tracking.php';
 ?>
 
 <!-- Add this modal at the top of your body content -->

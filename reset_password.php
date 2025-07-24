@@ -5,6 +5,7 @@ session_regenerate_id(true);
 
 // Include configuration
 require __DIR__ . '/config/db.php';
+include_once 'includes/tracking.php';
 
 // Initialize variables
 $message = '';

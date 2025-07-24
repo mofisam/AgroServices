@@ -1,7 +1,5 @@
 <?php
-// Database configuration
 include 'config/db.php';
-
 
 // Process form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,6 +43,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
+    // Check for existing application by phone number
+    $checkPhone = $conn->prepare("SELECT id FROM farmer_applications WHERE phone = ?");
+    $checkPhone->bind_param("s", $phone);
+    $checkPhone->execute();
+    $checkPhone->store_result();
+    
+    if ($checkPhone->num_rows > 0) {
+        header('Location: farmer_registration?error=duplicate_phone');
+        exit;
+    }
+    $checkPhone->close();
+    
+    // If email was provided, check for existing application by email
+    if (!empty($email)) {
+        $checkEmail = $conn->prepare("SELECT id FROM farmer_applications WHERE email = ?");
+        $checkEmail->bind_param("s", $email);
+        $checkEmail->execute();
+        $checkEmail->store_result();
+        
+        if ($checkEmail->num_rows > 0) {
+            header('Location: farmer_registration?error=duplicate_email');
+            exit;
+        }
+        $checkEmail->close();
+    }
+    
     // Prepare and bind
     $stmt = $conn->prepare("INSERT INTO farmer_applications (
         full_name, gender, dob, phone, email, address, state, lga, nationality,
@@ -78,14 +102,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: farmer_registration');
 }
 
-$conn->close();
-
 // Helper function to sanitize input
 function sanitizeInput($data) {
+    global $conn;
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    return $data;
+    return $conn->real_escape_string($data);
 }
 
 // Function to send email notification

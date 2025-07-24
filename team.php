@@ -7,6 +7,8 @@ $og_image = "https://www.fandvagroservices.com.ng/assets/images/team-social-prev
 $current_url = "https://www.fandvagroservices.com.ng/team";
 
 include('includes/header.php');
+include_once 'includes/tracking.php';
+
 ?>
 <script type="application/ld+json">
 {

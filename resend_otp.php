@@ -7,6 +7,7 @@ session_regenerate_id(true);
 require __DIR__ . '/config/db.php';
 require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/config/.env';
+include_once 'includes/tracking.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

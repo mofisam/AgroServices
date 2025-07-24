@@ -10,7 +10,7 @@ $current_url = "https://www.fandvagroservices.com.ng/products";
 <?php
 session_start();
 include '../config/db.php';
-
+include_once '../includes/tracking.php';
 $user_id = $_SESSION['user_id'] ?? null;
 $user_location = $_SESSION['user_location'] ?? 'Lagos';
 

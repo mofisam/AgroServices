@@ -10,6 +10,7 @@ session_start([
 ]);
 
 require 'config/db.php';
+include_once 'includes/tracking.php';
 
 // Redirect if already logged in
 if (isset($_SESSION["user_id"])) {

@@ -7,17 +7,20 @@ $og_image = "https://www.fandvagroservices.com.ng/assets/images/farmer-icon.png"
 $current_url = "https://www.fandvagroservices.com.ng/farmer_registration";
 
 include 'includes/header.php'; 
+include_once 'includes/tracking.php';
 
 // Display error message if exists
 if (isset($_GET['error'])) {
-    $errorMessages = [
-        'required_fields' => 'Please fill all required fields.',
-        'database' => 'There was an error processing your application. Please try again.'
-    ];
-    
-    if (array_key_exists($_GET['error'], $errorMessages)) {
-        echo '<div class="alert alert-danger text-center">'.$errorMessages[$_GET['error']].'</div>';
-    }
+  $errorMessages = [
+      'required_fields' => 'Please fill all required fields.',
+      'database' => 'There was an error processing your application. Please try again.',
+      'duplicate_phone' => 'This phone number has already been used for registration. Please contact support if you need to update your application.',
+      'duplicate_email' => 'This email address has already been used for registration. Please contact support if you need to update your application.'
+  ];
+  
+  if (array_key_exists($_GET['error'], $errorMessages)) {
+      echo '<div class="alert alert-danger text-center">'.$errorMessages[$_GET['error']].'</div>';
+  }
 }
 ?>
 
@@ -567,6 +570,38 @@ if (isset($_GET['error'])) {
       }
     });
   });
+
+  // Check for duplicate registration before form submission
+document.getElementById('farmerRegistrationForm').addEventListener('submit', function(e) {
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    
+    // First check phone number
+    fetch('includes/check_farmer_phone?phone=' + encodeURIComponent(phone))
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                alert('This phone number has already been registered. Please contact support if you need to update your application.');
+                e.preventDefault();
+                return;
+            }
+            
+            // If email is provided, check it too
+            if (email) {
+                return fetch('includes/check_farmer_email?email=' + encodeURIComponent(email))
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.exists) {
+                            alert('This email address has already been registered. Please contact support if you need to update your application.');
+                            e.preventDefault();
+                        }
+                    });
+            }
+        })
+        .catch(error => {
+            console.error('Error checking registration:', error);
+        });
+});
 </script>
 
 <?php include 'includes/footer.php'; ?>

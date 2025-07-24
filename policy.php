@@ -8,6 +8,7 @@ $current_url = "https://www.fandvagroservices.com.ng/policy";
 
 session_start();
 include 'includes/header.php';
+include_once 'includes/tracking.php';
 ?>
 <script type="application/ld+json">
 {
