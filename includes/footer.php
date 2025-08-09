@@ -12,10 +12,10 @@
         
         <!-- Social Media -->
         <div class="social-icons">
-          <a href="https://www.facebook.com/profile.php?id=100083032495869" class="text-white me-2" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100083032495869" class="text-white me-2" aria-label="Facebook" target="_blank"><i class="bi bi-facebook"></i></a>
           <!--<a href="#" class="text-white me-2" aria-label="Twitter"><i class="bi bi-x"></i></a>-->
-          <a href="https://www.instagram.com/falade_yinka?igsh=YTZxbmEyd3Q2NmR5" class="text-white me-2" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.linkedin.com/company/f-and-v-services/" class="text-white" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.instagram.com/falade_yinka?igsh=YTZxbmEyd3Q2NmR5"  class="text-white me-2" aria-label="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/f-and-v-agro-services/" class="text-white" aria-label="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
 
