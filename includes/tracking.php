@@ -116,5 +116,4 @@ try {
         FILE_APPEND);
 }
 
-$conn->close();
 ?>
