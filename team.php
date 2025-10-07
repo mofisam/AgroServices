@@ -3,8 +3,8 @@
 $page_title = "Our Agricultural Experts | F and V Agro Services Team";
 $page_description = "Meet F and V Agro Services team of certified agricultural professionals, consultants, and tech experts driving Nigeria's agro-commerce revolution.";
 $page_keywords = "agricultural experts Nigeria, farm consultants, agro-commerce team, sustainable agriculture specialists, F&V Agro professionals, farming technology experts";
-$og_image = "https://www.fandvagroservices.com.ng/assets/images/team-social-preview.jpg";
-$current_url = "https://www.fandvagroservices.com.ng/team";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/team.php";
 
 include('includes/header.php');
 include_once 'includes/tracking.php';

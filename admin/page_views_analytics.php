@@ -4,8 +4,8 @@ include '../config/db.php';
 
 // Admin check
 //if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
- //   header("Location: ../login");
- //   exit();
+//   header("Location: ../login");
+//   exit();
 //}
 
 // Pagination setup

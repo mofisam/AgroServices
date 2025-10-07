@@ -3,7 +3,7 @@
 $page_title = "Contact F and V Agro Services | Nigeria's Agro-Commerce Platform";
 $page_description = "Get in touch with Nigeria's leading digital agro-commerce platform. Reach our team for farmer support, buyer inquiries, and partnership opportunities.";
 $page_keywords = "contact agro-commerce Nigeria, farming support helpline, agricultural customer service, agro platform contact, farm partnership Nigeria, F and V Agro contact";
-$og_image = "https://www.fandvagroservices.com.ng/assets/images/contact-social-preview.jpg";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
 $current_url = "https://www.fandvagroservices.com.ng/contact";
 ?>
 <?php 

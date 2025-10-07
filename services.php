@@ -3,8 +3,8 @@
 $page_title = "Agro-Services | Professional Farming Support & Solutions | F and V Agroservices";
 $page_description = "Access expert agricultural services including farm consultancy, equipment maintenance, crop protection, and livestock management. Boost your farm productivity with our certified professionals.";
 $page_keywords = "agricultural services Nigeria, farm consultancy, crop protection services, livestock management Nigeria, farming equipment maintenance, agro experts, F&V Agro services";
-$og_image = "https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg";
-$current_url = "https://www.fandvagroservices.com.ng/services";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
+$current_url = "https://www.fandvagroservices.com.ng/services.php";
 
 // Include your header file
 include 'includes/header.php'; 

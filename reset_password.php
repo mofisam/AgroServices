@@ -6,6 +6,8 @@ session_regenerate_id(true);
 // Include configuration
 require __DIR__ . '/config/db.php';
 include_once 'includes/tracking.php';
+require 'vendor/autoload.php';
+require_once 'config/.env'; // Load environment variables
 
 // Initialize variables
 $message = '';
@@ -17,17 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = trim($_POST["new_password"]);
     $confirm_password = trim($_POST["confirm_password"]);
 
-    // Validate password
+    // Simplified password validation - less strict
     if (empty($new_password)) {
         $password_error = "Password is required";
     } elseif (strlen($new_password) < 6) {
-        $password_error = "Password must be at least 8 characters";
-    } elseif (!preg_match("/[A-Z]/", $new_password)) {
-        $password_error = "Password must contain at least one uppercase letter";
-    } elseif (!preg_match("/[a-z]/", $new_password)) {
-        $password_error = "Password must contain at least one lowercase letter";
-    } elseif (!preg_match("/[0-9]/", $new_password)) {
-        $password_error = "Password must contain at least one number";
+        $password_error = "Password must be at least 6 characters";
     } elseif ($new_password !== $confirm_password) {
         $password_error = "Passwords do not match";
     }
@@ -54,34 +50,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Log the password change
                     error_log("Password reset for email: $email");
                     
-                    // Send email notification
-                    require __DIR__ . '/vendor/autoload.php';
-                    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
-                    try {
-                        $mail->isSMTP();
-                        $mail->Host = SMTP_HOST;
-                        $mail->SMTPAuth = true;
-                        $mail->Username = SMTP_USERNAME;
-                        $mail->Password = SMTP_PASSWORD;
-                        $mail->SMTPSecure = SMTP_ENCRYPTION;
-                        $mail->Port = SMTP_PORT;
+                    // Try to send email notification (but don't fail if email fails)
+                    $email_sent = false;
+                    $email_error = "";
+                    
+                    // Check if PHPMailer exists before trying to use it
+                    $phpmailer_path = __DIR__ . '/vendor/autoload.php';
+                    if (file_exists($phpmailer_path)) {
+                        try {
+                            require $phpmailer_path;
+                            $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+                            
+                            // Your email configuration here
+                            $mail->isSMTP();
+                            $mail->Host = SMTP_HOST;
+                            $mail->SMTPAuth = true;
+                            $mail->Username = SMTP_USERNAME;
+                            $mail->Password = SMTP_PASSWORD;
+                            $mail->SMTPSecure = SMTP_ENCRYPTION;
+                            $mail->Port = SMTP_PORT;
 
-                        $mail->setFrom('no-reply@fandvagroservices.com.ng', 'F and V Agroservices');
-                        $mail->addAddress($email);
-                        $mail->Subject = 'Your Password Has Been Reset';
-                        $mail->isHTML(true);
-                        $mail->Body = "
-                            <h2>Password Reset Confirmation</h2>
-                            <p>Your password was successfully changed on " . date('F j, Y \a\t g:i a') . ".</p>
-                            <p>If you didn't request this change, please contact our support team immediately.</p>
-                            <p><a href='" . (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . "/login'>Login to your account</a></p>
-                        ";
-                        $mail->send();
-                    } catch (Exception $e) {
-                        error_log("Password reset email failed: " . $mail->ErrorInfo);
+                            $mail->setFrom('no-reply@fandvagroservices.com.ng', 'F and V Agroservices');
+                            $mail->addAddress($email);
+                            $mail->Subject = 'Your Password Has Been Reset';
+                            $mail->isHTML(true);
+                            $mail->Body = "
+                                <h2>Password Reset Confirmation</h2>
+                                <p>Your password was successfully changed on " . date('F j, Y \a\t g:i a') . ".</p>
+                                <p>If you didn't request this change, please contact our support team immediately.</p>
+                                <p><a href='" . (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . "/login'>Login to your account</a></p>
+                            ";
+                            
+                            if ($mail->send()) {
+                                $email_sent = true;
+                            }
+                        } catch (Exception $e) {
+                            $email_error = $e->getMessage();
+                            error_log("Password reset email failed: " . $email_error);
+                        }
+                    } else {
+                        error_log("PHPMailer not found at: $phpmailer_path");
                     }
 
                     $message = "<div class='alert alert-success'>✅ Password reset successful! <a href='login' class='alert-link'>Login Now</a></div>";
+                    
+                    if ($email_sent) {
+                        $message = "<div class='alert alert-success'>✅ Password reset successful! Check your email for confirmation. <a href='login' class='alert-link'>Login Now</a></div>";
+                    }
                 } else {
                     throw new Exception("Database update failed");
                 }
@@ -90,14 +105,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } catch (Exception $e) {
             error_log("Password reset error: " . $e->getMessage());
-            $message = "<div class='alert alert-danger'>❌ System error. Please try again later.</div>";
+            // More detailed error for debugging
+            $debug_message = "System error: " . $e->getMessage();
+            //$message = "<div class='alert alert-danger'>❌ System error. Please try again later.</div>";
+            // For debugging, you can show the actual error:
+             $message = "<div class='alert alert-danger'>❌ " . htmlspecialchars($debug_message) . "</div>";
         }
     } else {
         $message = "<div class='alert alert-danger'>❌ $password_error</div>";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
+        /* Your existing CSS remains the same */
         :root {
             --primary-color: #27630e;
             --secondary-color: #193409;
@@ -177,11 +196,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             transform: translateY(-2px);
         }
 
-        .password-strength {
-            margin-top: 5px;
-            font-size: 0.85rem;
-        }
-
         .password-rules {
             font-size: 0.8rem;
             color: #6c757d;
@@ -219,14 +233,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="input-group">
                 <input type="password" name="new_password" id="new_password" 
                        class="form-control" placeholder="Enter new password" required
-                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                       title="Must contain at least 6 characters, one uppercase, one lowercase and one number">
+                       minlength="6">
                 <span class="password-toggle" onclick="togglePassword('new_password')">
                     <i class="bi bi-eye"></i>
                 </span>
             </div>
             <div class="password-rules">
-                <small>Must contain: 8+ characters, uppercase, lowercase, number, and special character</small>
+                <small>Must be at least 6 characters long</small>
             </div>
         </div>
 
@@ -234,7 +247,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="confirm_password" class="form-label">Confirm Password</label>
             <div class="input-group">
                 <input type="password" name="confirm_password" id="confirm_password" 
-                       class="form-control" placeholder="Confirm new password" required>
+                       class="form-control" placeholder="Confirm new password" required
+                       minlength="6">
                 <span class="password-toggle" onclick="togglePassword('confirm_password')">
                     <i class="bi bi-eye"></i>
                 </span>
@@ -271,14 +285,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             icon.classList.add('bi-eye');
         }
     }
-
-    // Password strength indicator (optional)
-    document.getElementById('new_password').addEventListener('input', function() {
-        // Implement password strength meter if desired
-    });
 </script>
 
-<!-- Bootstrap JS Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

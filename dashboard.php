@@ -3,7 +3,7 @@
 $page_title = "My Dashboard | Buyer Account | F&V Agro Services";
 $page_description = "Manage your agro-commerce purchases, track orders, and discover new farm products on your personalized buyer dashboard.";
 $page_keywords = "buyer account Nigeria, farm purchase tracker, agro order management, F & V Agroservices dashboard, agricultural buyer portal";
-$og_image = "https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
 $current_url = "https://www.fandvagroservices.com.ng/dashboard";
 ?>
 <?php

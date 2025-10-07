@@ -3,7 +3,7 @@
 $page_title = "Smallholder Farmer Registration | F and V Agro Services";
 $page_description = "Apply for free training and grant opportunities to support your agribusiness. Women in agriculture are especially encouraged to apply.";
 $page_keywords = "farmer registration Nigeria, agricultural training, agribusiness grant, smallholder farmers, women in agriculture";
-$og_image = "https://www.fandvagroservices.com.ng/assets/images/farmer-icon.png";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
 $current_url = "https://www.fandvagroservices.com.ng/farmer_registration";
 
 include 'includes/header.php'; 

@@ -3,7 +3,7 @@
 $page_title = "Smallholder Farmer Empowerment Program | F and V Agro Services";
 $page_description = "Learn about our farmer empowerment program offering training, grants, and market access for smallholder farmers in Nigeria. Women in agriculture strongly encouraged to apply.";
 $page_keywords = "farmer training Nigeria, agricultural grants, smallholder farmers program, women in agriculture, agro-enterprise support";
-$og_image = "https://www.fandvagroservices.com.ng/assets/images/farmer-program-social.jpg";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
 $current_url = "https://www.fandvagroservices.com.ng/program-details";
 
 include 'includes/header.php';
