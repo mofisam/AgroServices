@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="card-header bg-gradient-success text-white py-4">
                     <div class="d-flex align-items-center">
                         <?php if (!empty($product['profile_picture'])): ?>
-                            <img src="<?= htmlspecialchars($product['profile_picture']) ?>" 
+                            <img src="../uploads/profile_pics/<?= htmlspecialchars($product['profile_picture']) ?>" 
                                  class="rounded-circle me-3 shadow-sm" 
                                  width="60" height="60" 
                                  alt="<?= htmlspecialchars($product['business_name']) ?> profile">
