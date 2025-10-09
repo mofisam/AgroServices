@@ -11,7 +11,7 @@ $min = (float)($_GET['min_price'] ?? 0);
 $max = (float)($_GET['max_price'] ?? 999999);
 $category = $_GET['category'] ?? '';
 $page = (int)($_GET['page'] ?? 1);
-$limit = 8;
+$limit = 20;
 $offset = ($page - 1) * $limit;
 
 // Base WHERE clause
