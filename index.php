@@ -10,7 +10,7 @@ include 'includes/header.php';
 include_once 'includes/tracking.php';
 ?>
 
-<!-- Add this modal at the top of your body content -->
+<!-- modal -->
 <?php if (!isset($_SESSION['user_id'])): ?>
 <div class="modal fade" id="registrationModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <?php endif; ?>
 
 
-<!-- ✅ Hero Section with Video Background -->
+<!-- Hero Section with Video Background -->
 <section class="hero-section text-white text-center py-5 position-relative" style="background-image: url('<?= BASE_URL ?>/assets/images/ads.jpg'); background-size: cover; background-position: center;">
   <div class="overlay"></div>
   <div class="container position-relative">
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 
-<!-- ✅ Stats Counter -->
+<!-- Stats Counter -->
 <section class="py-4 bg-success text-white">
   <div class="container">
     <div class="row text-center">
@@ -94,12 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- ✅ Farmer Empowerment Section -->
+<!-- Farmer Empowerment Section -->
 <section class="py-5 bg-white">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <img src="<?= BASE_URL ?>/assets/images/farmer-icon.png" alt="Smallholder Farmers in Nigeria" class="img-fluid rounded shadow">
+        <img src="<?= BASE_URL ?>/assets/images/cocoa.jpeg" alt="Smallholder Farmers in Nigeria" class="img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <span class="badge bg-success mb-3">EMPOWERMENT PROGRAM</span>
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- ✅ Legacy Section -->
+<!-- Legacy Section -->
 <section class="py-5 bg-dark text-white">
   <div class="container">
     <div class="row align-items-center">
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- ✅ Video Tour Section -->
+<!-- Video Tour Section -->
 <section id="video-tour" class="py-5 bg-light">
   <div class="container">
     <div class="row align-items-center">
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- ✅ Services Section -->
+<!-- Services Section -->
 <section class="py-5 bg-light text-center">
   <div class="container">
     <h2 class="mb-5">Our Core Services</h2>
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="col-md-3">
         <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/Farm Setup.png" class="card-img-top rounded" alt="Farm Setup">
+          <img src="assets/images/Farm Setup.jpeg" class="card-img-top rounded" alt="Farm Setup">
           <div class="card-body">
             <h5 class="card-title mt-3">Farm Setup</h5>
             <p class="card-text">Comprehensive farm establishment services for sustainable agriculture.</p>
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="col-md-3">
         <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/Advisory Services.png" class="card-img-top rounded" alt="Advisory Services">
+          <img src="assets/images/fa.jpg" class="card-img-top rounded" alt="Advisory Services">
           <div class="card-body">
             <h5 class="card-title mt-3">Advisory Services</h5>
             <p class="card-text">Professional consulting for farmers, agro-dealers, and agri-entrepreneurs.</p>
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="col-md-3">
         <div class="card h-100 border-0 shadow-sm">
-          <img src="assets/images/Farm Management.png" class="card-img-top rounded" alt="Farm Management">
+          <img src="assets/images/Farm Management.jpeg" class="card-img-top rounded" alt="Farm Management">
           <div class="card-body">
             <h5 class="card-title mt-3">Farm Management</h5>
             <p class="card-text">Smart monitoring, reporting, and data-driven farm management solutions.</p>
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- ✅ Testimonials Section -->
+<!-- Testimonials Section -->
 <section class="py-5 bg-white">
   <div class="container">
     <h2 class="text-center mb-5">What Our Clients Say</h2>
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<!-- ✅ Blog Highlights Section -->
+<!-- Blog Highlights Section -->
 <section class="py-5 bg-light">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 
 <?php if (!isset($_SESSION['user_id'])): ?>
-<!-- ✅ Dual Registration Section -->
+<!-- Dual Registration Section -->
 <section class="py-5 bg-light">
   <div class="container">
     <div class="text-center mb-5">

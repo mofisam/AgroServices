@@ -14,7 +14,7 @@ include_once '../includes/tracking.php';
 $user_id = $_SESSION['user_id'] ?? null;
 $user_location = $_SESSION['user_location'] ?? 'Nigeria';
 
-// 🔥 Trending
+//  Trending
 $trending = $conn->query("
   SELECT p.*, ba.business_name,
     (SELECT ROUND(AVG(r.rating),1) FROM product_reviews r WHERE r.product_id = p.id) AS avg_rating
