@@ -136,7 +136,7 @@ include_once 'includes/tracking.php';
             "name" => "Falade Victory. O",
             "title" => "Co-Founder",
             "img" => "assets/images/img1.jpg",
-            "bio" => "His the co-founder of F and V Agro Services and a season business developer expert, she is also a Business negotiator with high knowledge of financial management. She studied accounting from the Federal Polytechnic Nassarawa State. She is currently top Marketing Lead for a tech company in Ibadan, Oyo State.",
+            "bio" => "She is the co-founder of F and V Agro Services and a season business developer expert, she is also a Business negotiator with high knowledge of financial management. She studied accounting from the Federal Polytechnic Nassarawa State. She is currently top Marketing Lead for a tech company in Ibadan, Oyo State.",
             "linkedin" => "#",
             "twitter" => "#"
         ],

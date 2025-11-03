@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <img src="<?= BASE_URL ?>/assets/images/cocoa.jpeg" alt="Smallholder Farmers in Nigeria" class="img-fluid rounded shadow">
+        <img src="<?= BASE_URL ?>/assets/images/cocoa1.jpg" alt="Smallholder Farmers in Nigeria" class="img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <span class="badge bg-success mb-3">EMPOWERMENT PROGRAM</span>
