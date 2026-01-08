@@ -1,8 +1,8 @@
 <?php
 // Homepage Meta Variables
-$page_title = "F and V Agro Services | Nigeria's Leading Agricultural consulting firm";
+$page_title = "F and V Agro Services | Nigeria's Leading Agricultural Consulting Firm";
 $page_description = "Nigeria's trusted online marketplace connecting farmers with buyers. Trade fresh produce, farming equipment, and agro-services securely in real-time.";
-$page_keywords = "agro-commerce Nigeria, digital farming platform, agricultural marketplace, buy farm produce online, sell crops Nigeria, farming equipment marketplace, agro-services Nigeria";
+$page_keywords = "Agricultural Consulting Firm, Agro-commerce Nigeria, digital farming platform, agricultural marketplace, buy farm produce online, sell crops Nigeria, farming equipment marketplace, agro-services Nigeria";
 $og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
 $current_url = "https://www.fandvagroservices.com.ng/";
 
