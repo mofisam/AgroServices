@@ -24,7 +24,11 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+      <url>
+    <loc>https://fandvagroservices.com.ng/team.php</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <!-- New Farmer Program Pages -->
   <url>
     <loc>https://fandvagroservices.com.ng/farmer-registration</loc>
@@ -49,17 +53,12 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fandvagroservices.com.ng/login</loc>
+    <loc>https://fandvagroservices.com.ng/login.php</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <!-- Blog/Information Pages -->
-  <url>
-    <loc>https://fandvagroservices.com.ng/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
   <url>
     <loc>https://fandvagroservices.com.ng/about</loc>
     <changefreq>monthly</changefreq>
