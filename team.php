@@ -706,7 +706,7 @@ include_once 'includes/tracking.php';
             "expertise" => ["Full-Stack Development", "Agricultural Tech", "Digital Transformation", "E-commerce"],
             "bio" => "Samuel Alao is a Full-Stack Developer with a strong foundation in both frontend and backend technologies, passionate about building dynamic, user-friendly websites and applications. With a B.Tech in Urban and Regional Planning from Ladoke Akintola University of Technology and professional training in Software Engineering from ALX, he bring a unique blend of analytical thinking and technical expertise to every project.
             
-            He specialize in helping businesses grow through innovative, scalable tech solutions, ensuring high standards of quality, efficiency, and client satisfaction in all my work. His mission is to transform ideas into powerful digital products that drive real-world impact.
+            He specialize in helping businesses grow through innovative, scalable tech solutions, ensuring high standards of quality, efficiency, and client satisfaction in all his work. His mission is to transform ideas into powerful digital products that drive real-world impact.
             
             <div class='expertise-grid mt-4'>
                 <div class='expertise-item'>

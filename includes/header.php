@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <meta property="og:type" content="website">
   <meta property="og:title" content="<?= $page_title ?? 'F and V Agro Services | Digitizing Agricultural Trade' ?>">
   <meta property="og:description" content="<?= $page_description ?? 'Empowering farmers and buyers through Nigeria\'s trusted agro-commerce platform.' ?>">
-  <meta property="og:image" content="<?= $og_image ?? 'https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg' ?>">
+  <meta property="og:image" content="<?= $og_image ?? 'https://www.fandvagroservices.com.ng/assets/images/logo.jpg' ?>">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="<?= $current_url ?? 'https://www.fandvagroservices.com.ng/' ?>">
@@ -59,7 +59,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="<?= $page_title ?? 'F and V Agro Services | Agro-Commerce Platform' ?>">
   <meta name="twitter:description" content="<?= $page_description ?? 'Real-time agricultural trade platform for Nigerian farmers and buyers.' ?>">
-  <meta name="twitter:image" content="<?= $og_image ?? 'https://www.fandvagroservices.com.ng/assets/images/social-preview.jpg' ?>">
+  <meta name="twitter:image" content="<?= $og_image ?? 'https://www.fandvagroservices.com.ng/assets/images/logo.jpg' ?>">
   <meta name="twitter:site" content="@FandVAgro">
 
   <!-- Canonical URL -->
