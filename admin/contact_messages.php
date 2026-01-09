@@ -1,12 +1,13 @@
 <?php
+session_start();
 ob_start();  // Start output buffering
 
 include '../config/db.php'; 
 
 // Admin Auth Check
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../login");
-    exit();
+  header("Location: ../login");
+  exit();
 }
 
 // Pagination Setup
