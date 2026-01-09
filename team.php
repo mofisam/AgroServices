@@ -3,7 +3,7 @@
 $page_title = "Our Agricultural Experts & Team | F and V Agro Services Nigeria";
 $page_description = "Meet F and V Agro Services' team of certified agricultural professionals in Nigeria: Falade Yinka O. (Founder), Falade Victory O. (Co-Founder), Adewale Damilare Owoade, and Samuel Alao (Tech Lead). Expert farm consultants driving Nigeria's agro-commerce revolution.";
 $page_keywords = "Falade Yinka, Falade Yinka O., Falade Victory, Adewale Damilare Owoade, Samuel Alao, agricultural experts Nigeria, farm consultants Nigeria, agro-commerce team, F&V Agro professionals, farming technology experts Nigeria, agricultural consultants Abeokuta, poultry farming experts, livestock specialists Nigeria";
-$og_image = "https://www.fandvagroservices.com.ng/assets/images/team-og-image.jpg";
+$og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
 $current_url = "https://www.fandvagroservices.com.ng/team.php";
 $canonical_url = $current_url;
 
@@ -660,7 +660,7 @@ include_once 'includes/tracking.php';
         [
             "id" => "member3",
             "slug" => "adewale-owoade",
-            "name" => "Adewale Damilare Owoade",
+            "name" => "Adewale Damilare O.",
             "alternate_names" => "Damilare Owoade, Owoade Adewale",
             "title" => "Agricultural Extension Specialist & Poultry Expert",
             "img" => "assets/images/OWOADE ADEWALE.jpg",
@@ -697,8 +697,8 @@ include_once 'includes/tracking.php';
         [
             "id" => "member4",
             "slug" => "samuel-alao",
-            "name" => "Samuel Alao",
-            "alternate_names" => "Alao Samuel, Samuel Alao Tech",
+            "name" => "Samuel Alao M",
+            "alternate_names" => "Alao Samuel, Samuel Alao Mofifoluwa",
             "title" => "Tech Lead & Full-Stack Developer",
             "img" => "assets/images/sam.jpg",
             "img_alt" => "Samuel Alao - Tech Lead and Full-Stack Developer at F and V Agro Services",
