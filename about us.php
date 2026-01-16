@@ -4,7 +4,7 @@ $page_title = "About F and V Agro Services | Nigeria's Trusted Agro-Commerce Pla
 $page_description = "Discover how F and V Agro Services is revolutionizing Nigeria's agricultural trade through digital empowerment, transparent transactions, and farmer support.";
 $page_keywords = "about Nigerian agro-commerce, farming platform story, agricultural empowerment Nigeria, F and V Agro mission, digitizing farm trade, trusted agro platform";
 $og_image = "https://www.fandvagroservices.com.ng/assets/images/logo.jpg";
-$current_url = "https://www.fandvagroservices.com.ng/about";
+$current_url = "https://www.fandvagroservices.com.ng/about_us";
 
 // Include your header file
 include 'includes/header.php';

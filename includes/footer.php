@@ -25,9 +25,9 @@
         <ul class="list-unstyled">
           <li class="mb-2"><a href="<?= BASE_URL ?>/products" class="text-white-50 text-decoration-none hover-white">Marketplace</a></li>
           <li class="mb-2"><a href="<?= BASE_URL ?>/services" class="text-white-50 text-decoration-none hover-white">Services</a></li>
-          <li class="mb-2"><a href="<?= BASE_URL ?>/blog.php" class="text-white-50 text-decoration-none hover-white">Blog</a></li>
-          <li class="mb-2"><a href="<?= BASE_URL ?>/about us.php" class="text-white-50 text-decoration-none hover-white">About Us</a></li>
-          <li><a href="<?= BASE_URL ?>/contact.php" class="text-white-50 text-decoration-none hover-white">Contact</a></li>
+          <li class="mb-2"><a href="<?= BASE_URL ?>/blog" class="text-white-50 text-decoration-none hover-white">Blog</a></li>
+          <li class="mb-2"><a href="<?= BASE_URL ?>/about_us" class="text-white-50 text-decoration-none hover-white">About Us</a></li>
+          <li><a href="<?= BASE_URL ?>/contact" class="text-white-50 text-decoration-none hover-white">Contact</a></li>
         </ul>
       </div>
 

@@ -18,7 +18,7 @@ include_once 'includes/tracking.php';
         <h1 class="display-5 fw-bold mb-3">Smallholder Farmer Empowerment Program</h1>
         <p class="lead mb-4">Transforming agricultural livelihoods through training, grants, and market access</p>
         <div class="d-flex justify-content-center gap-3">
-          <a href="/farmer-registration" class="btn btn-light btn-lg px-4">Apply Now</a>
+          <a href="farmer_registration" class="btn btn-light btn-lg px-4">Apply Now</a>
           <a href="#program-benefits" class="btn btn-outline-light btn-lg px-4">Learn More</a>
         </div>
       </div>

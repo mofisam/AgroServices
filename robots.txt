@@ -1,4 +1,5 @@
 User-agent: *
+# Block sensitive / private areas
 Disallow: /admin/
 Disallow: /config/
 Disallow: /includes/
@@ -7,6 +8,7 @@ Disallow: /checkout/
 Disallow: /login.php
 Disallow: /verify.php
 Disallow: /reset_password.php
+Disallow: /forgot_password.php
 Disallow: /edit_profile.php
 Disallow: /seller/
 Disallow: /buyer/
@@ -14,26 +16,17 @@ Disallow: /wallet/
 Disallow: /withdrawal_request.php
 Disallow: /bank_account.php
 Disallow: /messages/
+Disallow: /messages_admin.php
 Disallow: /order_invoice.php
 Disallow: /confirm_delivery.php
-Disallow: /edit_profile.php
-Disallow: /fetch_messages.php
-Disallow: /fetch_new_messages.php
-Disallow: /forgot_password.php
-Disallow: /messages_admin.php
 Disallow: /resend_otp.php
 Disallow: /resend_password.php
 Disallow: /submit_farmer_registration.php
 
-# Allow product and policy pages
-Allow: /about us.php
-Allow: /team.php
-Allow: /contact.php
-Allow: /policy.php
-Allow: /farmer_registration.php
-Allow: /program_details.php
-Allow: /products/index.php
-Allow: /products/fetch_product.php
+# Block background / AJAX endpoints
+Disallow: /fetch_messages.php
+Disallow: /fetch_new_messages.php
+Disallow: /products/fetch_product.php
 
 # Sitemap
 Sitemap: https://fandvagroservices.com.ng/sitemap.xml
