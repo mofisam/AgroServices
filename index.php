@@ -352,6 +352,27 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
       <!-- Add 2 more testimonial cards -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex mb-3">
+              <img src="<?= BASE_URL ?>/assets/images/img1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Client">
+              <div>
+                <h5 class="mb-0">Ranti Farms Limited</h5>
+                <p class="text-muted small"> Nigeria</p>
+              </div>
+            </div>
+            <p>F and V Agro Services has turned our farms around from nothing to become a profitable farm now. We are so happy that we are engaging them as our consultant.</p>
+            <div class="rating">
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
