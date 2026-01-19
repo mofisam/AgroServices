@@ -29,4 +29,4 @@ Disallow: /fetch_new_messages.php
 Disallow: /products/fetch_product.php
 
 # Sitemap
-Sitemap: https://fandvagroservices.com.ng/sitemap.xml
+Sitemap: https://fandvagroservices.com.ng/sitemap.xml.php
