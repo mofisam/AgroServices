@@ -351,7 +351,6 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
       </div>
-      <!-- Add 2 more testimonial cards -->
       <div class="col-md-4 mb-4">
         <div class="card h-100 border-0 shadow-sm">
           <div class="card-body">
@@ -373,6 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
       </div>
+      <!-- Add 2 more testimonial cards -->
     </div>
   </div>
 </section>

@@ -23,13 +23,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
   </url>
 
   <url>
-    <loc>https://fandvagroservices.com.ng/services/</loc>
+    <loc>https://fandvagroservices.com.ng/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://fandvagroservices.com.ng/about_us/</loc>
+    <loc>https://fandvagroservices.com.ng/about_us</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
