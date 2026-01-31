@@ -48,7 +48,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
   <!-- Programs -->
   <url>
-    <loc>https://fandvagroservices.com.ng/farmer_registration/</loc>
+    <loc>https://fandvagroservices.com.ng/farmer_registration</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
