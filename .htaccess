@@ -32,7 +32,7 @@ RewriteRule ^(.+)/$ /$1 [R=301,L]
 ErrorDocument 404 http://fandvagroservices.com.ng/404.php
 ErrorDocument 403 http://fandvagroservices.com.ng/403.php
 ErrorDocument 500 http://fandvagroservices.com.ng/500.php
-""
+
 # --------------------------------------------
 # 🚫 Block Access to Sensitive Files
 # --------------------------------------------
