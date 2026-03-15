@@ -8,7 +8,7 @@
           <img src="<?= BASE_URL ?>/assets/images/logo.jpg" alt="F and V Agro Services" height="40" class="me-2">
           <h5 class="mb-0 text-white">F and V Agro Services</h5>
         </div>
-        <p class="mb-3">Empowering farmers. Connecting markets. Driving food security through technology and innovation.</p>
+        <p class="mb-3">Sustainable farm setup. Expert agribusiness consulting. Digital market access. Building a food-secure future through innovation.</p>
         
         <!-- Social Media -->
         <div class="social-icons">

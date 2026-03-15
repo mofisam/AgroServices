@@ -611,7 +611,6 @@ body {
     <p class="fs-5">Let's transform agriculture together and build a food-secure future.</p>
     <div class="d-flex justify-content-center gap-3 flex-wrap">
       <a href="contact" class="cta-button">📞 Contact Us Today</a>
-      <a href="#" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">📋 Schedule Consultation</a>
     </div>
   </div>
 </div>
