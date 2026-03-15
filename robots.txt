@@ -3,7 +3,6 @@ User-agent: *
 Disallow: /admin/
 Disallow: /cart/
 Disallow: /checkout/
-Disallow: /login.php
 Disallow: /verify.php
 Disallow: /reset_password.php
 Disallow: /forgot_password.php
@@ -24,7 +23,6 @@ Disallow: /submit_farmer_registration.php
 # Block background / AJAX endpoints
 Disallow: /fetch_messages.php
 Disallow: /fetch_new_messages.php
-Disallow: /products/fetch_product.php
 
 # Sitemap
 Sitemap: https://fandvagroservices.com.ng/sitemap.xml.php

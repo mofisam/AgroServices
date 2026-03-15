@@ -227,7 +227,7 @@ if (isset($_SESSION['user_id'], $_SESSION['role'])) {
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/products">🛍️ Marketplace</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/services">💼 Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/about us">📖 About</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/about_us">📖 About</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/contact">📞 Contact</a></li>
       </ul>
 
