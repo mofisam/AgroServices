@@ -14,7 +14,7 @@
         <div class="social-icons">
           <a href="https://www.facebook.com/profile.php?id=100083032495869" class="text-white me-2" aria-label="Facebook" target="_blank"><i class="bi bi-facebook"></i></a>
           <a href="https://vm.tiktok.com/ZS9RWvKxX7nLM-XrqPJ/" class="text-white me-2" aria-label="Tiktok"><i class="bi bi-tiktok"></i></a>
-          <a href="https://www.instagram.com/fandv_agro_services_limited"  class="text-white me-2" aria-label="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.instagram.com/fandv_agro_services_limited_"  class="text-white me-2" aria-label="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
           <a href="https://www.linkedin.com/company/f-and-v-agro-services/" class="text-white" aria-label="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
